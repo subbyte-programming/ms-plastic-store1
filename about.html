@@ -1,0 +1,1007 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>About Us - MS Plastic Store | Premium Wallpapers & Flooring Pakistan</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Learn about MS Plastic Store - Pakistan's leading provider of premium wallpapers, flooring, plastic dastarkhawan, footmats, chatai, and tarpaulin since 2015.">
+  <meta name="keywords" content="about us, wallpapers Pakistan, flooring Pakistan, dastarkhawan, footmats, chatai, tarpaulin, home decor">
+  
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <!-- AOS Animation CSS -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --primary: #2b6e3c;
+      --primary-dark: #1e4a2a;
+      --primary-light: #4a9e5c;
+      --secondary: #ff8c00;
+      --secondary-dark: #e67e00;
+      --dark: #1a1a1a;
+      --light: #f8f9fa;
+      --text-muted: #6c757d;
+      --gradient-primary: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+      --gradient-dark: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+      --gradient-hero: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Nunito', sans-serif;
+      overflow-x: hidden;
+      color: #333;
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 10px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #f1f1f1;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: var(--primary);
+      border-radius: 5px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--primary-dark);
+    }
+
+    /* Animations */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeInLeft {
+      from { opacity: 0; transform: translateX(-40px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+
+    @keyframes fadeInRight {
+      from { opacity: 0; transform: translateX(40px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+
+    @keyframes zoomIn {
+      from { opacity: 0; transform: scale(0.9); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-20px); }
+      100% { transform: translateY(0px); }
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(43,110,60,0.7); }
+      70% { transform: scale(1.05); box-shadow: 0 0 0 15px rgba(43,110,60,0); }
+      100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(43,110,60,0); }
+    }
+
+    @keyframes shine {
+      0% { left: -100%; }
+      20% { left: 100%; }
+      100% { left: 100%; }
+    }
+
+    .animate-fadeUp {
+      animation: fadeInUp 0.8s ease forwards;
+    }
+
+    .animate-fadeLeft {
+      animation: fadeInLeft 0.8s ease forwards;
+    }
+
+    .animate-fadeRight {
+      animation: fadeInRight 0.8s ease forwards;
+    }
+
+    .animate-zoom {
+      animation: zoomIn 0.6s ease forwards;
+    }
+
+    /* Floating Shapes */
+    .floating-shapes {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: 1;
+    }
+    .shape {
+      position: absolute;
+      background: rgba(255,255,255,0.1);
+      border-radius: 50%;
+      animation: float 6s ease-in-out infinite;
+    }
+    .shape-1 { width: 100px; height: 100px; top: 10%; left: 5%; animation-delay: 0s; }
+    .shape-2 { width: 150px; height: 150px; bottom: 15%; right: 8%; animation-delay: 1s; }
+    .shape-3 { width: 70px; height: 70px; top: 40%; right: 20%; animation-delay: 2s; }
+    .shape-4 { width: 120px; height: 120px; bottom: 30%; left: 15%; animation-delay: 0.5s; }
+
+    /* Hero Section */
+    .about-hero {
+      background: var(--gradient-hero);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .about-hero::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: repeating-linear-gradient(
+        45deg,
+        rgba(255,255,255,0.03) 0px,
+        rgba(255,255,255,0.03) 20px,
+        transparent 20px,
+        transparent 40px
+      );
+      animation: shine 20s linear infinite;
+    }
+
+    /* Counter Section */
+    .counter-box {
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      background: white;
+      border-radius: 24px;
+      position: relative;
+      overflow: hidden;
+    }
+    .counter-box::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+      transition: left 0.5s ease;
+    }
+    .counter-box:hover::before {
+      left: 100%;
+    }
+    .counter-box:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+    }
+    .counter-number {
+      font-size: 3.5rem;
+      font-weight: 800;
+      background: var(--gradient-primary);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* Team Cards with 3D Tilt */
+    .team-card {
+      transition: all 0.4s ease;
+      border-radius: 24px;
+      overflow: hidden;
+      background: white;
+      position: relative;
+    }
+    .team-card:hover {
+      transform: translateY(-12px);
+      box-shadow: 0 30px 50px rgba(0,0,0,0.15);
+    }
+    .team-img-wrapper {
+      overflow: hidden;
+      position: relative;
+    }
+    .team-img-wrapper img {
+      transition: transform 0.6s ease;
+      width: 100%;
+      aspect-ratio: 1;
+      object-fit: cover;
+    }
+    .team-card:hover .team-img-wrapper img {
+      transform: scale(1.1);
+    }
+    .team-social {
+      position: absolute;
+      bottom: -50px;
+      left: 0;
+      right: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+      padding: 20px;
+      transition: bottom 0.3s ease;
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+    }
+    .team-card:hover .team-social {
+      bottom: 0;
+    }
+    .team-social a {
+      width: 35px;
+      height: 35px;
+      background: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+    }
+    .team-social a:hover {
+      background: var(--primary);
+      transform: translateY(-3px);
+    }
+    .team-social a:hover i {
+      color: white;
+    }
+
+    /* Glassmorphism Timeline */
+    .timeline-item {
+      position: relative;
+      padding-left: 50px;
+      margin-bottom: 50px;
+    }
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: 20px;
+      top: 0;
+      bottom: -50px;
+      width: 3px;
+      background: linear-gradient(to bottom, var(--primary), var(--secondary));
+    }
+    .timeline-item:last-child::before {
+      display: none;
+    }
+    .timeline-year {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 40px;
+      height: 40px;
+      background: var(--gradient-primary);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: bold;
+      font-size: 12px;
+      box-shadow: 0 5px 15px rgba(43,110,60,0.3);
+    }
+    .timeline-content {
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(10px);
+      padding: 20px;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      transition: all 0.3s ease;
+    }
+    .timeline-content:hover {
+      transform: translateX(10px);
+      box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+    }
+
+    /* Value Cards Glassmorphism */
+    .value-card {
+      text-align: center;
+      padding: 35px 20px;
+      border-radius: 28px;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.2);
+      position: relative;
+      overflow: hidden;
+    }
+    .value-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: var(--gradient-primary);
+      transform: scaleX(0);
+      transition: transform 0.3s ease;
+    }
+    .value-card:hover::after {
+      transform: scaleX(1);
+    }
+    .value-card:hover {
+      transform: translateY(-8px);
+      background: var(--gradient-primary);
+      color: white;
+    }
+    .value-card:hover i {
+      color: white !important;
+      animation: pulse 0.5s ease;
+    }
+    .value-card:hover h5 {
+      color: white;
+    }
+    .value-card i {
+      transition: all 0.3s ease;
+      font-size: 3rem;
+    }
+
+    /* Testimonial Cards */
+    .testimonial-card {
+      background: white;
+      border-radius: 24px;
+      padding: 30px;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+      transition: all 0.4s ease;
+      position: relative;
+    }
+    .testimonial-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+    }
+    .testimonial-card::before {
+      content: '"';
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      font-size: 80px;
+      color: var(--primary);
+      opacity: 0.1;
+      font-family: serif;
+    }
+    .testimonial-img {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid var(--primary);
+    }
+
+    /* Award Section */
+    .award-card {
+      background: linear-gradient(135deg, #fff8f0, #fff);
+      border-radius: 20px;
+      padding: 25px;
+      text-align: center;
+      transition: all 0.3s ease;
+      border: 1px solid rgba(255,140,0,0.2);
+    }
+    .award-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--secondary);
+      box-shadow: 0 10px 30px rgba(255,140,0,0.1);
+    }
+
+    /* CTA Section with Parallax */
+    .cta-section {
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="rgba(255,255,255,0.05)" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,122.7C672,117,768,139,864,154.7C960,171,1056,181,1152,165.3C1248,149,1344,107,1392,85.3L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>') no-repeat bottom;
+      background-size: cover;
+    }
+
+    /* Preloader */
+    .preloader-wrapper {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      transition: opacity 0.5s ease;
+    }
+    .preloader {
+      width: 60px;
+      height: 60px;
+      border: 3px solid var(--primary);
+      border-top-color: transparent;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+    .preloader::before {
+      content: '';
+      position: absolute;
+      width: 70px;
+      height: 70px;
+      border: 3px solid var(--secondary);
+      border-bottom-color: transparent;
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite reverse;
+    }
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    /* Scroll to top */
+    .scroll-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 50px;
+      height: 50px;
+      background: var(--gradient-primary);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+      z-index: 99;
+      border: none;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+    .scroll-top.show {
+      opacity: 1;
+      visibility: visible;
+    }
+    .scroll-top:hover {
+      transform: translateY(-5px);
+      background: var(--primary-dark);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .counter-number { font-size: 2.5rem; }
+      .timeline-item { padding-left: 40px; }
+      .value-card { padding: 25px 15px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Preloader -->
+<div class="preloader-wrapper" id="preloader">
+  <div class="preloader"></div>
+</div>
+
+<!-- Scroll to Top Button -->
+<button class="scroll-top" id="scrollTopBtn">
+  <i class="fas fa-arrow-up"></i>
+</button>
+
+<!-- Header -->
+<header>
+  <div class="container-fluid">
+    <div class="row py-3 border-bottom">
+      <div class="col-sm-4 col-lg-2 text-center text-sm-start d-flex gap-3 justify-content-center justify-content-md-start">
+        <div class="d-flex align-items-center my-3 my-sm-0">
+          <a href="index.html">
+            <img src="images/fhdgh.PNG" alt="logo" class="img-fluid" style="max-height: 60px;">
+          </a>
+        </div>
+        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar">
+          <i class="fas fa-bars fs-4"></i>
+        </button>
+      </div>
+      <div class="col-sm-6 offset-sm-2 offset-md-0 col-lg-4">
+        <div class="search-bar row bg-light p-2 rounded-4">
+          <div class="col-11">
+            <input type="text" class="form-control border-0 bg-transparent" placeholder="Search for products...">
+          </div>
+          <div class="col-1">
+            <i class="fas fa-search"></i>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <ul class="navbar-nav list-unstyled d-flex flex-row gap-3 gap-lg-5 justify-content-center flex-wrap align-items-center mb-0 fw-bold text-uppercase text-dark">
+          <li class="nav-item"><a href="./index.html" class="nav-link">Home</a></li>
+          <li class="nav-item"><a href="./shop.html" class="nav-link">Shop</a></li>
+          <li class="nav-item"><a href="./about.html" class="nav-link text-primary">About us</a></li>
+          <li class="nav-item"><a href="./contactus.html" class="nav-link">Contact</a></li>
+        </ul>
+      </div>
+      <div class="col-sm-8 col-lg-2 d-flex gap-5 align-items-center justify-content-center justify-content-sm-end">
+        <ul class="d-flex justify-content-end list-unstyled m-0">
+          <li><a href="#" class="p-2 mx-1"><i class="fas fa-user fs-5"></i></a></li>
+          <li><a href="#" class="p-2 mx-1"><i class="fas fa-heart fs-5"></i></a></li>
+          <li><a href="#" class="p-2 mx-1 position-relative"><i class="fas fa-shopping-bag fs-5"></i><span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="font-size: 10px;">0</span></a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- Offcanvas Menu -->
+<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar">
+  <div class="offcanvas-header justify-content-between">
+    <h4 class="fw-normal text-uppercase fs-6">Shop by Category</h4>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    <ul class="navbar-nav justify-content-end menu-list list-unstyled d-flex gap-md-3 mb-0">
+      <li class="nav-item"><a href="./categories/wallpapers.html" class="nav-link d-flex align-items-center gap-3 text-dark p-2"><i class="fas fa-palette"></i><span>Wallpapers</span></a></li>
+      <li class="nav-item"><a href="./categories/flooring.html" class="nav-link d-flex align-items-center gap-3 text-dark p-2"><i class="fas fa-th-large"></i><span>Flooring</span></a></li>
+      <li class="nav-item"><a href="./categories/dastarkhawan.html" class="nav-link d-flex align-items-center gap-3 text-dark p-2"><i class="fas fa-table"></i><span>Plastic Dastarkhawan</span></a></li>
+      <li class="nav-item"><a href="./categories/footmats.html" class="nav-link d-flex align-items-center gap-3 text-dark p-2"><i class="fas fa-door-open"></i><span>Footmats</span></a></li>
+      <li class="nav-item"><a href="./categories/chatai.html" class="nav-link d-flex align-items-center gap-3 text-dark p-2"><i class="fas fa-leaf"></i><span>Chatai (Straw Mats)</span></a></li>
+      <li class="nav-item"><a href="./categories/tarpaulin.html" class="nav-link d-flex align-items-center gap-3 text-dark p-2"><i class="fas fa-tarp"></i><span>Tarpaulin (Tarpal)</span></a></li>
+      <li class="nav-item"><a href="./categories/pvc-panels.html" class="nav-link d-flex align-items-center gap-3 text-dark p-2"><i class="fas fa-border-all"></i><span>PVC Wall Panels</span></a></li>
+      <li class="nav-item"><a href="./categories/artificial-grass.html" class="nav-link d-flex align-items-center gap-3 text-dark p-2"><i class="fas fa-tree"></i><span>Artificial Grass</span></a></li>
+      <li class="nav-item"><a href="./categories/sunshade-nets.html" class="nav-link d-flex align-items-center gap-3 text-dark p-2"><i class="fas fa-sun"></i><span>Sunshade Nets</span></a></li>
+      <li class="nav-item"><a href="./categories/carpet-tiles.html" class="nav-link d-flex align-items-center gap-3 text-dark p-2"><i class="fas fa-carpet"></i><span>Carpet Tiles</span></a></li>
+    </ul>
+  </div>
+</div>
+
+<!-- Hero Section with Floating Shapes -->
+<section class="about-hero py-5 position-relative">
+  <div class="floating-shapes">
+    <div class="shape shape-1"></div>
+    <div class="shape shape-2"></div>
+    <div class="shape shape-3"></div>
+    <div class="shape shape-4"></div>
+  </div>
+  <div class="container py-5 position-relative" style="z-index: 2;">
+    <div class="row align-items-center">
+      <div class="col-lg-7 text-white" data-aos="fade-right" data-aos-duration="1000">
+        <h1 class="display-2 fw-bold mb-3">About <span class="text-warning">MS Plastic Store</span></h1>
+        <p class="lead mb-4">Pakistan's leading provider of premium wallpapers, flooring, and home decor solutions since 2015.</p>
+        <p class="mb-4 fs-5">We transform ordinary spaces into extraordinary experiences with our high-quality products and exceptional service.</p>
+        <div class="d-flex gap-3 flex-wrap">
+          <a href="./shop.html" class="btn btn-warning rounded-pill px-5 py-3 fw-bold fs-5">Shop Now <i class="fas fa-arrow-right ms-2"></i></a>
+          <a href="./contactus.html" class="btn btn-outline-light rounded-pill px-5 py-3 fw-bold fs-5">Contact Us</a>
+        </div>
+      </div>
+      <div class="col-lg-5 mt-5 mt-lg-0" data-aos="fade-left" data-aos-duration="1000">
+        <img src="images/classic-interior-wallpaper.jpg" alt="About Us" class="img-fluid rounded-4 shadow-lg" style="max-height: 400px; width: 100%; object-fit: cover; animation: float 4s ease-in-out infinite;">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Our Story Section -->
+<section class="py-5">
+  <div class="container">
+    <div class="row align-items-center g-5">
+      <div class="col-lg-6" data-aos="fade-right" data-aos-duration="800">
+        <div class="position-relative">
+          <img src="images/0-9mm-Indoor-Usage-Waterproof-Wood-Design-Plastic-Floor-Mat-PVC-Sponge-Flooring.avif" alt="Our Story" class="img-fluid rounded-4 shadow-lg">
+          <div class="position-absolute bottom-0 end-0 bg-primary text-white p-4 rounded-4 m-3" style="transform: translate(20px, 20px); backdrop-filter: blur(10px); background: rgba(43,110,60,0.9);">
+            <div class="text-center">
+              <div class="display-3 fw-bold">10k+</div>
+              <div>Happy Customers</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6" data-aos="fade-left" data-aos-duration="800">
+        <span class="badge bg-primary bg-opacity-10 text-primary px-4 py-2 rounded-pill mb-3 fs-6">Our Journey</span>
+        <h2 class="display-4 fw-bold mb-4">Crafting Beautiful <span class="text-primary">Spaces Since 2015</span></h2>
+        <p class="mb-4 fs-5">What started as a small family business in Lahore has grown into Pakistan's most trusted name for wallpapers, flooring, and home decor solutions. Our passion for quality and customer satisfaction drives everything we do.</p>
+        <p class="mb-4">Over the years, we've served thousands of happy customers across Pakistan, from individual homeowners to large commercial projects. Our commitment to excellence has made us the go-to choice for premium interior solutions.</p>
+        <div class="row g-3 mt-3">
+          <div class="col-6">
+            <div class="d-flex align-items-center gap-3 p-3 bg-light rounded-4">
+              <i class="fas fa-check-circle text-primary fs-2"></i>
+              <div><strong class="fs-5">Premium Quality</strong><br><small class="text-muted">100% satisfaction</small></div>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="d-flex align-items-center gap-3 p-3 bg-light rounded-4">
+              <i class="fas fa-truck text-primary fs-2"></i>
+              <div><strong class="fs-5">Fast Delivery</strong><br><small class="text-muted">Pan Pakistan</small></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Counter Section with Glassmorphism -->
+<section class="py-5 bg-light">
+  <div class="container">
+    <div class="row g-4 text-center">
+      <div class="col-md-3 col-6" data-aos="zoom-in" data-aos-duration="600" data-aos-delay="0">
+        <div class="counter-box p-4">
+          <i class="fas fa-smile fs-1 text-primary mb-3"></i>
+          <div class="counter-number" data-target="10000">0</div>
+          <p class="fw-bold mb-0 fs-5">Happy Customers</p>
+        </div>
+      </div>
+      <div class="col-md-3 col-6" data-aos="zoom-in" data-aos-duration="600" data-aos-delay="100">
+        <div class="counter-box p-4">
+          <i class="fas fa-palette fs-1 text-primary mb-3"></i>
+          <div class="counter-number" data-target="500">0</div>
+          <p class="fw-bold mb-0 fs-5">Design Varieties</p>
+        </div>
+      </div>
+      <div class="col-md-3 col-6" data-aos="zoom-in" data-aos-duration="600" data-aos-delay="200">
+        <div class="counter-box p-4">
+          <i class="fas fa-truck fs-1 text-primary mb-3"></i>
+          <div class="counter-number" data-target="50">0</div>
+          <p class="fw-bold mb-0 fs-5">Cities Served</p>
+        </div>
+      </div>
+      <div class="col-md-3 col-6" data-aos="zoom-in" data-aos-duration="600" data-aos-delay="300">
+        <div class="counter-box p-4">
+          <i class="fas fa-award fs-1 text-primary mb-3"></i>
+          <div class="counter-number" data-target="8">0</div>
+          <p class="fw-bold mb-0 fs-5">Years of Excellence</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Our Values Section with Glassmorphism -->
+<section class="py-5">
+  <div class="container">
+    <div class="text-center mb-5" data-aos="fade-up">
+      <span class="badge bg-primary bg-opacity-10 text-primary px-4 py-2 rounded-pill mb-3 fs-6">Our Core Values</span>
+      <h2 class="display-4 fw-bold">What Drives <span class="text-primary">Us Forward</span></h2>
+      <p class="text-muted w-75 mx-auto fs-5">These principles guide everything we do at MS Plastic Store</p>
+    </div>
+    <div class="row g-4">
+      <div class="col-md-3 col-6" data-aos="flip-left" data-aos-duration="600" data-aos-delay="0">
+        <div class="value-card shadow-sm h-100">
+          <i class="fas fa-gem text-primary mb-3"></i>
+          <h5 class="fw-bold fs-4">Quality First</h5>
+          <p class="small">Premium materials only</p>
+        </div>
+      </div>
+      <div class="col-md-3 col-6" data-aos="flip-left" data-aos-duration="600" data-aos-delay="100">
+        <div class="value-card shadow-sm h-100">
+          <i class="fas fa-hand-holding-heart text-primary mb-3"></i>
+          <h5 class="fw-bold fs-4">Customer Care</h5>
+          <p class="small">24/7 support</p>
+        </div>
+      </div>
+      <div class="col-md-3 col-6" data-aos="flip-left" data-aos-duration="600" data-aos-delay="200">
+        <div class="value-card shadow-sm h-100">
+          <i class="fas fa-chart-line text-primary mb-3"></i>
+          <h5 class="fw-bold fs-4">Innovation</h5>
+          <p class="small">Latest designs</p>
+        </div>
+      </div>
+      <div class="col-md-3 col-6" data-aos="flip-left" data-aos-duration="600" data-aos-delay="300">
+        <div class="value-card shadow-sm h-100">
+          <i class="fas fa-shield-alt text-primary mb-3"></i>
+          <h5 class="fw-bold fs-4">Trust</h5>
+          <p class="small">100% transparent</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Our Journey Timeline -->
+<section class="py-5 bg-light">
+  <div class="container">
+    <div class="text-center mb-5" data-aos="fade-up">
+      <span class="badge bg-primary bg-opacity-10 text-primary px-4 py-2 rounded-pill mb-3 fs-6">Our Timeline</span>
+      <h2 class="display-4 fw-bold">The <span class="text-primary">Journey</span> So Far</h2>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <div class="timeline-item" data-aos="fade-right" data-aos-duration="600">
+          <div class="timeline-year">2015</div>
+          <div class="timeline-content">
+            <h5 class="fw-bold fs-4">Humble Beginnings</h5>
+            <p class="text-muted mb-0">Started as a small family business in Lahore with just 10 product designs.</p>
+          </div>
+        </div>
+        <div class="timeline-item" data-aos="fade-right" data-aos-duration="600" data-aos-delay="100">
+          <div class="timeline-year">2017</div>
+          <div class="timeline-content">
+            <h5 class="fw-bold fs-4">First Expansion</h5>
+            <p class="text-muted mb-0">Expanded to Karachi and Islamabad, adding flooring and tarpaulin to our catalog.</p>
+          </div>
+        </div>
+        <div class="timeline-item" data-aos="fade-right" data-aos-duration="600" data-aos-delay="200">
+          <div class="timeline-year">2019</div>
+          <div class="timeline-content">
+            <h5 class="fw-bold fs-4">Online Store Launch</h5>
+            <p class="text-muted mb-0">Launched our e-commerce platform to serve customers across Pakistan.</p>
+          </div>
+        </div>
+        <div class="timeline-item" data-aos="fade-right" data-aos-duration="600" data-aos-delay="300">
+          <div class="timeline-year">2021</div>
+          <div class="timeline-content">
+            <h5 class="fw-bold fs-4">500+ Designs</h5>
+            <p class="text-muted mb-0">Reached 500+ design varieties across all product categories.</p>
+          </div>
+        </div>
+        <div class="timeline-item" data-aos="fade-right" data-aos-duration="600" data-aos-delay="400">
+          <div class="timeline-year">2024</div>
+          <div class="timeline-content">
+            <h5 class="fw-bold fs-4">10,000+ Happy Customers</h5>
+            <p class="text-muted mb-0">Celebrated serving over 10,000 satisfied customers nationwide.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- What We Offer Section -->
+<section class="py-5">
+  <div class="container">
+    <div class="text-center mb-5" data-aos="fade-up">
+      <h2 class="display-4 fw-bold">What <span class="text-primary">We Offer</span></h2>
+      <p class="text-muted w-75 mx-auto fs-5">Complete home and business interior solutions under one roof</p>
+    </div>
+    <div class="row g-4">
+      <div class="col-md-4" data-aos="flip-up" data-aos-duration="600" data-aos-delay="0">
+        <div class="d-flex gap-3 p-4 rounded-4 bg-white shadow-sm h-100 hover-lift">
+          <i class="fas fa-palette fs-1 text-primary"></i>
+          <div><h5 class="fw-bold fs-5">Premium Wallpapers</h5><p class="text-muted mb-0">3D, textured, modern, classic designs for every taste</p></div>
+        </div>
+      </div>
+      <div class="col-md-4" data-aos="flip-up" data-aos-duration="600" data-aos-delay="100">
+        <div class="d-flex gap-3 p-4 rounded-4 bg-white shadow-sm h-100">
+          <i class="fas fa-th-large fs-1 text-primary"></i>
+          <div><h5 class="fw-bold fs-5">Quality Flooring</h5><p class="text-muted mb-0">PVC, vinyl, wooden laminate, anti-slip options</p></div>
+        </div>
+      </div>
+      <div class="col-md-4" data-aos="flip-up" data-aos-duration="600" data-aos-delay="200">
+        <div class="d-flex gap-3 p-4 rounded-4 bg-white shadow-sm h-100">
+          <i class="fas fa-table fs-1 text-primary"></i>
+          <div><h5 class="fw-bold fs-5">Plastic Dastarkhawan</h5><p class="text-muted mb-0">Durable, waterproof, easy to clean dining mats</p></div>
+        </div>
+      </div>
+      <div class="col-md-4" data-aos="flip-up" data-aos-duration="600" data-aos-delay="300">
+        <div class="d-flex gap-3 p-4 rounded-4 bg-white shadow-sm h-100">
+          <i class="fas fa-door-open fs-1 text-primary"></i>
+          <div><h5 class="fw-bold fs-5">Footmats</h5><p class="text-muted mb-0">Designer, anti-skid, customized logo mats</p></div>
+        </div>
+      </div>
+      <div class="col-md-4" data-aos="flip-up" data-aos-duration="600" data-aos-delay="400">
+        <div class="d-flex gap-3 p-4 rounded-4 bg-white shadow-sm h-100">
+          <i class="fas fa-leaf fs-1 text-primary"></i>
+          <div><h5 class="fw-bold fs-5">Chatai (Straw Mats)</h5><p class="text-muted mb-0">Natural, eco-friendly, traditional straw mats</p></div>
+        </div>
+      </div>
+      <div class="col-md-4" data-aos="flip-up" data-aos-duration="600" data-aos-delay="500">
+        <div class="d-flex gap-3 p-4 rounded-4 bg-white shadow-sm h-100">
+          <i class="fas fa-tarp fs-1 text-primary"></i>
+          <div><h5 class="fw-bold fs-5">Tarpaulin</h5><p class="text-muted mb-0">Heavy-duty, waterproof covers for all needs</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Awards & Recognition Section -->
+<section class="py-5 bg-light">
+  <div class="container">
+    <div class="text-center mb-5" data-aos="fade-up">
+      <span class="badge bg-primary bg-opacity-10 text-primary px-4 py-2 rounded-pill mb-3 fs-6">Awards & Recognition</span>
+      <h2 class="display-4 fw-bold">Our <span class="text-primary">Achievements</span></h2>
+    </div>
+    <div class="row g-4">
+      <div class="col-md-3 col-6" data-aos="zoom-in" data-aos-duration="600">
+        <div class="award-card">
+          <i class="fas fa-trophy fs-1 text-warning mb-3"></i>
+          <h5 class="fw-bold">Best Home Decor Store</h5>
+          <p class="small text-muted mb-0">Pakistan Retail Awards 2022</p>
+        </div>
+      </div>
+      <div class="col-md-3 col-6" data-aos="zoom-in" data-aos-duration="600" data-aos-delay="100">
+        <div class="award-card">
+          <i class="fas fa-star fs-1 text-warning mb-3"></i>
+          <h5 class="fw-bold">Customer Choice Award</h5>
+          <p class="small text-muted mb-0">Consumer Association 2023</p>
+        </div>
+      </div>
+      <div class="col-md-3 col-6" data-aos="zoom-in" data-aos-duration="600" data-aos-delay="200">
+        <div class="award-card">
+          <i class="fas fa-certificate fs-1 text-warning mb-3"></i>
+          <h5 class="fw-bold">Quality Excellence</h5>
+          <p class="small text-muted mb-0">ISO 9001:2021 Certified</p>
+        </div>
+      </div>
+      <div class="col-md-3 col-6" data-aos="zoom-in" data-aos-duration="600" data-aos-delay="300">
+        <div class="award-card">
+          <i class="fas fa-globe fs-1 text-warning mb-3"></i>
+          <h5 class="fw-bold">Best E-commerce Platform</h5>
+          <p class="small text-muted mb-0">Digital Pakistan Awards 2023</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Testimonials -->
+<section class="py-5">
+  <div class="container">
+    <div class="text-center mb-5" data-aos="fade-up">
+      <span class="badge bg-primary bg-opacity-10 text-primary px-4 py-2 rounded-pill mb-3 fs-6">Testimonials</span>
+      <h2 class="display-4 fw-bold">What Our <span class="text-primary">Customers Say</span></h2>
+    </div>
+    <div class="row g-4">
+      <div class="col-md-4" data-aos="flip-left" data-aos-duration="600" data-aos-delay="0">
+        <div class="testimonial-card h-100">
+          <div class="d-flex align-items-center gap-3 mb-3">
+            <img src="https://randomuser.me/api/portraits/women/1.jpg" class="testimonial-img" alt="Sarah">
+            <div><strong class="fs-5">Sarah Ahmed</strong><br><i class="fas fa-map-marker-alt text-muted fa-sm"></i> <span class="text-muted small">Lahore</span></div>
+          </div>
+          <p class="mb-3">"Excellent quality wallpapers! The team was very helpful in helping me choose the perfect design for my living room."</p>
+          <div class="text-warning">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4" data-aos="flip-left" data-aos-duration="600" data-aos-delay="100">
+        <div class="testimonial-card h-100">
+          <div class="d-flex align-items-center gap-3 mb-3">
+            <img src="https://randomuser.me/api/portraits/men/2.jpg" class="testimonial-img" alt="Usman">
+            <div><strong class="fs-5">Usman Raza</strong><br><i class="fas fa-map-marker-alt text-muted fa-sm"></i> <span class="text-muted small">Karachi</span></div>
+          </div>
+          <p class="mb-3">"Best flooring options in Pakistan! Very reasonable prices and fast delivery. Highly recommended!"</p>
+          <div class="text-warning">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4" data-aos="flip-left" data-aos-duration="600" data-aos-delay="200">
+        <div class="testimonial-card h-100">
+          <div class="d-flex align-items-center gap-3 mb-3">
+            <img src="https://randomuser.me/api/portraits/women/3.jpg" class="testimonial-img" alt="Fatima">
+            <div><strong class="fs-5">Fatima Khan</strong><br><i class="fas fa-map-marker-alt text-muted fa-sm"></i> <span class="text-muted small">Islamabad</span></div>
+          </div>
+          <p class="mb-3">"The plastic dastarkhawan sheets are amazing! Waterproof and very durable. Will order again."</p>
+          <div class="text-warning">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Call to Action with Parallax -->
+<section class="cta-section py-5">
+  <div class="container py-5 text-center text-white position-relative" style="z-index: 2;">
+    <h2 class="display-4 fw-bold mb-3" data-aos="zoom-in">Ready to Transform Your Space?</h2>
+    <p class="lead mb-4 fs-4" data-aos="zoom-in" data-aos-delay="100">Get in touch with us today for expert advice and premium products.</p>
+    <div class="d-flex gap-3 justify-content-center flex-wrap" data-aos="zoom-in" data-aos-delay="200">
+      <a href="https://wa.me/923190306199" class="btn btn-light rounded-pill px-5 py-3 fw-bold fs-5"><i class="fab fa-whatsapp me-2"></i>Chat on WhatsApp</a>
+      <a href="tel:+923190306199" class="btn btn-outline-light rounded-pill px-5 py-3 fw-bold fs-5"><i class="fas fa-phone me-2"></i>Call Us Now</a>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="py-5 bg-dark text-white">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3">
+        <img src="images/fhdgh.PNG" class="mb-3" style="max-height: 50px;">
+        <p class="small">Premium wallpapers, flooring & home decor solutions in Pakistan since 2015.</p>
+        <div class="d-flex gap-2">
+          <a href="#" class="text-white"><i class="fab fa-facebook fa-lg"></i></a>
+          <a href="#" class="text-white"><i class="fab fa-instagram fa-lg"></i></a>
+          <a href="#" class="text-white"><i class="fab fa-whatsapp fa-lg"></i></a>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <h5>Quick Links</h5>
+        <ul class="list-unstyled small">
+          <li><a href="./about.html" class="text-white-50 text-decoration-none">About Us</a></li>
+          <li><a href="./contactus.html" class="text-white-50 text-decoration-none">Contact</a></li>
+          <li><a href="#" class="text-white-50 text-decoration-none">FAQs</a></li>
+          <li><a href="./privacy-policy.html" class="text-white-50 text-decoration-none">Privacy Policy</a></li>
+        </ul>
+      </div>
+      <div class="col-md-3">
+        <h5>Categories</h5>
+        <ul class="list-unstyled small">
+          <li><a href="#" class="text-white-50 text-decoration-none">Wallpapers</a></li>
+          <li><a href="#" class="text-white-50 text-decoration-none">Flooring</a></li>
+          <li><a href="#" class="text-white-50 text-decoration-none">Tarpaulin</a></li>
+          <li><a href="#" class="text-white-50 text-decoration-none">Footmats</a></li>
+        </ul>
+      </div>
+      <div class="col-md-3">
+        <h5>Contact Info</h5>
+        <p class="small mb-1"><i class="fas fa-phone me-2"></i>+92 319 0306199</p>
+        <p class="small mb-1"><i class="fab fa-whatsapp me-2"></i>+92 319 0306199</p>
+        <p class="small"><i class="fas fa-envelope me-2"></i>info@msplasticstore.com</p>
+      </div>
+    </div>
+    <hr class="mt-4">
+    <div class="text-center small text-white-50">© 2024 MS Plastic Store. All rights reserved.</div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+<script>
+  // Initialize AOS
+  AOS.init({
+    duration: 800,
+    once: true,
+    offset: 100
+  });
+
+  // Preloader
+  window.addEventListener('load', () => {
+    setTimeout(() => {
+      const preloader = document.getElementById('preloader');
+      if (preloader) {
+        preloader.style.opacity = '0';
+        setTimeout(() => preloader.style.display = 'none', 500);
+      }
+    }, 800);
+  });
+
+  // Counter Animation
+  function animateCounters() {
+    const counters = document.querySelectorAll('.counter-number');
+    counters.forEach(counter => {
+      const target = parseInt(counter.getAttribute('data-target'));
+      let current = 0;
+      const increment = target / 60;
+      const updateCounter = () => {
+        if (current < target) {
+          current += increment;
+          counter.innerText = Math.ceil(current);
+          setTimeout(updateCounter, 25);
+        } else {
+          counter.innerText = target.toLocaleString();
+        }
+      };
+      updateCounter();
+    });
+  }
+
+  // Trigger counters when visible
+  const observerOptions = { threshold: 0.3 };
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        animateCounters();
+        observer.unobserve(entry.target);
+      }
+    });
+  }, observerOptions);
+
+  const counterSection = document.querySelector('.bg-light .row');
+  if (counterSection) observer.observe(counterSection);
+
+  // Scroll to top button
+  const scrollBtn = document.getElementById('scrollTopBtn');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 300) scrollBtn.classList.add('show');
+    else scrollBtn.classList.remove('show');
+  });
+  scrollBtn.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+</script>
+</body>
+</html>

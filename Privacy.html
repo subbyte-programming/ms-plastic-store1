@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Privacy Policy - Premium Wallpapers & Flooring | Home & Business Interiors</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Privacy Policy for our wallpaper, flooring, and home decor business. Learn how we collect, use, and protect your personal information.">
+  <meta name="keywords" content="privacy policy, terms and conditions, data protection, refund policy, shipping policy">
+  
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --primary: #2b6e3c;
+      --primary-dark: #1e4a2a;
+      --secondary: #ff8c00;
+      --dark: #1a1a1a;
+      --light: #f8f9fa;
+      --text-muted: #6c757d;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Nunito', sans-serif;
+      overflow-x: hidden;
+      color: #333;
+    }
+
+    /* Animations */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeInLeft {
+      from { opacity: 0; transform: translateX(-40px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+
+    .animate-fadeUp {
+      animation: fadeInUp 0.8s ease forwards;
+    }
+
+    .animate-fadeLeft {
+      animation: fadeInLeft 0.8s ease forwards;
+    }
+
+    /* Hero Section */
+    .policy-hero {
+      background: linear-gradient(135deg, #1e4a2a 0%, #2b6e3c 50%, #3a8a4a 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .policy-hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="rgba(255,255,255,0.05)" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,122.7C672,117,768,139,864,154.7C960,171,1056,181,1152,165.3C1248,149,1344,107,1392,85.3L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>') no-repeat bottom;
+      background-size: cover;
+      opacity: 0.3;
+    }
+
+    /* Content Section */
+    .policy-content {
+      background: white;
+      border-radius: 24px;
+      padding: 40px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+      margin-top: -50px;
+      position: relative;
+      z-index: 10;
+    }
+
+    .policy-section {
+      margin-bottom: 40px;
+      padding-bottom: 30px;
+      border-bottom: 1px solid #eef2f6;
+    }
+
+    .policy-section:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .policy-section h3 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .policy-section h3 i {
+      font-size: 1.8rem;
+    }
+
+    .policy-section h4 {
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin-top: 20px;
+      margin-bottom: 12px;
+      color: #333;
+    }
+
+    .policy-section p {
+      color: #555;
+      line-height: 1.7;
+      margin-bottom: 16px;
+    }
+
+    .policy-section ul, .policy-section ol {
+      margin-bottom: 16px;
+      padding-left: 20px;
+    }
+
+    .policy-section li {
+      color: #555;
+      line-height: 1.7;
+      margin-bottom: 8px;
+    }
+
+    .highlight-box {
+      background: #f8f9fa;
+      border-left: 4px solid var(--primary);
+      padding: 20px;
+      border-radius: 12px;
+      margin: 20px 0;
+    }
+
+    .last-updated {
+      background: #e8f5e9;
+      padding: 12px 20px;
+      border-radius: 50px;
+      display: inline-block;
+      font-size: 0.9rem;
+      color: var(--primary);
+      font-weight: 600;
+    }
+
+    /* Table of Contents */
+    .toc-card {
+      background: #f8f9fa;
+      border-radius: 20px;
+      padding: 25px;
+      position: sticky;
+      top: 20px;
+    }
+
+    .toc-card h5 {
+      font-weight: 700;
+      margin-bottom: 15px;
+      color: var(--primary);
+    }
+
+    .toc-card ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .toc-card li {
+      margin-bottom: 10px;
+    }
+
+    .toc-card a {
+      color: #555;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      display: block;
+      padding: 5px 0;
+    }
+
+    .toc-card a:hover {
+      color: var(--primary);
+      padding-left: 8px;
+    }
+
+    /* Preloader */
+    .preloader-wrapper {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      transition: opacity 0.5s ease;
+    }
+    .preloader {
+      width: 50px;
+      height: 50px;
+      border: 3px solid var(--primary);
+      border-top-color: transparent;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    /* Scroll to top */
+    .scroll-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 45px;
+      height: 45px;
+      background: var(--primary);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+      z-index: 99;
+      border: none;
+    }
+    .scroll-top.show {
+      opacity: 1;
+      visibility: visible;
+    }
+    .scroll-top:hover {
+      background: var(--primary-dark);
+      transform: translateY(-5px);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .policy-content { padding: 25px; margin-top: -30px; }
+      .policy-section h3 { font-size: 1.3rem; }
+      .toc-card { margin-bottom: 30px; position: relative; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Preloader -->
+<div class="preloader-wrapper" id="preloader">
+  <div class="preloader"></div>
+</div>
+
+<!-- Scroll to Top Button -->
+<button class="scroll-top" id="scrollTopBtn">
+  <i class="fas fa-arrow-up"></i>
+</button>
+
+<!-- Header -->
+<header>
+  <div class="container-fluid">
+    <div class="row py-3 border-bottom">
+      <div class="col-sm-4 col-lg-2 text-center text-sm-start d-flex gap-3 justify-content-center justify-content-md-start">
+        <div class="d-flex align-items-center my-3 my-sm-0">
+          <a href="index.html">
+            <img src="images/fhdgh.PNG" alt="logo" class="img-fluid" style="max-height: 60px;">
+          </a>
+        </div>
+        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar">
+          <i class="fas fa-bars fs-4"></i>
+        </button>
+      </div>
+      <div class="col-sm-6 offset-sm-2 offset-md-0 col-lg-4">
+        <div class="search-bar row bg-light p-2 rounded-4">
+          <div class="col-11">
+            <input type="text" class="form-control border-0 bg-transparent" placeholder="Search for products...">
+          </div>
+          <div class="col-1">
+            <i class="fas fa-search"></i>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <ul class="navbar-nav list-unstyled d-flex flex-row gap-3 gap-lg-5 justify-content-center flex-wrap align-items-center mb-0 fw-bold text-uppercase text-dark">
+          <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+          <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+          <li class="nav-item"><a href="#" class="nav-link">Shop</a></li>
+          <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+        </ul>
+      </div>
+      <div class="col-sm-8 col-lg-2 d-flex gap-5 align-items-center justify-content-center justify-content-sm-end">
+        <ul class="d-flex justify-content-end list-unstyled m-0">
+          <li><a href="#" class="p-2 mx-1"><i class="fas fa-user fs-5"></i></a></li>
+          <li><a href="#" class="p-2 mx-1"><i class="fas fa-heart fs-5"></i></a></li>
+          <li><a href="#" class="p-2 mx-1 position-relative"><i class="fas fa-shopping-bag fs-5"></i><span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="font-size: 10px;">0</span></a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- Offcanvas Menu -->
+<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar">
+  <div class="offcanvas-header justify-content-between">
+    <h4 class="fw-normal text-uppercase fs-6">Shop by Category</h4>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    <ul class="navbar-nav justify-content-end menu-list list-unstyled d-flex gap-md-3 mb-0">
+      <li class="nav-item"><a href="/categories/wallpapers.html" class="nav-link d-flex align-items-center gap-3 text-dark p-2"><i class="fas fa-palette"></i><span>Wallpapers</span></a></li>
+      <li class="nav-item"><a href="#" class="nav-link d-flex align-items-center gap-3 text-dark p-2"><i class="fas fa-th-large"></i><span>Flooring</span></a></li>
+      <li class="nav-item"><a href="#" class="nav-link d-flex align-items-center gap-3 text-dark p-2"><i class="fas fa-table"></i><span>Plastic Dastarkhawan</span></a></li>
+      <li class="nav-item"><a href="#" class="nav-link d-flex align-items-center gap-3 text-dark p-2"><i class="fas fa-door-open"></i><span>Footmats</span></a></li>
+      <li class="nav-item"><a href="#" class="nav-link d-flex align-items-center gap-3 text-dark p-2"><i class="fas fa-leaf"></i><span>Chatai (Straw Mats)</span></a></li>
+      <li class="nav-item"><a href="#" class="nav-link d-flex align-items-center gap-3 text-dark p-2"><i class="fas fa-tarp"></i><span>Tarpaulin (Tarpal)</span></a></li>
+      <li class="nav-item"><a href="#" class="nav-link d-flex align-items-center gap-3 text-dark p-2"><i class="fas fa-border-all"></i><span>PVC Wall Panels</span></a></li>
+      <li class="nav-item"><a href="#" class="nav-link d-flex align-items-center gap-3 text-dark p-2"><i class="fas fa-tree"></i><span>Artificial Grass</span></a></li>
+      <li class="nav-item"><a href="#" class="nav-link d-flex align-items-center gap-3 text-dark p-2"><i class="fas fa-sun"></i><span>Sunshade Nets</span></a></li>
+      <li class="nav-item"><a href="#" class="nav-link d-flex align-items-center gap-3 text-dark p-2"><i class="fas fa-carpet"></i><span>Carpet Tiles</span></a></li>
+    </ul>
+  </div>
+</div>
+
+<!-- Hero Section -->
+<section class="policy-hero py-5">
+  <div class="container py-5">
+    <div class="row">
+      <div class="col-lg-8 text-white animate-fadeLeft">
+        <h1 class="display-3 fw-bold mb-3">Privacy Policy</h1>
+        <p class="lead mb-4">Your privacy matters to us. Learn how we collect, use, and protect your information.</p>
+        <div class="last-updated">
+          <i class="fas fa-calendar-alt me-2"></i> Last Updated: January 1, 2024
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Main Content -->
+<section class="py-5">
+  <div class="container">
+    <div class="row g-5">
+      <!-- Table of Contents Sidebar -->
+      <div class="col-lg-3 animate-fadeLeft">
+        <div class="toc-card">
+          <h5><i class="fas fa-list-ul me-2"></i>Contents</h5>
+          <ul>
+            <li><a href="#information-collect">1. Information We Collect</a></li>
+            <li><a href="#use-information">2. How We Use Your Information</a></li>
+            <li><a href="#share-information">3. Sharing Your Information</a></li>
+            <li><a href="#cookies">4. Cookies & Tracking</a></li>
+            <li><a href="#data-security">5. Data Security</a></li>
+            <li><a href="#third-party">6. Third-Party Links</a></li>
+            <li><a href="#children">7. Children's Privacy</a></li>
+            <li><a href="#your-rights">8. Your Rights</a></li>
+            <li><a href="#policy-changes">9. Changes to Policy</a></li>
+            <li><a href="#contact-us">10. Contact Us</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Policy Content -->
+      <div class="col-lg-9 animate-fadeUp">
+        <div class="policy-content">
+          
+          <!-- Introduction -->
+          <div class="policy-section">
+            <h3><i class="fas fa-shield-alt"></i> Introduction</h3>
+            <p>Welcome to <strong>Your Business Name</strong> ("we," "our," "us"). We are committed to protecting your personal information and your right to privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website, make a purchase, or interact with our services.</p>
+            <p>Please read this privacy policy carefully. If you do not agree with the terms of this privacy policy, please do not access the site or use our services.</p>
+          </div>
+
+          <!-- Section 1 -->
+          <div class="policy-section" id="information-collect">
+            <h3><i class="fas fa-database"></i> 1. Information We Collect</h3>
+            <p>We collect information that you voluntarily provide to us when you:</p>
+            <ul>
+              <li><strong>Register on our website</strong> - Name, email address, phone number, password</li>
+              <li><strong>Place an order</strong> - Billing address, shipping address, payment information, order details</li>
+              <li><strong>Subscribe to our newsletter</strong> - Email address, name</li>
+              <li><strong>Contact customer support</strong> - Any information you choose to provide</li>
+              <li><strong>Submit product reviews</strong> - Name, review content, ratings</li>
+            </ul>
+            <div class="highlight-box">
+              <i class="fas fa-info-circle text-primary me-2"></i>
+              <strong>Note:</strong> We do not store your complete payment card details. All payment transactions are processed through secure third-party payment gateways.
+            </div>
+          </div>
+
+          <!-- Section 2 -->
+          <div class="policy-section" id="use-information">
+            <h3><i class="fas fa-chart-line"></i> 2. How We Use Your Information</h3>
+            <p>We use the information we collect for various business purposes, including:</p>
+            <ul>
+              <li><strong>Order Processing:</strong> To process and fulfill your orders, including shipping, delivery, and payment processing.</li>
+              <li><strong>Customer Support:</strong> To respond to your inquiries, resolve issues, and provide customer service.</li>
+              <li><strong>Communication:</strong> To send you order confirmations, shipping updates, and important service announcements.</li>
+              <li><strong>Marketing:</strong> To send you promotional offers, newsletters, and product recommendations (you can opt-out anytime).</li>
+              <li><strong>Improvement:</strong> To analyze website usage, improve our products, and enhance user experience.</li>
+              <li><strong>Legal Compliance:</strong> To comply with applicable laws, regulations, and legal processes.</li>
+            </ul>
+          </div>
+
+          <!-- Section 3 -->
+          <div class="policy-section" id="share-information">
+            <h3><i class="fas fa-share-alt"></i> 3. Sharing Your Information</h3>
+            <p>We do not sell, trade, or rent your personal information to third parties. However, we may share your information in the following circumstances:</p>
+            <ul>
+              <li><strong>Service Providers:</strong> With third-party vendors who help us operate our business (shipping companies, payment processors, email service providers).</li>
+              <li><strong>Legal Requirements:</strong> When required by law, court order, or government regulation.</li>
+              <li><strong>Business Transfers:</strong> In connection with a merger, acquisition, or sale of assets.</li>
+              <li><strong>With Your Consent:</strong> When you have given us explicit permission to share your information.</li>
+            </ul>
+          </div>
+
+          <!-- Section 4 -->
+          <div class="policy-section" id="cookies">
+            <h3><i class="fas fa-cookie-bite"></i> 4. Cookies & Tracking Technologies</h3>
+            <p>We use cookies and similar tracking technologies to enhance your browsing experience. Cookies are small data files stored on your device that help us:</p>
+            <ul>
+              <li>Remember your preferences and shopping cart items</li>
+              <li>Understand how you use our website</li>
+              <li>Improve website performance and load times</li>
+              <li>Provide personalized product recommendations</li>
+            </ul>
+            <p>You can control cookies through your browser settings. However, disabling cookies may affect your ability to use certain features of our website, such as adding items to your cart.</p>
+            <div class="highlight-box">
+              <i class="fas fa-cookie text-primary me-2"></i>
+              <strong>Types of Cookies We Use:</strong> Essential cookies (required for website functionality), Performance cookies (to analyze usage), Functional cookies (to remember preferences), and Targeting cookies (for relevant advertising).
+            </div>
+          </div>
+
+          <!-- Section 5 -->
+          <div class="policy-section" id="data-security">
+            <h3><i class="fas fa-lock"></i> 5. Data Security</h3>
+            <p>We implement industry-standard security measures to protect your personal information, including:</p>
+            <ul>
+              <li><strong>SSL Encryption:</strong> All data transmitted between your browser and our website is encrypted using Secure Socket Layer (SSL) technology.</li>
+              <li><strong>Secure Storage:</strong> Your information is stored on secure servers with restricted access.</li>
+              <li><strong>Regular Monitoring:</strong> We regularly monitor our systems for potential vulnerabilities and attacks.</li>
+              <li><strong>Employee Training:</strong> Our staff receives regular training on data protection and privacy practices.</li>
+            </ul>
+            <p>While we strive to protect your personal information, no method of transmission over the Internet or electronic storage is 100% secure. We cannot guarantee absolute security.</p>
+          </div>
+
+          <!-- Section 6 -->
+          <div class="policy-section" id="third-party">
+            <h3><i class="fas fa-external-link-alt"></i> 6. Third-Party Links</h3>
+            <p>Our website may contain links to third-party websites, products, or services. We are not responsible for the privacy practices or content of these third parties. We encourage you to review the privacy policies of any third-party sites you visit.</p>
+          </div>
+
+          <!-- Section 7 -->
+          <div class="policy-section" id="children">
+            <h3><i class="fas fa-child"></i> 7. Children's Privacy</h3>
+            <p>Our services are not intended for children under the age of 13. We do not knowingly collect personal information from children under 13. If you believe we have collected information from a child under 13, please contact us immediately, and we will take steps to remove that information.</p>
+          </div>
+
+          <!-- Section 8 -->
+          <div class="policy-section" id="your-rights">
+            <h3><i class="fas fa-gavel"></i> 8. Your Rights</h3>
+            <p>Depending on your location, you may have certain rights regarding your personal information, including:</p>
+            <ul>
+              <li><strong>Access:</strong> Request a copy of the personal information we hold about you.</li>
+              <li><strong>Correction:</strong> Request correction of inaccurate or incomplete information.</li>
+              <li><strong>Deletion:</strong> Request deletion of your personal information (subject to certain exceptions).</li>
+              <li><strong>Opt-Out:</strong> Unsubscribe from marketing communications at any time.</li>
+              <li><strong>Data Portability:</strong> Request a machine-readable copy of your data.</li>
+            </ul>
+            <p>To exercise any of these rights, please contact us using the information provided below.</p>
+          </div>
+
+          <!-- Section 9 -->
+          <div class="policy-section" id="policy-changes">
+            <h3><i class="fas fa-edit"></i> 9. Changes to This Privacy Policy</h3>
+            <p>We may update this Privacy Policy from time to time to reflect changes in our practices or for legal reasons. We will notify you of any material changes by:</p>
+            <ul>
+              <li>Posting the updated policy on this page</li>
+              <li>Updating the "Last Updated" date at the top of this page</li>
+              <li>Sending an email notification (for significant changes)</li>
+            </ul>
+            <p>We encourage you to review this Privacy Policy periodically to stay informed about how we protect your information.</p>
+          </div>
+
+          <!-- Section 10 -->
+          <div class="policy-section" id="contact-us">
+            <h3><i class="fas fa-envelope"></i> 10. Contact Us</h3>
+            <p>If you have any questions, concerns, or requests regarding this Privacy Policy or our data practices, please contact us at:</p>
+            <div class="highlight-box">
+              <p class="mb-2"><i class="fas fa-building me-2 text-primary"></i><strong>Your Business Name</strong></p>
+              <p class="mb-2"><i class="fas fa-map-marker-alt me-2 text-primary"></i>123 Main Boulevard, Gulberg III, Lahore, Pakistan</p>
+              <p class="mb-2"><i class="fas fa-phone me-2 text-primary"></i>+92 319 0306199</p>
+              <p class="mb-2"><i class="fas fa-envelope me-2 text-primary"></i>privacy@yourbusiness.com</p>
+              <p class="mb-0"><i class="fab fa-whatsapp me-2 text-primary"></i>+92 319 0306199 (WhatsApp)</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Call to Action -->
+<section class="py-5" style="background: linear-gradient(135deg, var(--primary), var(--primary-dark));">
+  <div class="container text-center text-white">
+    <h2 class="display-5 fw-bold mb-3">Have Questions About Privacy?</h2>
+    <p class="lead mb-4">We're here to help! Contact us anytime for privacy-related concerns.</p>
+    <div class="d-flex gap-3 justify-content-center flex-wrap">
+      <a href="contact.html" class="btn btn-light rounded-pill px-4 py-2 fw-bold"><i class="fas fa-envelope me-2"></i>Contact Us</a>
+      <a href="https://wa.me/923190306199" target="_blank" class="btn btn-outline-light rounded-pill px-4 py-2"><i class="fab fa-whatsapp me-2"></i>WhatsApp Us</a>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="py-5 bg-dark text-white">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3">
+        <img src="images/fhdgh.PNG" class="mb-3" style="max-height: 50px;">
+        <p class="small">Premium wallpapers, flooring & home decor solutions in Pakistan since 2015.</p>
+        <div class="d-flex gap-2">
+          <a href="#" class="text-white"><i class="fab fa-facebook fa-lg"></i></a>
+          <a href="#" class="text-white"><i class="fab fa-instagram fa-lg"></i></a>
+          <a href="#" class="text-white"><i class="fab fa-whatsapp fa-lg"></i></a>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <h5>Quick Links</h5>
+        <ul class="list-unstyled small">
+          <li><a href="about.html" class="text-white-50 text-decoration-none">About Us</a></li>
+          <li><a href="contact.html" class="text-white-50 text-decoration-none">Contact</a></li>
+          <li><a href="privacy-policy.html" class="text-white-50 text-decoration-none">Privacy Policy</a></li>
+          <li><a href="#" class="text-white-50 text-decoration-none">Terms & Conditions</a></li>
+        </ul>
+      </div>
+      <div class="col-md-3">
+        <h5>Categories</h5>
+        <ul class="list-unstyled small">
+          <li><a href="/categories/wallpapers.html" class="text-white-50 text-decoration-none">Wallpapers</a></li>
+          <li><a href="#" class="text-white-50 text-decoration-none">Flooring</a></li>
+          <li><a href="#" class="text-white-50 text-decoration-none">Tarpaulin</a></li>
+          <li><a href="#" class="text-white-50 text-decoration-none">Footmats</a></li>
+        </ul>
+      </div>
+      <div class="col-md-3">
+        <h5>Contact Info</h5>
+        <p class="small mb-1"><i class="fas fa-phone me-2"></i>+92 319 0306199</p>
+        <p class="small mb-1"><i class="fab fa-whatsapp me-2"></i>+92 319 0306199</p>
+        <p class="small"><i class="fas fa-envelope me-2"></i>info@yourbusiness.com</p>
+      </div>
+    </div>
+    <hr class="mt-4">
+    <div class="text-center small text-white-50">© 2024 Your Business Name. All rights reserved. | <a href="privacy-policy.html" class="text-white-50">Privacy Policy</a> | <a href="#" class="text-white-50">Terms of Service</a></div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+  // Preloader
+  window.addEventListener('load', () => {
+    setTimeout(() => {
+      const preloader = document.getElementById('preloader');
+      if (preloader) {
+        preloader.style.opacity = '0';
+        setTimeout(() => preloader.style.display = 'none', 500);
+      }
+    }, 500);
+  });
+
+  // Scroll to top button
+  const scrollBtn = document.getElementById('scrollTopBtn');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 300) scrollBtn.classList.add('show');
+    else scrollBtn.classList.remove('show');
+  });
+  scrollBtn.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  // Smooth scroll for anchor links
+  document.querySelectorAll('.toc-card a').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      e.preventDefault();
+      const targetId = this.getAttribute('href');
+      const targetElement = document.querySelector(targetId);
+      if (targetElement) {
+        targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+
+  // Animate on scroll
+  const animateElements = document.querySelectorAll('.animate-fadeUp, .animate-fadeLeft');
+  const animateObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translate(0)';
+        animateObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  animateElements.forEach(el => animateObserver.observe(el));
+</script>
+</body>
+</html>
