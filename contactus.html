@@ -4,7 +4,7 @@
   <title>Contact Us - MS Plastic Store | Premium Wallpapers & Flooring Pakistan</title>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
   <meta name="description" content="Get in touch with MS Plastic Store - Pakistan's leading provider of premium wallpapers, flooring, plastic dastarkhawan, footmats, chatai, and tarpaulin.">
   <meta name="keywords" content="contact us, wallpapers Pakistan, flooring Pakistan, customer support, WhatsApp, call now">
   
@@ -15,7 +15,7 @@
   <!-- AOS Animation CSS -->
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   
   <style>
     :root {
@@ -28,7 +28,6 @@
       --light: #f8f9fa;
       --text-muted: #6c757d;
       --gradient-primary: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
-      --gradient-dark: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
       --gradient-hero: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
     }
 
@@ -46,7 +45,7 @@
 
     /* Custom Scrollbar */
     ::-webkit-scrollbar {
-      width: 10px;
+      width: 6px;
     }
     ::-webkit-scrollbar-track {
       background: #f1f1f1;
@@ -55,29 +54,37 @@
       background: var(--primary);
       border-radius: 5px;
     }
-    ::-webkit-scrollbar-thumb:hover {
-      background: var(--primary-dark);
+
+    /* Responsive Typography */
+    html {
+      font-size: 16px;
+    }
+    @media (max-width: 768px) {
+      html { font-size: 14px; }
+    }
+    @media (max-width: 480px) {
+      html { font-size: 13px; }
     }
 
     /* Animations */
     @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(40px); }
+      from { opacity: 0; transform: translateY(30px); }
       to { opacity: 1; transform: translateY(0); }
     }
 
     @keyframes fadeInLeft {
-      from { opacity: 0; transform: translateX(-40px); }
+      from { opacity: 0; transform: translateX(-30px); }
       to { opacity: 1; transform: translateX(0); }
     }
 
     @keyframes fadeInRight {
-      from { opacity: 0; transform: translateX(40px); }
+      from { opacity: 0; transform: translateX(30px); }
       to { opacity: 1; transform: translateX(0); }
     }
 
     @keyframes float {
       0% { transform: translateY(0px); }
-      50% { transform: translateY(-20px); }
+      50% { transform: translateY(-15px); }
       100% { transform: translateY(0px); }
     }
 
@@ -93,24 +100,11 @@
       100% { left: 100%; }
     }
 
-    @keyframes ripple {
-      0% { transform: scale(0); opacity: 0.5; }
-      100% { transform: scale(4); opacity: 0; }
-    }
+    .animate-fadeUp { animation: fadeInUp 0.8s ease forwards; }
+    .animate-fadeLeft { animation: fadeInLeft 0.8s ease forwards; }
+    .animate-fadeRight { animation: fadeInRight 0.8s ease forwards; }
 
-    .animate-fadeUp {
-      animation: fadeInUp 0.8s ease forwards;
-    }
-
-    .animate-fadeLeft {
-      animation: fadeInLeft 0.8s ease forwards;
-    }
-
-    .animate-fadeRight {
-      animation: fadeInRight 0.8s ease forwards;
-    }
-
-    /* Floating Shapes */
+    /* Floating Shapes - Hide on mobile */
     .floating-shapes {
       position: absolute;
       top: 0;
@@ -119,18 +113,23 @@
       height: 100%;
       overflow: hidden;
       z-index: 1;
+      pointer-events: none;
     }
     .shape {
       position: absolute;
-      background: rgba(255,255,255,0.08);
+      background: rgba(255,255,255,0.06);
       border-radius: 50%;
       animation: float 6s ease-in-out infinite;
     }
-    .shape-1 { width: 120px; height: 120px; top: 10%; left: 5%; animation-delay: 0s; }
-    .shape-2 { width: 180px; height: 180px; bottom: 15%; right: 8%; animation-delay: 1s; }
-    .shape-3 { width: 80px; height: 80px; top: 40%; right: 20%; animation-delay: 2s; }
-    .shape-4 { width: 150px; height: 150px; bottom: 30%; left: 15%; animation-delay: 0.5s; }
-    .shape-5 { width: 60px; height: 60px; top: 70%; left: 45%; animation-delay: 1.5s; }
+    .shape-1 { width: 100px; height: 100px; top: 10%; left: 5%; animation-delay: 0s; }
+    .shape-2 { width: 150px; height: 150px; bottom: 15%; right: 8%; animation-delay: 1s; }
+    .shape-3 { width: 60px; height: 60px; top: 40%; right: 20%; animation-delay: 2s; }
+    .shape-4 { width: 120px; height: 120px; bottom: 30%; left: 15%; animation-delay: 0.5s; }
+    .shape-5 { width: 50px; height: 50px; top: 70%; left: 45%; animation-delay: 1.5s; }
+
+    @media (max-width: 992px) {
+      .shape-1, .shape-2, .shape-3, .shape-4, .shape-5 { display: none; }
+    }
 
     /* Hero Section */
     .contact-hero {
@@ -138,7 +137,6 @@
       position: relative;
       overflow: hidden;
     }
-
     .contact-hero::before {
       content: '';
       position: absolute;
@@ -146,22 +144,17 @@
       left: -50%;
       width: 200%;
       height: 200%;
-      background: repeating-linear-gradient(
-        45deg,
-        rgba(255,255,255,0.03) 0px,
-        rgba(255,255,255,0.03) 20px,
-        transparent 20px,
-        transparent 40px
-      );
+      background: repeating-linear-gradient(45deg, rgba(255,255,255,0.03) 0px, rgba(255,255,255,0.03) 20px, transparent 20px, transparent 40px);
       animation: shine 20s linear infinite;
+      pointer-events: none;
     }
 
-    /* Contact Info Cards - Glassmorphism */
+    /* Contact Info Cards - Fully Responsive */
     .info-card {
       background: rgba(255,255,255,0.95);
       backdrop-filter: blur(10px);
-      border-radius: 28px;
-      padding: 35px 25px;
+      border-radius: 24px;
+      padding: 2rem 1.5rem;
       text-align: center;
       transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
       box-shadow: 0 15px 35px rgba(0,0,0,0.1);
@@ -180,51 +173,47 @@
       background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
       transition: left 0.5s ease;
     }
-    .info-card:hover::before {
-      left: 100%;
-    }
-    .info-card:hover {
-      transform: translateY(-12px);
-      box-shadow: 0 25px 50px rgba(0,0,0,0.2);
-    }
+    .info-card:hover::before { left: 100%; }
+    .info-card:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(0,0,0,0.15); }
     .info-icon {
-      width: 80px;
-      height: 80px;
+      width: 70px;
+      height: 70px;
       background: var(--gradient-primary);
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      margin: 0 auto 25px;
+      margin: 0 auto 20px;
       transition: all 0.3s ease;
       position: relative;
     }
-    .info-icon::after {
-      content: '';
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      background: var(--gradient-primary);
-      border-radius: 50%;
-      opacity: 0.5;
-      animation: ripple 2s infinite;
+    .info-card:hover .info-icon { transform: scale(1.05); }
+    .info-icon i { font-size: 28px; color: white; position: relative; z-index: 1; }
+    .info-card h5 { font-size: 1.5rem; margin-bottom: 0.75rem; }
+    .info-card .fs-4 { font-size: 1.3rem !important; }
+
+    @media (max-width: 992px) {
+      .info-card { padding: 1.5rem 1rem; }
+      .info-icon { width: 60px; height: 60px; margin-bottom: 15px; }
+      .info-icon i { font-size: 24px; }
+      .info-card h5 { font-size: 1.3rem; }
+      .info-card .fs-4 { font-size: 1.1rem !important; }
+      .info-card .btn { padding: 8px 20px; font-size: 0.9rem; margin-top: 15px !important; }
     }
-    .info-card:hover .info-icon {
-      transform: scale(1.1);
-      animation: pulse 0.5s ease;
-    }
-    .info-icon i {
-      font-size: 35px;
-      color: white;
-      position: relative;
-      z-index: 1;
+    @media (max-width: 576px) {
+      .info-card { padding: 1.2rem 0.8rem; }
+      .info-icon { width: 50px; height: 50px; margin-bottom: 12px; }
+      .info-icon i { font-size: 20px; }
+      .info-card h5 { font-size: 1.1rem; }
+      .info-card .fs-4 { font-size: 1rem !important; }
+      .info-card .btn { padding: 6px 16px; font-size: 0.8rem; margin-top: 10px !important; }
     }
 
-    /* Contact Form - Modern Design */
+    /* Contact Form - Fully Responsive */
     .contact-form {
       background: white;
-      border-radius: 32px;
-      padding: 45px;
+      border-radius: 28px;
+      padding: 2.5rem;
       box-shadow: 0 20px 50px rgba(0,0,0,0.08);
       position: relative;
       overflow: hidden;
@@ -234,171 +223,134 @@
       position: absolute;
       top: 0;
       right: 0;
-      width: 150px;
-      height: 150px;
+      width: 120px;
+      height: 120px;
       background: var(--gradient-primary);
       opacity: 0.05;
       border-radius: 0 0 0 100%;
     }
     .form-control, .form-select {
       border: 2px solid #e8eef2;
-      border-radius: 16px;
-      padding: 14px 18px;
+      border-radius: 14px;
+      padding: 12px 16px;
       transition: all 0.3s ease;
       font-size: 1rem;
     }
     .form-control:focus, .form-select:focus {
       border-color: var(--primary);
-      box-shadow: 0 0 0 4px rgba(43, 110, 60, 0.1);
+      box-shadow: 0 0 0 3px rgba(43, 110, 60, 0.1);
       outline: none;
     }
-    .form-label {
-      font-weight: 600;
-      margin-bottom: 8px;
-      color: #333;
-    }
+    .form-label { font-weight: 600; margin-bottom: 6px; color: #333; font-size: 0.95rem; }
     .submit-btn {
       background: var(--gradient-primary);
       border: none;
       border-radius: 50px;
-      padding: 16px 35px;
+      padding: 14px 30px;
       font-weight: 700;
-      font-size: 1.1rem;
+      font-size: 1rem;
       transition: all 0.3s ease;
-      position: relative;
-      overflow: hidden;
     }
-    .submit-btn::before {
-      content: '';
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 0;
-      height: 0;
-      background: rgba(255,255,255,0.2);
-      border-radius: 50%;
-      transform: translate(-50%, -50%);
-      transition: width 0.6s, height 0.6s;
+    .submit-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(43, 110, 60, 0.3); }
+
+    @media (max-width: 992px) {
+      .contact-form { padding: 2rem; }
     }
-    .submit-btn:hover::before {
-      width: 300px;
-      height: 300px;
-    }
-    .submit-btn:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 10px 25px rgba(43, 110, 60, 0.3);
+    @media (max-width: 576px) {
+      .contact-form { padding: 1.5rem; border-radius: 20px; }
+      .form-control, .form-select { padding: 10px 14px; font-size: 0.9rem; border-radius: 12px; }
+      .submit-btn { padding: 12px 25px; font-size: 0.9rem; }
     }
 
-    /* Map Container */
+    /* Map Container - Responsive */
     .map-container {
-      border-radius: 28px;
+      border-radius: 24px;
       overflow: hidden;
       box-shadow: 0 15px 35px rgba(0,0,0,0.1);
       position: relative;
     }
-    .map-container::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      border: 2px solid var(--primary);
-      border-radius: 28px;
-      pointer-events: none;
-      z-index: 2;
-    }
     .map-container iframe {
       width: 100%;
-      height: 400px;
+      height: 380px;
       border: 0;
       filter: grayscale(0.1) contrast(1.1);
       transition: filter 0.3s ease;
     }
-    .map-container:hover iframe {
-      filter: grayscale(0) contrast(1);
+    .map-container:hover iframe { filter: grayscale(0) contrast(1); }
+
+    @media (max-width: 992px) {
+      .map-container iframe { height: 320px; }
+    }
+    @media (max-width: 576px) {
+      .map-container iframe { height: 250px; }
     }
 
     /* Business Hours Progress Bar */
-    .hour-bar {
-      background: #e8eef2;
-      border-radius: 10px;
-      height: 8px;
-      overflow: hidden;
-      margin: 10px 0;
-    }
-    .hour-progress {
-      background: var(--gradient-primary);
-      height: 100%;
-      border-radius: 10px;
-      width: 0%;
-      transition: width 1s ease;
-    }
+    .hour-bar { background: #e8eef2; border-radius: 10px; height: 6px; overflow: hidden; margin: 8px 0; }
+    .hour-progress { background: var(--gradient-primary); height: 100%; border-radius: 10px; width: 0%; transition: width 1s ease; }
 
-    /* FAQ Section - Modern Accordion */
+    /* FAQ Section - Fully Responsive */
     .faq-item {
       background: white;
-      border-radius: 20px;
-      margin-bottom: 20px;
+      border-radius: 18px;
+      margin-bottom: 16px;
       overflow: hidden;
       box-shadow: 0 5px 20px rgba(0,0,0,0.05);
       transition: all 0.3s ease;
     }
-    .faq-item:hover {
-      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-    }
+    .faq-item:hover { box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
     .faq-question {
-      padding: 22px 28px;
+      padding: 1rem 1.5rem;
       cursor: pointer;
       display: flex;
       justify-content: space-between;
       align-items: center;
       font-weight: 700;
-      font-size: 1.1rem;
+      font-size: 1rem;
       transition: all 0.3s ease;
       background: white;
     }
-    .faq-question:hover {
-      background: #f8f9fa;
-    }
-    .faq-question i {
-      transition: transform 0.3s ease;
-      color: var(--primary);
-      font-size: 1.2rem;
-    }
-    .faq-question.active i {
-      transform: rotate(180deg);
-    }
+    .faq-question:hover { background: #f8f9fa; }
+    .faq-question i { transition: transform 0.3s ease; color: var(--primary); font-size: 1rem; }
+    .faq-question.active i { transform: rotate(180deg); }
     .faq-answer {
-      padding: 0 28px;
+      padding: 0 1.5rem;
       max-height: 0;
       overflow: hidden;
       transition: all 0.4s ease;
       color: var(--text-muted);
-      line-height: 1.7;
+      line-height: 1.6;
+      font-size: 0.95rem;
     }
-    .faq-question.active + .faq-answer {
-      padding: 0 28px 22px 28px;
-      max-height: 250px;
+    .faq-question.active + .faq-answer { padding: 0 1.5rem 1rem 1.5rem; max-height: 200px; }
+
+    @media (max-width: 576px) {
+      .faq-question { padding: 0.8rem 1rem; font-size: 0.9rem; }
+      .faq-question.active + .faq-answer { padding: 0 1rem 0.8rem 1rem; }
     }
 
-    /* Social Media Wall */
+    /* Social Media Cards - Responsive */
     .social-card {
       background: white;
-      border-radius: 20px;
-      padding: 25px;
+      border-radius: 18px;
+      padding: 1rem;
       text-align: center;
       transition: all 0.3s ease;
       cursor: pointer;
     }
-    .social-card:hover {
-      transform: translateY(-5px);
-    }
+    .social-card:hover { transform: translateY(-5px); }
     .social-card.facebook:hover { background: #1877f2; color: white; }
     .social-card.instagram:hover { background: linear-gradient(45deg, #f09433, #d62976, #962fbf); color: white; }
     .social-card.twitter:hover { background: #1da1f2; color: white; }
     .social-card.whatsapp:hover { background: #25D366; color: white; }
-    .social-card i { font-size: 2.5rem; margin-bottom: 10px; display: block; }
+    .social-card i { font-size: 1.8rem; margin-bottom: 5px; display: block; }
+    .social-card span { font-size: 0.75rem; }
+
+    @media (max-width: 576px) {
+      .social-card { padding: 0.8rem 0.5rem; border-radius: 14px; }
+      .social-card i { font-size: 1.4rem; }
+      .social-card span { font-size: 0.65rem; }
+    }
 
     /* Preloader */
     .preloader-wrapper {
@@ -414,38 +366,17 @@
       z-index: 9999;
       transition: opacity 0.5s ease;
     }
-    .preloader {
-      width: 60px;
-      height: 60px;
-      border: 3px solid var(--primary);
-      border-top-color: transparent;
-      border-radius: 50%;
-      animation: spin 1s linear infinite;
-      position: relative;
-    }
-    .preloader::before {
-      content: '';
-      position: absolute;
-      top: -10px;
-      left: -10px;
-      right: -10px;
-      bottom: -10px;
-      border: 2px solid var(--secondary);
-      border-bottom-color: transparent;
-      border-radius: 50%;
-      animation: spin 0.8s linear infinite reverse;
-    }
-    @keyframes spin {
-      to { transform: rotate(360deg); }
-    }
+    .preloader { width: 45px; height: 45px; border: 3px solid var(--primary); border-top-color: transparent; border-radius: 50%; animation: spin 1s linear infinite; position: relative; }
+    .preloader::before { content: ''; position: absolute; top: -8px; left: -8px; right: -8px; bottom: -8px; border: 2px solid var(--secondary); border-bottom-color: transparent; border-radius: 50%; animation: spin 0.8s linear infinite reverse; }
+    @keyframes spin { to { transform: rotate(360deg); } }
 
     /* Scroll to top */
     .scroll-top {
       position: fixed;
-      bottom: 30px;
-      right: 30px;
-      width: 50px;
-      height: 50px;
+      bottom: 20px;
+      right: 20px;
+      width: 42px;
+      height: 42px;
       background: var(--gradient-primary);
       color: white;
       border-radius: 50%;
@@ -460,93 +391,102 @@
       border: none;
       box-shadow: 0 5px 15px rgba(0,0,0,0.2);
     }
-    .scroll-top.show {
-      opacity: 1;
-      visibility: visible;
-    }
-    .scroll-top:hover {
-      transform: translateY(-5px);
-      background: var(--primary-dark);
+    .scroll-top.show { opacity: 1; visibility: visible; }
+    .scroll-top:hover { transform: translateY(-5px); background: var(--primary-dark); }
+
+    @media (max-width: 576px) {
+      .scroll-top { width: 38px; height: 38px; bottom: 15px; right: 15px; }
     }
 
     /* Toast Notification */
     .toast-notification {
       position: fixed;
-      bottom: 100px;
-      right: 30px;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%) translateY(100px);
       background: var(--gradient-primary);
       color: white;
-      padding: 15px 25px;
+      padding: 10px 20px;
       border-radius: 50px;
       font-weight: 600;
       z-index: 1000;
-      transform: translateX(400px);
       transition: transform 0.3s ease;
       box-shadow: 0 10px 25px rgba(0,0,0,0.2);
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 8px;
+      font-size: 0.85rem;
+      white-space: nowrap;
     }
-    .toast-notification.show {
-      transform: translateX(0);
+    .toast-notification.show { transform: translateX(-50%) translateY(0); }
+
+    @media (max-width: 576px) {
+      .toast-notification { padding: 8px 16px; font-size: 0.75rem; white-space: normal; text-align: center; width: 90%; justify-content: center; }
     }
 
-    /* WhatsApp Float Button */
+    /* WhatsApp Float Button - Responsive */
     .whatsapp-float {
       position: fixed;
-      bottom: 100px;
-      left: 30px;
+      bottom: 20px;
+      left: 20px;
       background: #25D366;
       color: white;
-      width: 60px;
-      height: 60px;
+      width: 50px;
+      height: 50px;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 32px;
+      font-size: 26px;
       box-shadow: 0 5px 20px rgba(0,0,0,0.2);
       transition: all 0.3s ease;
       z-index: 98;
       text-decoration: none;
       animation: pulse 2s infinite;
     }
-    .whatsapp-float:hover {
-      transform: scale(1.1);
-      box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
-      color: white;
+    .whatsapp-float:hover { transform: scale(1.1); color: white; }
+
+    @media (max-width: 576px) {
+      .whatsapp-float { width: 45px; height: 45px; font-size: 22px; bottom: 15px; left: 15px; }
     }
 
-    /* Live Chat Badge */
+    /* Live Chat Badge - Hide on mobile */
     .live-chat {
       position: fixed;
-      bottom: 100px;
-      right: 100px;
+      bottom: 20px;
+      right: 80px;
       background: var(--primary);
       color: white;
-      padding: 8px 16px;
+      padding: 5px 12px;
       border-radius: 50px;
-      font-size: 0.8rem;
+      font-size: 0.7rem;
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 5px;
       z-index: 97;
       animation: pulse 1.5s infinite;
     }
-    .live-dot {
-      width: 10px;
-      height: 10px;
-      background: #4ade80;
-      border-radius: 50%;
-      animation: pulse 1s infinite;
+    .live-dot { width: 8px; height: 8px; background: #4ade80; border-radius: 50%; animation: pulse 1s infinite; }
+
+    @media (max-width: 992px) { .live-chat { display: none; } }
+
+    /* Header Responsive */
+    @media (max-width: 992px) {
+      header .navbar-nav { gap: 12px !important; }
+      header .nav-link { font-size: 0.85rem; }
+    }
+    @media (max-width: 768px) {
+      header .navbar-nav { gap: 8px !important; }
+      header .nav-link { font-size: 0.75rem; }
+    }
+    @media (max-width: 576px) {
+      header .navbar-nav { gap: 12px !important; }
     }
 
-    @media (max-width: 768px) {
-      .contact-form { padding: 25px; }
-      .info-card { margin-bottom: 20px; }
-      .whatsapp-float { width: 50px; height: 50px; font-size: 26px; bottom: 80px; }
-      .live-chat { display: none; }
-    }
+    /* Utility Classes */
+    .section-padding { padding: 4rem 0; }
+    @media (max-width: 992px) { .section-padding { padding: 3rem 0; } }
+    @media (max-width: 576px) { .section-padding { padding: 2rem 0; } }
   </style>
 </head>
 <body>
@@ -580,40 +520,40 @@
 <!-- Header -->
 <header>
   <div class="container-fluid">
-    <div class="row py-3 border-bottom">
-      <div class="col-sm-4 col-lg-2 text-center text-sm-start d-flex gap-3 justify-content-center justify-content-md-start">
-        <div class="d-flex align-items-center my-3 my-sm-0">
+    <div class="row py-2 py-md-3 border-bottom align-items-center">
+      <div class="col-4 col-sm-4 col-lg-2 text-center text-sm-start d-flex gap-2 gap-md-3 justify-content-center justify-content-md-start">
+        <div class="d-flex align-items-center my-2 my-sm-0">
           <a href="index.html">
-            <img src="images/fhdgh.PNG" alt="logo" class="img-fluid" style="max-height: 60px;">
+            <img src="images/fhdgh.PNG" alt="logo" class="img-fluid" style="max-height: 45px;">
           </a>
         </div>
-        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar">
+        <button class="navbar-toggler border-0 p-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar">
           <i class="fas fa-bars fs-4"></i>
         </button>
       </div>
-      <div class="col-sm-6 offset-sm-2 offset-md-0 col-lg-4">
-        <div class="search-bar row bg-light p-2 rounded-4">
-          <div class="col-11">
-            <input type="text" class="form-control border-0 bg-transparent" placeholder="Search for products...">
+      <div class="col-8 col-sm-6 col-lg-4">
+        <div class="search-bar row bg-light p-1 p-md-2 rounded-4">
+          <div class="col-10">
+            <input type="text" class="form-control border-0 bg-transparent py-1 py-md-2" placeholder="Search...">
           </div>
-          <div class="col-1">
+          <div class="col-2 text-end">
             <i class="fas fa-search"></i>
           </div>
         </div>
       </div>
-      <div class="col-lg-4">
-        <ul class="navbar-nav list-unstyled d-flex flex-row gap-3 gap-lg-5 justify-content-center flex-wrap align-items-center mb-0 fw-bold text-uppercase text-dark">
+      <div class="col-lg-4 d-none d-lg-block">
+        <ul class="navbar-nav list-unstyled d-flex flex-row gap-4 justify-content-center align-items-center mb-0 fw-bold text-uppercase text-dark">
           <li class="nav-item"><a href="./index.html" class="nav-link">Home</a></li>
           <li class="nav-item"><a href="./shop.html" class="nav-link">Shop</a></li>
           <li class="nav-item"><a href="./about.html" class="nav-link">About</a></li>
           <li class="nav-item"><a href="./contactus.html" class="nav-link text-primary">Contact</a></li>
         </ul>
       </div>
-      <div class="col-sm-8 col-lg-2 d-flex gap-5 align-items-center justify-content-center justify-content-sm-end">
-        <ul class="d-flex justify-content-end list-unstyled m-0">
-          <li><a href="#" class="p-2 mx-1"><i class="fas fa-user fs-5"></i></a></li>
-          <li><a href="#" class="p-2 mx-1"><i class="fas fa-heart fs-5"></i></a></li>
-          <li><a href="#" class="p-2 mx-1 position-relative"><i class="fas fa-shopping-bag fs-5"></i><span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="font-size: 10px;">0</span></a></li>
+      <div class="col-12 col-sm-8 col-lg-2 mt-2 mt-sm-0 d-flex gap-3 gap-md-4 align-items-center justify-content-center justify-content-sm-end">
+        <ul class="d-flex justify-content-end list-unstyled m-0 gap-2">
+          <li><a href="#" class="p-1"><i class="fas fa-user fs-5"></i></a></li>
+          <li><a href="#" class="p-1"><i class="fas fa-heart fs-5"></i></a></li>
+          <li><a href="#" class="p-1 position-relative"><i class="fas fa-shopping-bag fs-5"></i><span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="font-size: 9px;">0</span></a></li>
         </ul>
       </div>
     </div>
@@ -623,27 +563,27 @@
 <!-- Offcanvas Menu -->
 <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar">
   <div class="offcanvas-header justify-content-between">
-    <h4 class="fw-normal text-uppercase fs-6">Shop by Category</h4>
-    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    <h4 class="fw-normal text-uppercase fs-6 mb-0">Shop by Category</h4>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
   </div>
   <div class="offcanvas-body">
-    <ul class="navbar-nav justify-content-end menu-list list-unstyled d-flex gap-md-3 mb-0">
-      <li class="nav-item"><a href="./categories/wallpapers.html" class="nav-link d-flex align-items-center gap-3 text-dark p-2"><i class="fas fa-palette"></i><span>Wallpapers</span></a></li>
-      <li class="nav-item"><a href="./categories/flooring.html" class="nav-link d-flex align-items-center gap-3 text-dark p-2"><i class="fas fa-th-large"></i><span>Flooring</span></a></li>
-      <li class="nav-item"><a href="./categories/dastarkhawan.html" class="nav-link d-flex align-items-center gap-3 text-dark p-2"><i class="fas fa-table"></i><span>Plastic Dastarkhawan</span></a></li>
-      <li class="nav-item"><a href="./categories/footmats.html" class="nav-link d-flex align-items-center gap-3 text-dark p-2"><i class="fas fa-door-open"></i><span>Footmats</span></a></li>
-      <li class="nav-item"><a href="./categories/chatai.html" class="nav-link d-flex align-items-center gap-3 text-dark p-2"><i class="fas fa-leaf"></i><span>Chatai (Straw Mats)</span></a></li>
-      <li class="nav-item"><a href="./categories/tarpaulin.html" class="nav-link d-flex align-items-center gap-3 text-dark p-2"><i class="fas fa-tarp"></i><span>Tarpaulin (Tarpal)</span></a></li>
-      <li class="nav-item"><a href="./categories/pvc-wall-panels.html" class="nav-link d-flex align-items-center gap-3 text-dark p-2"><i class="fas fa-border-all"></i><span>PVC Wall Panels</span></a></li>
-      <li class="nav-item"><a href="./categories/artificial-grass.html" class="nav-link d-flex align-items-center gap-3 text-dark p-2"><i class="fas fa-tree"></i><span>Artificial Grass</span></a></li>
-      <li class="nav-item"><a href="./categories/sunshade-nets.html" class="nav-link d-flex align-items-center gap-3 text-dark p-2"><i class="fas fa-sun"></i><span>Sunshade Nets</span></a></li>
-      <li class="nav-item"><a href="./categories/carpet-tiles.html" class="nav-link d-flex align-items-center gap-3 text-dark p-2"><i class="fas fa-carpet"></i><span>Carpet Tiles</span></a></li>
+    <ul class="navbar-nav justify-content-end menu-list list-unstyled d-flex gap-2 mb-0">
+      <li class="nav-item"><a href="./categories/wallpapers.html" class="nav-link d-flex align-items-center gap-3 text-dark p-2"><i class="fas fa-palette w-20"></i><span>Wallpapers</span></a></li>
+      <li class="nav-item"><a href="./categories/flooring.html" class="nav-link d-flex align-items-center gap-3 text-dark p-2"><i class="fas fa-th-large w-20"></i><span>Flooring</span></a></li>
+      <li class="nav-item"><a href="./categories/dastarkhawan.html" class="nav-link d-flex align-items-center gap-3 text-dark p-2"><i class="fas fa-table w-20"></i><span>Plastic Dastarkhawan</span></a></li>
+      <li class="nav-item"><a href="./categories/footmats.html" class="nav-link d-flex align-items-center gap-3 text-dark p-2"><i class="fas fa-door-open w-20"></i><span>Footmats</span></a></li>
+      <li class="nav-item"><a href="./categories/chatai.html" class="nav-link d-flex align-items-center gap-3 text-dark p-2"><i class="fas fa-leaf w-20"></i><span>Chatai (Straw Mats)</span></a></li>
+      <li class="nav-item"><a href="./categories/tarpaulin.html" class="nav-link d-flex align-items-center gap-3 text-dark p-2"><i class="fas fa-tarp w-20"></i><span>Tarpaulin (Tarpal)</span></a></li>
+      <li class="nav-item"><a href="./categories/pvc-wall-panels.html" class="nav-link d-flex align-items-center gap-3 text-dark p-2"><i class="fas fa-border-all w-20"></i><span>PVC Wall Panels</span></a></li>
+      <li class="nav-item"><a href="./categories/artificial-grass.html" class="nav-link d-flex align-items-center gap-3 text-dark p-2"><i class="fas fa-tree w-20"></i><span>Artificial Grass</span></a></li>
+      <li class="nav-item"><a href="./categories/sunshade-nets.html" class="nav-link d-flex align-items-center gap-3 text-dark p-2"><i class="fas fa-sun w-20"></i><span>Sunshade Nets</span></a></li>
+      <li class="nav-item"><a href="./categories/carpet-tiles.html" class="nav-link d-flex align-items-center gap-3 text-dark p-2"><i class="fas fa-carpet w-20"></i><span>Carpet Tiles</span></a></li>
     </ul>
   </div>
 </div>
 
-<!-- Hero Section with Floating Shapes -->
-<section class="contact-hero py-5 position-relative">
+<!-- Hero Section -->
+<section class="contact-hero py-4 py-md-5 position-relative">
   <div class="floating-shapes">
     <div class="shape shape-1"></div>
     <div class="shape shape-2"></div>
@@ -651,52 +591,46 @@
     <div class="shape shape-4"></div>
     <div class="shape shape-5"></div>
   </div>
-  <div class="container py-5 position-relative" style="z-index: 2;">
-    <div class="row align-items-center">
-      <div class="col-lg-8 text-white" data-aos="fade-right" data-aos-duration="1000">
-        <h1 class="display-2 fw-bold mb-3">Contact <span class="text-warning">Us</span></h1>
-        <p class="lead mb-4">We're here to help! Get in touch with our team for any inquiries, quotes, or support.</p>
-        <p class="mb-0 fs-5"><i class="fas fa-map-marker-alt me-2"></i> Serving customers across Pakistan with premium quality products and fast delivery.</p>
+  <div class="container py-3 py-md-4 position-relative" style="z-index: 2;">
+    <div class="row">
+      <div class="col-12 text-white" data-aos="fade-right" data-aos-duration="800">
+        <h1 class="display-4 display-md-3 fw-bold mb-2 mb-md-3">Contact <span class="text-warning">Us</span></h1>
+        <p class="lead fs-6 fs-md-5 mb-3">We're here to help! Get in touch with our team for any inquiries, quotes, or support.</p>
+        <p class="mb-0 small"><i class="fas fa-map-marker-alt me-2"></i> Serving customers across Pakistan with premium quality products and fast delivery.</p>
       </div>
     </div>
   </div>
 </section>
 
 <!-- Contact Info Cards -->
-<section class="py-5">
+<section class="py-4 py-md-5">
   <div class="container">
-    <div class="row g-4">
-      <div class="col-md-4" data-aos="zoom-in" data-aos-duration="600" data-aos-delay="0">
+    <div class="row g-3 g-md-4">
+      <div class="col-sm-6 col-md-4" data-aos="zoom-in" data-aos-duration="600" data-aos-delay="0">
         <div class="info-card">
-          <div class="info-icon">
-            <i class="fas fa-phone-alt"></i>
-          </div>
-          <h5 class="fw-bold fs-3 mb-3">Call Us</h5>
-          <p class="text-muted mb-2">Mon-Sat: 9AM - 8PM</p>
-          <p class="fw-bold fs-4 mb-0 text-primary">+92 319 0306199</p>
-          <a href="tel:+923190306199" class="btn btn-outline-primary rounded-pill px-4 mt-4">Call Now <i class="fas fa-arrow-right ms-2"></i></a>
+          <div class="info-icon mx-auto"><i class="fas fa-phone-alt"></i></div>
+          <h5 class="fw-bold">Call Us</h5>
+          <p class="text-muted small mb-1">Mon-Sat: 9AM - 8PM</p>
+          <p class="fw-bold fs-5 mb-0 text-primary">+92 319 0306199</p>
+          <a href="tel:+923190306199" class="btn btn-outline-primary rounded-pill px-3 px-md-4 mt-3 mt-md-4">Call Now <i class="fas fa-arrow-right ms-1"></i></a>
         </div>
       </div>
-      <div class="col-md-4" data-aos="zoom-in" data-aos-duration="600" data-aos-delay="100">
+      <div class="col-sm-6 col-md-4" data-aos="zoom-in" data-aos-duration="600" data-aos-delay="100">
         <div class="info-card">
-          <div class="info-icon">
-            <i class="fab fa-whatsapp"></i>
-          </div>
-          <h5 class="fw-bold fs-3 mb-3">WhatsApp</h5>
-          <p class="text-muted mb-2">Quick replies within minutes</p>
-          <p class="fw-bold fs-4 mb-0 text-primary">+92 319 0306199</p>
-          <a href="https://wa.me/923190306199?text=Hello!%20I%20need%20more%20information%20about%20your%20products." target="_blank" class="btn btn-success rounded-pill px-4 mt-4">Chat Now <i class="fab fa-whatsapp ms-2"></i></a>
+          <div class="info-icon mx-auto"><i class="fab fa-whatsapp"></i></div>
+          <h5 class="fw-bold">WhatsApp</h5>
+          <p class="text-muted small mb-1">Quick replies within minutes</p>
+          <p class="fw-bold fs-5 mb-0 text-primary">+92 319 0306199</p>
+          <a href="https://wa.me/923190306199?text=Hello!%20I%20need%20more%20information%20about%20your%20products." target="_blank" class="btn btn-success rounded-pill px-3 px-md-4 mt-3 mt-md-4">Chat Now <i class="fab fa-whatsapp ms-1"></i></a>
         </div>
       </div>
-      <div class="col-md-4" data-aos="zoom-in" data-aos-duration="600" data-aos-delay="200">
+      <div class="col-sm-6 col-md-4" data-aos="zoom-in" data-aos-duration="600" data-aos-delay="200">
         <div class="info-card">
-          <div class="info-icon">
-            <i class="fas fa-envelope"></i>
-          </div>
-          <h5 class="fw-bold fs-3 mb-3">Email Us</h5>
-          <p class="text-muted mb-2">24/7 email support</p>
-          <p class="fw-bold fs-6 mb-0">Subbyte Solution</p>
-          <a href="mailto:abdulsubhann011@gmail.com" class="btn btn-outline-primary rounded-pill px-4 mt-4">Send Email <i class="fas fa-envelope ms-2"></i></a>
+          <div class="info-icon mx-auto"><i class="fas fa-envelope"></i></div>
+          <h5 class="fw-bold">Email Us</h5>
+          <p class="text-muted small mb-1">24/7 email support</p>
+          <p class="fw-bold small mb-0">info@msplasticstore.com</p>
+          <a href="mailto:info@msplasticstore.com" class="btn btn-outline-primary rounded-pill px-3 px-md-4 mt-3 mt-md-4">Send Email <i class="fas fa-envelope ms-1"></i></a>
         </div>
       </div>
     </div>
@@ -706,28 +640,28 @@
 <!-- Contact Form & Map Section -->
 <section class="py-4">
   <div class="container">
-    <div class="row g-5">
+    <div class="row g-4 g-lg-5">
       <!-- Contact Form -->
       <div class="col-lg-6" data-aos="fade-right" data-aos-duration="800">
         <div class="contact-form">
-          <h2 class="fw-bold mb-4">Send Us a <span class="text-primary">Message</span></h2>
+          <h2 class="fw-bold fs-2 fs-md-1 mb-3">Send Us a <span class="text-primary">Message</span></h2>
           <p class="text-muted mb-4">Have a question? Fill out the form below and we'll get back to you within 24 hours.</p>
           
           <form id="contactForm">
             <div class="row g-3">
-              <div class="col-md-6">
+              <div class="col-12 col-sm-6">
                 <label class="form-label">Your Name <span class="text-danger">*</span></label>
                 <input type="text" class="form-control" id="name" required placeholder="Enter your full name">
               </div>
-              <div class="col-md-6">
+              <div class="col-12 col-sm-6">
                 <label class="form-label">Email Address <span class="text-danger">*</span></label>
                 <input type="email" class="form-control" id="email" required placeholder="your@email.com">
               </div>
-              <div class="col-md-6">
+              <div class="col-12 col-sm-6">
                 <label class="form-label">Phone Number</label>
                 <input type="tel" class="form-control" id="phone" placeholder="+92 XXX XXXXXXX">
               </div>
-              <div class="col-md-6">
+              <div class="col-12 col-sm-6">
                 <label class="form-label">Subject <span class="text-danger">*</span></label>
                 <select class="form-select" id="subject">
                   <option>Product Inquiry</option>
@@ -740,7 +674,7 @@
               </div>
               <div class="col-12">
                 <label class="form-label">Message <span class="text-danger">*</span></label>
-                <textarea class="form-control" id="message" rows="5" required placeholder="Tell us how we can help you..."></textarea>
+                <textarea class="form-control" id="message" rows="4" required placeholder="Tell us how we can help you..."></textarea>
               </div>
               <div class="col-12">
                 <button type="submit" class="btn submit-btn text-white w-100">
@@ -758,31 +692,27 @@
           <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d217580.43834486028!2d74.20482624335936!3d31.48295000000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x391903e9b6e9b9b9%3A0x8e9e9e9e9e9e9e9e!2sLahore%2C%20Pakistan!5e0!3m2!1sen!2s!4v1700000000000!5m2!1sen!2s" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
         
-        <div class="bg-white p-4 rounded-4 shadow-sm">
+        <div class="bg-white p-3 p-md-4 rounded-4 shadow-sm">
           <h5 class="fw-bold mb-3"><i class="fas fa-map-marker-alt text-primary me-2"></i>Our Location</h5>
-          <p class="text-muted mb-3">123 Main Boulevard, Gulberg III, Lahore, Pakistan</p>
+          <p class="text-muted mb-3 small">123 Main Boulevard, Gulberg III, Lahore, Pakistan</p>
           
-          <div class="row g-3 mt-2">
+          <div class="row g-3">
             <div class="col-6">
-              <div class="d-flex align-items-center gap-2">
-                <i class="fas fa-clock text-primary fs-4"></i>
+              <div class="d-flex align-items-start gap-2">
+                <i class="fas fa-clock text-primary fs-5 mt-1"></i>
                 <div>
-                  <strong>Working Hours</strong>
-                  <div class="hour-bar mt-2">
-                    <div class="hour-progress" style="width: 85%;"></div>
-                  </div>
+                  <strong class="small">Working Hours</strong>
+                  <div class="hour-bar mt-1"><div class="hour-progress" style="width: 85%;"></div></div>
                   <small class="text-muted">Mon-Sat: 9AM-8PM<br>Sunday: Closed</small>
                 </div>
               </div>
             </div>
             <div class="col-6">
-              <div class="d-flex align-items-center gap-2">
-                <i class="fas fa-globe text-primary fs-4"></i>
+              <div class="d-flex align-items-start gap-2">
+                <i class="fas fa-globe text-primary fs-5 mt-1"></i>
                 <div>
-                  <strong>Delivery Areas</strong>
-                  <div class="hour-bar mt-2">
-                    <div class="hour-progress" style="width: 100%;"></div>
-                  </div>
+                  <strong class="small">Delivery Areas</strong>
+                  <div class="hour-bar mt-1"><div class="hour-progress" style="width: 100%;"></div></div>
                   <small class="text-muted">All major cities in Pakistan</small>
                 </div>
               </div>
@@ -795,47 +725,27 @@
 </section>
 
 <!-- Business Hours & Social Media -->
-<section class="py-5 bg-light">
+<section class="py-4 py-md-5 bg-light">
   <div class="container">
     <div class="row g-4 align-items-center">
       <div class="col-lg-6" data-aos="fade-right" data-aos-duration="800">
-        <h2 class="fw-bold mb-4">Connect With <span class="text-primary">Us</span></h2>
-        <p class="text-muted mb-4 fs-5">Follow us on social media for updates, new arrivals, and special offers.</p>
-        <div class="row g-3">
-          <div class="col-3">
-            <div class="social-card facebook">
-              <i class="fab fa-facebook"></i>
-              <span>Facebook</span>
-            </div>
-          </div>
-          <div class="col-3">
-            <div class="social-card instagram">
-              <i class="fab fa-instagram"></i>
-              <span>Instagram</span>
-            </div>
-          </div>
-          <div class="col-3">
-            <div class="social-card twitter">
-              <i class="fab fa-twitter"></i>
-              <span>Twitter</span>
-            </div>
-          </div>
-          <div class="col-3">
-            <div class="social-card whatsapp">
-              <i class="fab fa-whatsapp"></i>
-              <span>WhatsApp</span>
-            </div>
-          </div>
+        <h2 class="fw-bold fs-2 mb-3">Connect With <span class="text-primary">Us</span></h2>
+        <p class="text-muted mb-4">Follow us on social media for updates, new arrivals, and special offers.</p>
+        <div class="row g-2 g-md-3">
+          <div class="col-3"><div class="social-card facebook"><i class="fab fa-facebook"></i><span>Facebook</span></div></div>
+          <div class="col-3"><div class="social-card instagram"><i class="fab fa-instagram"></i><span>Instagram</span></div></div>
+          <div class="col-3"><div class="social-card twitter"><i class="fab fa-twitter"></i><span>Twitter</span></div></div>
+          <div class="col-3"><div class="social-card whatsapp"><i class="fab fa-whatsapp"></i><span>WhatsApp</span></div></div>
         </div>
       </div>
       <div class="col-lg-6" data-aos="fade-left" data-aos-duration="800">
-        <div class="bg-white p-4 rounded-4 shadow-sm">
+        <div class="bg-white p-3 p-md-4 rounded-4 shadow-sm">
           <h5 class="fw-bold mb-3"><i class="fas fa-truck text-primary me-2"></i>Bulk Orders & Wholesale</h5>
-          <p class="text-muted">For bulk orders, wholesale pricing, or commercial projects, please contact our dedicated team:</p>
-          <p class="mb-2"><i class="fas fa-phone me-2 text-primary"></i> <strong>+92 319 0306199</strong> (Wholesale Dept)</p>
-          <p><i class="fas fa-envelope me-2 text-primary"></i> <strong>wholesale@msplasticstore.com</strong></p>
-          <div class="mt-3 p-3 bg-light rounded-3">
-            <div class="d-flex justify-content-between align-items-center">
+          <p class="text-muted small mb-3">For bulk orders, wholesale pricing, or commercial projects, please contact our dedicated team:</p>
+          <p class="mb-2 small"><i class="fas fa-phone me-2 text-primary"></i> <strong>+92 319 0306199</strong> (Wholesale Dept)</p>
+          <p class="mb-3 small"><i class="fas fa-envelope me-2 text-primary"></i> <strong>wholesale@msplasticstore.com</strong></p>
+          <div class="mt-2 p-2 p-md-3 bg-light rounded-3">
+            <div class="d-flex justify-content-between align-items-center small">
               <span><i class="fas fa-clock text-primary"></i> Response Time:</span>
               <span class="fw-bold text-success">< 2 hours</span>
             </div>
@@ -847,117 +757,66 @@
 </section>
 
 <!-- FAQ Section -->
-<section class="py-5">
+<section class="py-4 py-md-5">
   <div class="container">
-    <div class="text-center mb-5" data-aos="fade-up">
-      <span class="badge bg-primary bg-opacity-10 text-primary px-4 py-2 rounded-pill mb-3 fs-6">FAQs</span>
-      <h2 class="display-4 fw-bold">Frequently Asked <span class="text-primary">Questions</span></h2>
-      <p class="text-muted fs-5">Find quick answers to common questions</p>
+    <div class="text-center mb-4 mb-md-5" data-aos="fade-up">
+      <span class="badge bg-primary bg-opacity-10 text-primary px-3 py-2 rounded-pill mb-2">FAQs</span>
+      <h2 class="display-5 fw-bold">Frequently Asked <span class="text-primary">Questions</span></h2>
+      <p class="text-muted">Find quick answers to common questions</p>
     </div>
     <div class="row justify-content-center">
       <div class="col-lg-8">
         <div class="faq-item" data-aos="fade-up" data-aos-duration="600">
-          <div class="faq-question">
-            <span>📦 Do you offer free delivery?</span>
-            <i class="fas fa-chevron-down"></i>
-          </div>
-          <div class="faq-answer">
-            <p>Free delivery is available on orders above PKR 10,000 within Lahore. For other cities, delivery charges apply based on location.</p>
-          </div>
+          <div class="faq-question"><span>📦 Do you offer free delivery?</span><i class="fas fa-chevron-down"></i></div>
+          <div class="faq-answer"><p>Free delivery is available on orders above PKR 10,000 within Lahore. For other cities, delivery charges apply based on location.</p></div>
         </div>
         <div class="faq-item" data-aos="fade-up" data-aos-duration="600" data-aos-delay="100">
-          <div class="faq-question">
-            <span>🎨 Can I get a sample before ordering?</span>
-            <i class="fas fa-chevron-down"></i>
-          </div>
-          <div class="faq-answer">
-            <p>Yes! We provide free samples for wallpapers and flooring. Just contact us with your requirements.</p>
-          </div>
+          <div class="faq-question"><span>🎨 Can I get a sample before ordering?</span><i class="fas fa-chevron-down"></i></div>
+          <div class="faq-answer"><p>Yes! We provide free samples for wallpapers and flooring. Just contact us with your requirements.</p></div>
         </div>
         <div class="faq-item" data-aos="fade-up" data-aos-duration="600" data-aos-delay="200">
-          <div class="faq-question">
-            <span>🔄 What is your return policy?</span>
-            <i class="fas fa-chevron-down"></i>
-          </div>
-          <div class="faq-answer">
-            <p>We accept returns within 7 days of delivery for unused products in original condition. Custom orders cannot be returned.</p>
-          </div>
+          <div class="faq-question"><span>🔄 What is your return policy?</span><i class="fas fa-chevron-down"></i></div>
+          <div class="faq-answer"><p>We accept returns within 7 days of delivery for unused products in original condition. Custom orders cannot be returned.</p></div>
         </div>
         <div class="faq-item" data-aos="fade-up" data-aos-duration="600" data-aos-delay="300">
-          <div class="faq-question">
-            <span>🔧 Do you offer installation services?</span>
-            <i class="fas fa-chevron-down"></i>
-          </div>
-          <div class="faq-answer">
-            <p>Yes, we have a team of professional installers for wallpapers and flooring. Installation charges vary based on area.</p>
-          </div>
+          <div class="faq-question"><span>🔧 Do you offer installation services?</span><i class="fas fa-chevron-down"></i></div>
+          <div class="faq-answer"><p>Yes, we have a team of professional installers for wallpapers and flooring. Installation charges vary based on area.</p></div>
         </div>
         <div class="faq-item" data-aos="fade-up" data-aos-duration="600" data-aos-delay="400">
-          <div class="faq-question">
-            <span>🚚 How long does delivery take?</span>
-            <i class="fas fa-chevron-down"></i>
-          </div>
-          <div class="faq-answer">
-            <p>Delivery typically takes 2-4 business days within major cities, and 5-7 days for remote areas.</p>
-          </div>
+          <div class="faq-question"><span>🚚 How long does delivery take?</span><i class="fas fa-chevron-down"></i></div>
+          <div class="faq-answer"><p>Delivery typically takes 2-4 business days within major cities, and 5-7 days for remote areas.</p></div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Call to Action with Parallax -->
-<section class="py-5" style="background: linear-gradient(135deg, var(--primary), var(--primary-dark)); position: relative; overflow: hidden;">
-  <div class="container text-center text-white position-relative" style="z-index: 2;">
-    <h2 class="display-4 fw-bold mb-3" data-aos="zoom-in">Need Immediate Assistance?</h2>
-    <p class="lead mb-4 fs-4" data-aos="zoom-in" data-aos-delay="100">Call us directly or send us a WhatsApp message for quick response.</p>
+<!-- Call to Action -->
+<section class="py-4 py-md-5" style="background: linear-gradient(135deg, var(--primary), var(--primary-dark));">
+  <div class="container text-center text-white">
+    <h2 class="display-5 fw-bold mb-3" data-aos="zoom-in">Need Immediate Assistance?</h2>
+    <p class="lead mb-4" data-aos="zoom-in" data-aos-delay="100">Call us directly or send us a WhatsApp message for quick response.</p>
     <div class="d-flex gap-3 justify-content-center flex-wrap" data-aos="zoom-in" data-aos-delay="200">
-      <a href="tel:+923190306199" class="btn btn-light rounded-pill px-5 py-3 fw-bold fs-5"><i class="fas fa-phone me-2"></i>Call Now</a>
-      <a href="https://wa.me/923190306199" target="_blank" class="btn btn-outline-light rounded-pill px-5 py-3 fw-bold fs-5"><i class="fab fa-whatsapp me-2"></i>WhatsApp Us</a>
+      <a href="tel:+923190306199" class="btn btn-light rounded-pill px-4 py-2 fw-bold"><i class="fas fa-phone me-2"></i>Call Now</a>
+      <a href="https://wa.me/923190306199" target="_blank" class="btn btn-outline-light rounded-pill px-4 py-2 fw-bold"><i class="fab fa-whatsapp me-2"></i>WhatsApp Us</a>
     </div>
   </div>
 </section>
 
 <!-- Footer -->
-<footer class="py-5 bg-dark text-white">
+<footer class="py-4 py-md-5 bg-dark text-white">
   <div class="container">
-    <div class="row">
+    <div class="row g-4">
       <div class="col-md-3">
-        <img src="images/fhdgh.PNG" class="mb-3" style="max-height: 50px;">
+        <img src="images/fhdgh.PNG" class="mb-3" style="max-height: 40px;">
         <p class="small">Premium wallpapers, flooring & home decor solutions in Pakistan since 2015.</p>
-        <div class="d-flex gap-2">
-          <a href="#" class="text-white"><i class="fab fa-facebook fa-lg"></i></a>
-          <a href="#" class="text-white"><i class="fab fa-instagram fa-lg"></i></a>
-          <a href="#" class="text-white"><i class="fab fa-whatsapp fa-lg"></i></a>
-        </div>
+        <div class="d-flex gap-2"><a href="#" class="text-white"><i class="fab fa-facebook fa-lg"></i></a><a href="#" class="text-white"><i class="fab fa-instagram fa-lg"></i></a><a href="#" class="text-white"><i class="fab fa-whatsapp fa-lg"></i></a></div>
       </div>
-      <div class="col-md-3">
-        <h5>Quick Links</h5>
-        <ul class="list-unstyled small">
-          <li><a href="about.html" class="text-white-50 text-decoration-none">About Us</a></li>
-          <li><a href="contactus.html" class="text-white-50 text-decoration-none">Contact</a></li>
-          <li><a href="#" class="text-white-50 text-decoration-none">FAQs</a></li>
-          <li><a href="privacy-policy.html" class="text-white-50 text-decoration-none">Privacy Policy</a></li>
-        </ul>
-      </div>
-      <div class="col-md-3">
-        <h5>Categories</h5>
-        <ul class="list-unstyled small">
-          <li><a href="#" class="text-white-50 text-decoration-none">Wallpapers</a></li>
-          <li><a href="#" class="text-white-50 text-decoration-none">Flooring</a></li>
-          <li><a href="#" class="text-white-50 text-decoration-none">Tarpaulin</a></li>
-          <li><a href="#" class="text-white-50 text-decoration-none">Footmats</a></li>
-        </ul>
-      </div>
-      <div class="col-md-3">
-        <h5>Contact Info</h5>
-        <p class="small mb-1"><i class="fas fa-phone me-2"></i>+92 319 0306199</p>
-        <p class="small mb-1"><i class="fab fa-whatsapp me-2"></i>+92 319 0306199</p>
-        <p class="small"><i class="fas fa-envelope me-2"></i>info@msplasticstore.com</p>
-      </div>
+      <div class="col-md-3"><h5>Quick Links</h5><ul class="list-unstyled small"><li><a href="about.html" class="text-white-50 text-decoration-none">About Us</a></li><li><a href="contactus.html" class="text-white-50 text-decoration-none">Contact</a></li><li><a href="#" class="text-white-50 text-decoration-none">FAQs</a></li><li><a href="privacy-policy.html" class="text-white-50 text-decoration-none">Privacy Policy</a></li></ul></div>
+      <div class="col-md-3"><h5>Categories</h5><ul class="list-unstyled small"><li><a href="#" class="text-white-50 text-decoration-none">Wallpapers</a></li><li><a href="#" class="text-white-50 text-decoration-none">Flooring</a></li><li><a href="#" class="text-white-50 text-decoration-none">Tarpaulin</a></li><li><a href="#" class="text-white-50 text-decoration-none">Footmats</a></li></ul></div>
+      <div class="col-md-3"><h5>Contact Info</h5><p class="small mb-1"><i class="fas fa-phone me-2"></i>+92 319 0306199</p><p class="small mb-1"><i class="fab fa-whatsapp me-2"></i>+92 319 0306199</p><p class="small"><i class="fas fa-envelope me-2"></i>info@msplasticstore.com</p></div>
     </div>
-    <hr class="mt-4">
-    <div class="text-center small text-white-50">© 2025 MS Plastic Store. All rights reserved.</div>
+    <hr class="mt-4"><div class="text-center small text-white-50">© 2025 MS Plastic Store. All rights reserved.</div>
   </div>
 </footer>
 
@@ -966,21 +825,14 @@
 
 <script>
   // Initialize AOS
-  AOS.init({
-    duration: 800,
-    once: true,
-    offset: 100
-  });
+  AOS.init({ duration: 800, once: true, offset: 50 });
 
   // Preloader
   window.addEventListener('load', () => {
     setTimeout(() => {
       const preloader = document.getElementById('preloader');
-      if (preloader) {
-        preloader.style.opacity = '0';
-        setTimeout(() => preloader.style.display = 'none', 500);
-      }
-    }, 800);
+      if (preloader) { preloader.style.opacity = '0'; setTimeout(() => preloader.style.display = 'none', 500); }
+    }, 500);
   });
 
   // Scroll to top button
@@ -989,15 +841,11 @@
     if (window.scrollY > 300) scrollBtn.classList.add('show');
     else scrollBtn.classList.remove('show');
   });
-  scrollBtn.addEventListener('click', () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  });
+  scrollBtn.addEventListener('click', () => { window.scrollTo({ top: 0, behavior: 'smooth' }); });
 
   // FAQ Accordion
   document.querySelectorAll('.faq-question').forEach(question => {
-    question.addEventListener('click', () => {
-      question.classList.toggle('active');
-    });
+    question.addEventListener('click', () => { question.classList.toggle('active'); });
   });
 
   // Social Media Cards Click
@@ -1025,28 +873,16 @@
 
   contactForm.addEventListener('submit', (e) => {
     e.preventDefault();
-    
     const name = document.getElementById('name').value;
     const email = document.getElementById('email').value;
     const subject = document.getElementById('subject').value;
     const message = document.getElementById('message').value;
     
-    if (!name || !email || !message) {
-      showToastMessage('Please fill all required fields!');
-      return;
-    }
+    if (!name || !email || !message) { showToastMessage('Please fill all required fields!'); return; }
     
-    // Create WhatsApp message
     const whatsappMsg = `Hello! I have a query:\n\nName: ${name}\nEmail: ${email}\nSubject: ${subject}\nMessage: ${message}`;
-    const whatsappUrl = `https://wa.me/923190306199?text=${encodeURIComponent(whatsappMsg)}`;
-    
-    // Open WhatsApp
-    window.open(whatsappUrl, '_blank');
-    
-    // Show success message
+    window.open(`https://wa.me/923190306199?text=${encodeURIComponent(whatsappMsg)}`, '_blank');
     showToastMessage('Redirecting to WhatsApp...');
-    
-    // Reset form
     contactForm.reset();
   });
 </script>
