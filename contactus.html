@@ -18,6 +18,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   
   <style>
+    /* ========== CSS RESET & VARIABLES ========== */
     :root {
       --primary: #2b6e3c;
       --primary-dark: #1e4a2a;
@@ -43,57 +44,43 @@
       color: #333;
     }
 
-    /* Custom Scrollbar */
-    ::-webkit-scrollbar {
-      width: 6px;
-    }
-    ::-webkit-scrollbar-track {
-      background: #f1f1f1;
-    }
-    ::-webkit-scrollbar-thumb {
-      background: var(--primary);
-      border-radius: 5px;
-    }
-
-    /* Responsive Typography */
+    /* ========== RESPONSIVE TYPOGRAPHY ========== */
     html {
       font-size: 16px;
     }
-    @media (max-width: 768px) {
-      html { font-size: 14px; }
-    }
-    @media (max-width: 480px) {
-      html { font-size: 13px; }
-    }
+    @media (max-width: 1200px) { html { font-size: 15px; } }
+    @media (max-width: 992px) { html { font-size: 14px; } }
+    @media (max-width: 768px) { html { font-size: 13px; } }
+    @media (max-width: 576px) { html { font-size: 12px; } }
 
-    /* Animations */
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: #f1f1f1; }
+    ::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 5px; }
+
+    /* ========== ANIMATIONS ========== */
     @keyframes fadeInUp {
       from { opacity: 0; transform: translateY(30px); }
       to { opacity: 1; transform: translateY(0); }
     }
-
     @keyframes fadeInLeft {
       from { opacity: 0; transform: translateX(-30px); }
       to { opacity: 1; transform: translateX(0); }
     }
-
     @keyframes fadeInRight {
       from { opacity: 0; transform: translateX(30px); }
       to { opacity: 1; transform: translateX(0); }
     }
-
     @keyframes float {
       0% { transform: translateY(0px); }
       50% { transform: translateY(-15px); }
       100% { transform: translateY(0px); }
     }
-
     @keyframes pulse {
       0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(43,110,60,0.7); }
       70% { transform: scale(1.05); box-shadow: 0 0 0 15px rgba(43,110,60,0); }
       100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(43,110,60,0); }
     }
-
     @keyframes shine {
       0% { left: -100%; }
       20% { left: 100%; }
@@ -104,7 +91,7 @@
     .animate-fadeLeft { animation: fadeInLeft 0.8s ease forwards; }
     .animate-fadeRight { animation: fadeInRight 0.8s ease forwards; }
 
-    /* Floating Shapes - Hide on mobile */
+    /* ========== FLOATING SHAPES ========== */
     .floating-shapes {
       position: absolute;
       top: 0;
@@ -126,12 +113,9 @@
     .shape-3 { width: 60px; height: 60px; top: 40%; right: 20%; animation-delay: 2s; }
     .shape-4 { width: 120px; height: 120px; bottom: 30%; left: 15%; animation-delay: 0.5s; }
     .shape-5 { width: 50px; height: 50px; top: 70%; left: 45%; animation-delay: 1.5s; }
+    @media (max-width: 992px) { .shape-1, .shape-2, .shape-3, .shape-4, .shape-5 { display: none; } }
 
-    @media (max-width: 992px) {
-      .shape-1, .shape-2, .shape-3, .shape-4, .shape-5 { display: none; }
-    }
-
-    /* Hero Section */
+    /* ========== HERO SECTION ========== */
     .contact-hero {
       background: var(--gradient-hero);
       position: relative;
@@ -148,8 +132,14 @@
       animation: shine 20s linear infinite;
       pointer-events: none;
     }
+    .hero-title {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+    }
+    .hero-subtitle {
+      font-size: clamp(0.9rem, 3vw, 1.2rem);
+    }
 
-    /* Contact Info Cards - Fully Responsive */
+    /* ========== CONTACT INFO CARDS ========== */
     .info-card {
       background: rgba(255,255,255,0.95);
       backdrop-filter: blur(10px);
@@ -190,26 +180,20 @@
     .info-card:hover .info-icon { transform: scale(1.05); }
     .info-icon i { font-size: 28px; color: white; position: relative; z-index: 1; }
     .info-card h5 { font-size: 1.5rem; margin-bottom: 0.75rem; }
-    .info-card .fs-4 { font-size: 1.3rem !important; }
-
     @media (max-width: 992px) {
       .info-card { padding: 1.5rem 1rem; }
       .info-icon { width: 60px; height: 60px; margin-bottom: 15px; }
       .info-icon i { font-size: 24px; }
       .info-card h5 { font-size: 1.3rem; }
-      .info-card .fs-4 { font-size: 1.1rem !important; }
-      .info-card .btn { padding: 8px 20px; font-size: 0.9rem; margin-top: 15px !important; }
     }
     @media (max-width: 576px) {
       .info-card { padding: 1.2rem 0.8rem; }
       .info-icon { width: 50px; height: 50px; margin-bottom: 12px; }
       .info-icon i { font-size: 20px; }
       .info-card h5 { font-size: 1.1rem; }
-      .info-card .fs-4 { font-size: 1rem !important; }
-      .info-card .btn { padding: 6px 16px; font-size: 0.8rem; margin-top: 10px !important; }
     }
 
-    /* Contact Form - Fully Responsive */
+    /* ========== CONTACT FORM ========== */
     .contact-form {
       background: white;
       border-radius: 28px;
@@ -252,17 +236,14 @@
       transition: all 0.3s ease;
     }
     .submit-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(43, 110, 60, 0.3); }
-
-    @media (max-width: 992px) {
-      .contact-form { padding: 2rem; }
-    }
+    @media (max-width: 992px) { .contact-form { padding: 2rem; } }
     @media (max-width: 576px) {
       .contact-form { padding: 1.5rem; border-radius: 20px; }
-      .form-control, .form-select { padding: 10px 14px; font-size: 0.9rem; border-radius: 12px; }
+      .form-control, .form-select { padding: 10px 14px; font-size: 0.9rem; }
       .submit-btn { padding: 12px 25px; font-size: 0.9rem; }
     }
 
-    /* Map Container - Responsive */
+    /* ========== MAP CONTAINER ========== */
     .map-container {
       border-radius: 24px;
       overflow: hidden;
@@ -277,19 +258,14 @@
       transition: filter 0.3s ease;
     }
     .map-container:hover iframe { filter: grayscale(0) contrast(1); }
+    @media (max-width: 992px) { .map-container iframe { height: 320px; } }
+    @media (max-width: 576px) { .map-container iframe { height: 250px; } }
 
-    @media (max-width: 992px) {
-      .map-container iframe { height: 320px; }
-    }
-    @media (max-width: 576px) {
-      .map-container iframe { height: 250px; }
-    }
-
-    /* Business Hours Progress Bar */
+    /* ========== BUSINESS HOURS ========== */
     .hour-bar { background: #e8eef2; border-radius: 10px; height: 6px; overflow: hidden; margin: 8px 0; }
     .hour-progress { background: var(--gradient-primary); height: 100%; border-radius: 10px; width: 0%; transition: width 1s ease; }
 
-    /* FAQ Section - Fully Responsive */
+    /* ========== FAQ SECTION ========== */
     .faq-item {
       background: white;
       border-radius: 18px;
@@ -323,13 +299,12 @@
       font-size: 0.95rem;
     }
     .faq-question.active + .faq-answer { padding: 0 1.5rem 1rem 1.5rem; max-height: 200px; }
-
     @media (max-width: 576px) {
       .faq-question { padding: 0.8rem 1rem; font-size: 0.9rem; }
       .faq-question.active + .faq-answer { padding: 0 1rem 0.8rem 1rem; }
     }
 
-    /* Social Media Cards - Responsive */
+    /* ========== SOCIAL MEDIA CARDS ========== */
     .social-card {
       background: white;
       border-radius: 18px;
@@ -345,14 +320,13 @@
     .social-card.whatsapp:hover { background: #25D366; color: white; }
     .social-card i { font-size: 1.8rem; margin-bottom: 5px; display: block; }
     .social-card span { font-size: 0.75rem; }
-
     @media (max-width: 576px) {
       .social-card { padding: 0.8rem 0.5rem; border-radius: 14px; }
       .social-card i { font-size: 1.4rem; }
       .social-card span { font-size: 0.65rem; }
     }
 
-    /* Preloader */
+    /* ========== PRELOADER ========== */
     .preloader-wrapper {
       position: fixed;
       top: 0;
@@ -370,7 +344,7 @@
     .preloader::before { content: ''; position: absolute; top: -8px; left: -8px; right: -8px; bottom: -8px; border: 2px solid var(--secondary); border-bottom-color: transparent; border-radius: 50%; animation: spin 0.8s linear infinite reverse; }
     @keyframes spin { to { transform: rotate(360deg); } }
 
-    /* Scroll to top */
+    /* ========== SCROLL TO TOP ========== */
     .scroll-top {
       position: fixed;
       bottom: 20px;
@@ -393,12 +367,9 @@
     }
     .scroll-top.show { opacity: 1; visibility: visible; }
     .scroll-top:hover { transform: translateY(-5px); background: var(--primary-dark); }
+    @media (max-width: 576px) { .scroll-top { width: 38px; height: 38px; bottom: 15px; right: 15px; } }
 
-    @media (max-width: 576px) {
-      .scroll-top { width: 38px; height: 38px; bottom: 15px; right: 15px; }
-    }
-
-    /* Toast Notification */
+    /* ========== TOAST NOTIFICATION ========== */
     .toast-notification {
       position: fixed;
       bottom: 20px;
@@ -419,12 +390,11 @@
       white-space: nowrap;
     }
     .toast-notification.show { transform: translateX(-50%) translateY(0); }
-
     @media (max-width: 576px) {
       .toast-notification { padding: 8px 16px; font-size: 0.75rem; white-space: normal; text-align: center; width: 90%; justify-content: center; }
     }
 
-    /* WhatsApp Float Button - Responsive */
+    /* ========== WHATSAPP FLOAT BUTTON ========== */
     .whatsapp-float {
       position: fixed;
       bottom: 20px;
@@ -445,12 +415,11 @@
       animation: pulse 2s infinite;
     }
     .whatsapp-float:hover { transform: scale(1.1); color: white; }
-
     @media (max-width: 576px) {
       .whatsapp-float { width: 45px; height: 45px; font-size: 22px; bottom: 15px; left: 15px; }
     }
 
-    /* Live Chat Badge - Hide on mobile */
+    /* ========== LIVE CHAT BADGE ========== */
     .live-chat {
       position: fixed;
       bottom: 20px;
@@ -467,26 +436,41 @@
       animation: pulse 1.5s infinite;
     }
     .live-dot { width: 8px; height: 8px; background: #4ade80; border-radius: 50%; animation: pulse 1s infinite; }
-
     @media (max-width: 992px) { .live-chat { display: none; } }
 
-    /* Header Responsive */
-    @media (max-width: 992px) {
-      header .navbar-nav { gap: 12px !important; }
-      header .nav-link { font-size: 0.85rem; }
+    /* ========== HEADER RESPONSIVE ========== */
+    .logo-img {
+      max-height: 45px;
+      width: auto;
     }
-    @media (max-width: 768px) {
-      header .navbar-nav { gap: 8px !important; }
-      header .nav-link { font-size: 0.75rem; }
-    }
-    @media (max-width: 576px) {
-      header .navbar-nav { gap: 12px !important; }
-    }
+    @media (max-width: 768px) { .logo-img { max-height: 35px; } }
+    @media (max-width: 576px) { .logo-img { max-height: 30px; } }
 
-    /* Utility Classes */
-    .section-padding { padding: 4rem 0; }
+    .nav-link {
+      font-size: 0.9rem;
+      transition: color 0.3s ease;
+    }
+    @media (max-width: 992px) { .nav-link { font-size: 0.85rem; } }
+    @media (max-width: 768px) { .nav-link { font-size: 0.75rem; } }
+
+    /* ========== UTILITY CLASSES ========== */
+    .section-padding {
+      padding: 4rem 0;
+    }
     @media (max-width: 992px) { .section-padding { padding: 3rem 0; } }
     @media (max-width: 576px) { .section-padding { padding: 2rem 0; } }
+
+    .container-custom {
+      width: 100%;
+      padding-right: 15px;
+      padding-left: 15px;
+      margin-right: auto;
+      margin-left: auto;
+    }
+    @media (min-width: 576px) { .container-custom { max-width: 540px; } }
+    @media (min-width: 768px) { .container-custom { max-width: 720px; } }
+    @media (min-width: 992px) { .container-custom { max-width: 960px; } }
+    @media (min-width: 1200px) { .container-custom { max-width: 1140px; } }
   </style>
 </head>
 <body>
@@ -517,72 +501,64 @@
   <i class="fas fa-arrow-up"></i>
 </button>
 
-<!-- Header -->
+<!-- ========== HEADER ========== -->
 <header>
   <div class="container-fluid">
-    <div class="row py-2 py-md-3 border-bottom align-items-center">
-      <div class="col-4 col-sm-4 col-lg-2 text-center text-sm-start d-flex gap-2 gap-md-3 justify-content-center justify-content-md-start">
-        <div class="d-flex align-items-center my-2 my-sm-0">
-          <a href="index.html">
-            <img src="images/fhdgh.PNG" alt="logo" class="img-fluid" style="max-height: 45px;">
-          </a>
-        </div>
-        <button class="navbar-toggler border-0 p-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar">
+    <div class="row py-2 py-md-3 border-bottom align-items-center g-2">
+      <div class="col-4 col-sm-4 col-lg-2 d-flex gap-2 gap-md-3 align-items-center">
+        <a href="index.html" class="d-inline-block">
+          <img src="images/fhdgh.PNG" alt="MS Plastic Store" class="logo-img">
+        </a>
+        <button class="navbar-toggler border-0 p-0 bg-transparent" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar">
           <i class="fas fa-bars fs-4"></i>
         </button>
       </div>
       <div class="col-8 col-sm-6 col-lg-4">
-        <div class="search-bar row bg-light p-1 p-md-2 rounded-4">
-          <div class="col-10">
-            <input type="text" class="form-control border-0 bg-transparent py-1 py-md-2" placeholder="Search...">
-          </div>
-          <div class="col-2 text-end">
-            <i class="fas fa-search"></i>
-          </div>
+        <div class="search-bar bg-light p-1 p-md-2 rounded-4 d-flex align-items-center">
+          <input type="text" class="form-control border-0 bg-transparent py-1 py-md-2" placeholder="Search products...">
+          <i class="fas fa-search text-muted me-2"></i>
         </div>
       </div>
       <div class="col-lg-4 d-none d-lg-block">
-        <ul class="navbar-nav list-unstyled d-flex flex-row gap-4 justify-content-center align-items-center mb-0 fw-bold text-uppercase text-dark">
-          <li class="nav-item"><a href="./index.html" class="nav-link">Home</a></li>
-          <li class="nav-item"><a href="./shop.html" class="nav-link">Shop</a></li>
-          <li class="nav-item"><a href="./about.html" class="nav-link">About</a></li>
+        <ul class="navbar-nav list-unstyled d-flex flex-row gap-4 justify-content-center align-items-center mb-0 fw-bold text-uppercase">
+          <li class="nav-item"><a href="./index.html" class="nav-link text-dark">Home</a></li>
+          <li class="nav-item"><a href="./shop.html" class="nav-link text-dark">Shop</a></li>
+          <li class="nav-item"><a href="./about.html" class="nav-link text-dark">About</a></li>
           <li class="nav-item"><a href="./contactus.html" class="nav-link text-primary">Contact</a></li>
         </ul>
       </div>
       <div class="col-12 col-sm-8 col-lg-2 mt-2 mt-sm-0 d-flex gap-3 gap-md-4 align-items-center justify-content-center justify-content-sm-end">
-        <ul class="d-flex justify-content-end list-unstyled m-0 gap-2">
-          <li><a href="#" class="p-1"><i class="fas fa-user fs-5"></i></a></li>
-          <li><a href="#" class="p-1"><i class="fas fa-heart fs-5"></i></a></li>
-          <li><a href="#" class="p-1 position-relative"><i class="fas fa-shopping-bag fs-5"></i><span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="font-size: 9px;">0</span></a></li>
-        </ul>
+        <a href="#" class="text-dark"><i class="fas fa-user fs-5"></i></a>
+        <a href="#" class="text-dark position-relative"><i class="fas fa-heart fs-5"></i><span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="font-size: 9px;">0</span></a>
+        <a href="#" class="text-dark position-relative"><i class="fas fa-shopping-bag fs-5"></i><span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="font-size: 9px;">0</span></a>
       </div>
     </div>
   </div>
 </header>
 
-<!-- Offcanvas Menu -->
+<!-- ========== OFF-CANVAS MENU ========== -->
 <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar">
   <div class="offcanvas-header justify-content-between">
     <h4 class="fw-normal text-uppercase fs-6 mb-0">Shop by Category</h4>
     <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
   </div>
   <div class="offcanvas-body">
-    <ul class="navbar-nav justify-content-end menu-list list-unstyled d-flex gap-2 mb-0">
-      <li class="nav-item"><a href="./categories/wallpapers.html" class="nav-link d-flex align-items-center gap-3 text-dark p-2"><i class="fas fa-palette w-20"></i><span>Wallpapers</span></a></li>
-      <li class="nav-item"><a href="./categories/flooring.html" class="nav-link d-flex align-items-center gap-3 text-dark p-2"><i class="fas fa-th-large w-20"></i><span>Flooring</span></a></li>
-      <li class="nav-item"><a href="./categories/dastarkhawan.html" class="nav-link d-flex align-items-center gap-3 text-dark p-2"><i class="fas fa-table w-20"></i><span>Plastic Dastarkhawan</span></a></li>
-      <li class="nav-item"><a href="./categories/footmats.html" class="nav-link d-flex align-items-center gap-3 text-dark p-2"><i class="fas fa-door-open w-20"></i><span>Footmats</span></a></li>
-      <li class="nav-item"><a href="./categories/chatai.html" class="nav-link d-flex align-items-center gap-3 text-dark p-2"><i class="fas fa-leaf w-20"></i><span>Chatai (Straw Mats)</span></a></li>
-      <li class="nav-item"><a href="./categories/tarpaulin.html" class="nav-link d-flex align-items-center gap-3 text-dark p-2"><i class="fas fa-tarp w-20"></i><span>Tarpaulin (Tarpal)</span></a></li>
-      <li class="nav-item"><a href="./categories/pvc-wall-panels.html" class="nav-link d-flex align-items-center gap-3 text-dark p-2"><i class="fas fa-border-all w-20"></i><span>PVC Wall Panels</span></a></li>
-      <li class="nav-item"><a href="./categories/artificial-grass.html" class="nav-link d-flex align-items-center gap-3 text-dark p-2"><i class="fas fa-tree w-20"></i><span>Artificial Grass</span></a></li>
-      <li class="nav-item"><a href="./categories/sunshade-nets.html" class="nav-link d-flex align-items-center gap-3 text-dark p-2"><i class="fas fa-sun w-20"></i><span>Sunshade Nets</span></a></li>
-      <li class="nav-item"><a href="./categories/carpet-tiles.html" class="nav-link d-flex align-items-center gap-3 text-dark p-2"><i class="fas fa-carpet w-20"></i><span>Carpet Tiles</span></a></li>
+    <ul class="navbar-nav menu-list list-unstyled d-flex gap-2 mb-0">
+      <li class="nav-item"><a href="./categories/wallpapers.html" class="nav-link d-flex align-items-center gap-3 text-dark p-2"><i class="fas fa-palette"></i><span>Wallpapers</span></a></li>
+      <li class="nav-item"><a href="./categories/flooring.html" class="nav-link d-flex align-items-center gap-3 text-dark p-2"><i class="fas fa-th-large"></i><span>Flooring</span></a></li>
+      <li class="nav-item"><a href="./categories/dastarkhawan.html" class="nav-link d-flex align-items-center gap-3 text-dark p-2"><i class="fas fa-table"></i><span>Plastic Dastarkhawan</span></a></li>
+      <li class="nav-item"><a href="./categories/footmats.html" class="nav-link d-flex align-items-center gap-3 text-dark p-2"><i class="fas fa-door-open"></i><span>Footmats</span></a></li>
+      <li class="nav-item"><a href="./categories/chatai.html" class="nav-link d-flex align-items-center gap-3 text-dark p-2"><i class="fas fa-leaf"></i><span>Chatai (Straw Mats)</span></a></li>
+      <li class="nav-item"><a href="./categories/tarpaulin.html" class="nav-link d-flex align-items-center gap-3 text-dark p-2"><i class="fas fa-tarp"></i><span>Tarpaulin (Tarpal)</span></a></li>
+      <li class="nav-item"><a href="./categories/pvc-wall-panels.html" class="nav-link d-flex align-items-center gap-3 text-dark p-2"><i class="fas fa-border-all"></i><span>PVC Wall Panels</span></a></li>
+      <li class="nav-item"><a href="./categories/artificial-grass.html" class="nav-link d-flex align-items-center gap-3 text-dark p-2"><i class="fas fa-tree"></i><span>Artificial Grass</span></a></li>
+      <li class="nav-item"><a href="./categories/sunshade-nets.html" class="nav-link d-flex align-items-center gap-3 text-dark p-2"><i class="fas fa-sun"></i><span>Sunshade Nets</span></a></li>
+      <li class="nav-item"><a href="./categories/carpet-tiles.html" class="nav-link d-flex align-items-center gap-3 text-dark p-2"><i class="fas fa-carpet"></i><span>Carpet Tiles</span></a></li>
     </ul>
   </div>
 </div>
 
-<!-- Hero Section -->
+<!-- ========== HERO SECTION ========== -->
 <section class="contact-hero py-4 py-md-5 position-relative">
   <div class="floating-shapes">
     <div class="shape shape-1"></div>
@@ -594,15 +570,15 @@
   <div class="container py-3 py-md-4 position-relative" style="z-index: 2;">
     <div class="row">
       <div class="col-12 text-white" data-aos="fade-right" data-aos-duration="800">
-        <h1 class="display-4 display-md-3 fw-bold mb-2 mb-md-3">Contact <span class="text-warning">Us</span></h1>
-        <p class="lead fs-6 fs-md-5 mb-3">We're here to help! Get in touch with our team for any inquiries, quotes, or support.</p>
+        <h1 class="hero-title fw-bold mb-2 mb-md-3">Contact <span class="text-warning">Us</span></h1>
+        <p class="hero-subtitle mb-3">We're here to help! Get in touch with our team for any inquiries, quotes, or support.</p>
         <p class="mb-0 small"><i class="fas fa-map-marker-alt me-2"></i> Serving customers across Pakistan with premium quality products and fast delivery.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Contact Info Cards -->
+<!-- ========== CONTACT INFO CARDS ========== -->
 <section class="py-4 py-md-5">
   <div class="container">
     <div class="row g-3 g-md-4">
@@ -637,16 +613,14 @@
   </div>
 </section>
 
-<!-- Contact Form & Map Section -->
+<!-- ========== CONTACT FORM & MAP ========== -->
 <section class="py-4">
   <div class="container">
     <div class="row g-4 g-lg-5">
-      <!-- Contact Form -->
       <div class="col-lg-6" data-aos="fade-right" data-aos-duration="800">
         <div class="contact-form">
-          <h2 class="fw-bold fs-2 fs-md-1 mb-3">Send Us a <span class="text-primary">Message</span></h2>
+          <h2 class="fw-bold mb-3">Send Us a <span class="text-primary">Message</span></h2>
           <p class="text-muted mb-4">Have a question? Fill out the form below and we'll get back to you within 24 hours.</p>
-          
           <form id="contactForm">
             <div class="row g-3">
               <div class="col-12 col-sm-6">
@@ -677,25 +651,19 @@
                 <textarea class="form-control" id="message" rows="4" required placeholder="Tell us how we can help you..."></textarea>
               </div>
               <div class="col-12">
-                <button type="submit" class="btn submit-btn text-white w-100">
-                  <i class="fas fa-paper-plane me-2"></i>Send Message
-                </button>
+                <button type="submit" class="btn submit-btn text-white w-100"><i class="fas fa-paper-plane me-2"></i>Send Message</button>
               </div>
             </div>
           </form>
         </div>
       </div>
-      
-      <!-- Map & Address -->
       <div class="col-lg-6" data-aos="fade-left" data-aos-duration="800">
         <div class="map-container mb-4">
-          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d217580.43834486028!2d74.20482624335936!3d31.48295000000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x391903e9b6e9b9b9%3A0x8e9e9e9e9e9e9e9e!2sLahore%2C%20Pakistan!5e0!3m2!1sen!2s!4v1700000000000!5m2!1sen!2s" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d217580.43834486028!2d74.20482624335936!3d31.48295000000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x391903e9b6e9b9b9%3A0x8e9e9e9e9e9e9e9e!2sLahore%2C%20Pakistan!5e0!3m2!1sen!2s!4v1700000000000!5m2!1sen!2s" allowfullscreen="" loading="lazy"></iframe>
         </div>
-        
         <div class="bg-white p-3 p-md-4 rounded-4 shadow-sm">
           <h5 class="fw-bold mb-3"><i class="fas fa-map-marker-alt text-primary me-2"></i>Our Location</h5>
           <p class="text-muted mb-3 small">123 Main Boulevard, Gulberg III, Lahore, Pakistan</p>
-          
           <div class="row g-3">
             <div class="col-6">
               <div class="d-flex align-items-start gap-2">
@@ -724,12 +692,12 @@
   </div>
 </section>
 
-<!-- Business Hours & Social Media -->
+<!-- ========== SOCIAL MEDIA & BULK ORDERS ========== -->
 <section class="py-4 py-md-5 bg-light">
   <div class="container">
     <div class="row g-4 align-items-center">
       <div class="col-lg-6" data-aos="fade-right" data-aos-duration="800">
-        <h2 class="fw-bold fs-2 mb-3">Connect With <span class="text-primary">Us</span></h2>
+        <h2 class="fw-bold mb-3">Connect With <span class="text-primary">Us</span></h2>
         <p class="text-muted mb-4">Follow us on social media for updates, new arrivals, and special offers.</p>
         <div class="row g-2 g-md-3">
           <div class="col-3"><div class="social-card facebook"><i class="fab fa-facebook"></i><span>Facebook</span></div></div>
@@ -756,7 +724,7 @@
   </div>
 </section>
 
-<!-- FAQ Section -->
+<!-- ========== FAQ SECTION ========== -->
 <section class="py-4 py-md-5">
   <div class="container">
     <div class="text-center mb-4 mb-md-5" data-aos="fade-up">
@@ -791,7 +759,7 @@
   </div>
 </section>
 
-<!-- Call to Action -->
+<!-- ========== CALL TO ACTION ========== -->
 <section class="py-4 py-md-5" style="background: linear-gradient(135deg, var(--primary), var(--primary-dark));">
   <div class="container text-center text-white">
     <h2 class="display-5 fw-bold mb-3" data-aos="zoom-in">Need Immediate Assistance?</h2>
@@ -803,7 +771,7 @@
   </div>
 </section>
 
-<!-- Footer -->
+<!-- ========== FOOTER ========== -->
 <footer class="py-4 py-md-5 bg-dark text-white">
   <div class="container">
     <div class="row g-4">
@@ -813,7 +781,7 @@
         <div class="d-flex gap-2"><a href="#" class="text-white"><i class="fab fa-facebook fa-lg"></i></a><a href="#" class="text-white"><i class="fab fa-instagram fa-lg"></i></a><a href="#" class="text-white"><i class="fab fa-whatsapp fa-lg"></i></a></div>
       </div>
       <div class="col-md-3"><h5>Quick Links</h5><ul class="list-unstyled small"><li><a href="about.html" class="text-white-50 text-decoration-none">About Us</a></li><li><a href="contactus.html" class="text-white-50 text-decoration-none">Contact</a></li><li><a href="#" class="text-white-50 text-decoration-none">FAQs</a></li><li><a href="privacy-policy.html" class="text-white-50 text-decoration-none">Privacy Policy</a></li></ul></div>
-      <div class="col-md-3"><h5>Categories</h5><ul class="list-unstyled small"><li><a href="#" class="text-white-50 text-decoration-none">Wallpapers</a></li><li><a href="#" class="text-white-50 text-decoration-none">Flooring</a></li><li><a href="#" class="text-white-50 text-decoration-none">Tarpaulin</a></li><li><a href="#" class="text-white-50 text-decoration-none">Footmats</a></li></ul></div>
+      <div class="col-md-3"><h5>Categories</h5><ul class="list-unstyled small"><li><a href="categories/wallpapers.html" class="text-white-50 text-decoration-none">Wallpapers</a></li><li><a href="categories/flooring.html" class="text-white-50 text-decoration-none">Flooring</a></li><li><a href="categories/tarpaulin.html" class="text-white-50 text-decoration-none">Tarpaulin</a></li><li><a href="categories/footmats.html" class="text-white-50 text-decoration-none">Footmats</a></li></ul></div>
       <div class="col-md-3"><h5>Contact Info</h5><p class="small mb-1"><i class="fas fa-phone me-2"></i>+92 319 0306199</p><p class="small mb-1"><i class="fab fa-whatsapp me-2"></i>+92 319 0306199</p><p class="small"><i class="fas fa-envelope me-2"></i>info@msplasticstore.com</p></div>
     </div>
     <hr class="mt-4"><div class="text-center small text-white-50">© 2025 MS Plastic Store. All rights reserved.</div>
