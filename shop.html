@@ -2,14 +2,12 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <title>Shop - Premium Wallpapers & Flooring | MS Plastic Store</title>
     <meta name="description" content="Shop premium wallpapers, flooring, plastic dastarkhawan, footmats, chatai, tarpaulin and more at best prices in Pakistan.">
     
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Swiper CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <!-- AOS Animation CSS -->
@@ -23,11 +21,7 @@
             --primary-dark: #1e4a2a;
             --primary-light: #4a9e5c;
             --secondary: #ff8c00;
-            --secondary-dark: #e67e00;
-            --dark: #1a1a1a;
-            --light: #f8f9fa;
             --gradient-primary: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
-            --gradient-dark: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
         }
 
         * {
@@ -43,40 +37,21 @@
         }
 
         /* Custom Scrollbar */
-        ::-webkit-scrollbar {
-            width: 10px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #f1f1f1;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: var(--primary);
-            border-radius: 5px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: var(--primary-dark);
-        }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 5px; }
 
         /* Animations */
         @keyframes fadeInUp {
             from { opacity: 0; transform: translateY(30px); }
             to { opacity: 1; transform: translateY(0); }
         }
-
         @keyframes shimmer {
             0% { background-position: -1000px 0; }
             100% { background-position: 1000px 0; }
         }
 
-        @keyframes pulse {
-            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(43,110,60,0.7); }
-            70% { transform: scale(1.05); box-shadow: 0 0 0 15px rgba(43,110,60,0); }
-            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(43,110,60,0); }
-        }
-
-        .animate-fadeUp {
-            animation: fadeInUp 0.6s ease forwards;
-        }
+        .animate-fadeUp { animation: fadeInUp 0.6s ease forwards; }
 
         /* Header Styles */
         .icon-wrapper { position: relative; display: inline-block; }
@@ -93,7 +68,7 @@
             text-align: center;
         }
 
-        /* Hero Section */
+        /* Shop Hero */
         .shop-hero {
             background: var(--gradient-primary);
             position: relative;
@@ -106,13 +81,7 @@
             left: -50%;
             width: 200%;
             height: 200%;
-            background: repeating-linear-gradient(
-                45deg,
-                rgba(255,255,255,0.05) 0px,
-                rgba(255,255,255,0.05) 20px,
-                transparent 20px,
-                transparent 40px
-            );
+            background: repeating-linear-gradient(45deg, rgba(255,255,255,0.05) 0px, rgba(255,255,255,0.05) 20px, transparent 20px, transparent 40px);
             animation: shine 20s linear infinite;
         }
         @keyframes shine {
@@ -143,9 +112,8 @@
             object-fit: cover;
             width: 100%;
         }
-        .product-card:hover .product-img-wrapper img {
-            transform: scale(1.1);
-        }
+        .product-card:hover .product-img-wrapper img { transform: scale(1.1); }
+        
         .overlay-add-to-cart {
             position: absolute;
             top: 0;
@@ -174,18 +142,10 @@
             font-weight: 700;
             transition: all 0.3s ease;
             transform: translateY(20px);
-            transition: all 0.4s ease;
         }
-        .product-card:hover .btn-cart-overlay {
-            transform: translateY(0);
-        }
-        .btn-cart-overlay:hover {
-            background: var(--gradient-primary);
-            color: white;
-            transform: scale(1.05);
-        }
+        .product-card:hover .btn-cart-overlay { transform: translateY(0); }
+        .btn-cart-overlay:hover { background: var(--gradient-primary); color: white; transform: scale(1.05); }
 
-        /* Discount Badge */
         .discount-badge {
             position: absolute;
             top: 15px;
@@ -197,39 +157,28 @@
             font-size: 0.7rem;
             font-weight: 700;
             z-index: 10;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
         }
 
-        /* Sidebar Filters - Glassmorphism */
+        /* Sidebar Filters */
         .filter-card {
-            background: rgba(255,255,255,0.95);
-            backdrop-filter: blur(10px);
+            background: white;
             border-radius: 20px;
-            padding: 25px;
+            padding: 20px;
             margin-bottom: 24px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
             transition: all 0.3s ease;
-            border: 1px solid rgba(255,255,255,0.2);
         }
-        .filter-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 35px rgba(0,0,0,0.12);
-        }
+        .filter-card:hover { transform: translateY(-5px); box-shadow: 0 15px 35px rgba(0,0,0,0.1); }
         .filter-title {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             font-weight: 800;
-            margin-bottom: 20px;
-            padding-bottom: 12px;
+            margin-bottom: 18px;
+            padding-bottom: 10px;
             border-bottom: 2px solid var(--primary);
             display: inline-block;
         }
-        .category-list {
-            list-style: none;
-            padding-left: 0;
-        }
-        .category-list li {
-            margin-bottom: 12px;
-        }
+        .category-list { list-style: none; padding-left: 0; }
+        .category-list li { margin-bottom: 10px; }
         .category-list a {
             color: #555;
             text-decoration: none;
@@ -237,104 +186,28 @@
             display: flex;
             justify-content: space-between;
             padding: 5px 0;
-            border-radius: 8px;
         }
-        .category-list a:hover, .category-list a.active {
-            color: var(--primary);
-            padding-left: 10px;
-            background: rgba(43,110,60,0.05);
-        }
-        .price-range {
-            width: 100%;
-            height: 5px;
-            border-radius: 5px;
-            background: #e0e0e0;
-        }
-        .price-range::-webkit-slider-thumb {
-            background: var(--primary);
-            width: 15px;
-            height: 15px;
-            border-radius: 50%;
-            cursor: pointer;
-        }
-        .price-values {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 15px;
-            font-weight: 600;
-        }
+        .category-list a:hover, .category-list a.active { color: var(--primary); padding-left: 8px; background: rgba(43,110,60,0.05); }
+        .price-range { width: 100%; height: 5px; border-radius: 5px; background: #e0e0e0; }
+        .price-range::-webkit-slider-thumb { background: var(--primary); width: 15px; height: 15px; border-radius: 50%; cursor: pointer; }
+        .price-values { display: flex; justify-content: space-between; margin-top: 12px; font-weight: 600; }
 
-        /* View Toggle Buttons */
-        .view-toggle {
-            background: white;
-            border-radius: 12px;
-            padding: 5px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-        }
-        .view-toggle .btn {
-            border-radius: 8px;
-            padding: 8px 16px;
-            transition: all 0.3s ease;
-        }
-        .view-toggle .btn.active {
-            background: var(--gradient-primary);
-            color: white;
-        }
+        /* View Toggle */
+        .view-toggle { background: #f0f0f0; border-radius: 12px; padding: 5px; }
+        .view-toggle .btn { border-radius: 8px; padding: 6px 14px; transition: all 0.3s ease; }
+        .view-toggle .btn.active { background: var(--gradient-primary); color: white; }
 
         /* Pagination */
         .pagination .page-link {
             color: var(--primary);
-            border-radius: 12px;
-            margin: 0 5px;
+            border-radius: 10px;
+            margin: 0 4px;
             border: none;
-            padding: 10px 16px;
+            padding: 8px 14px;
             transition: all 0.3s ease;
         }
-        .pagination .page-link:hover {
-            background: var(--gradient-primary);
-            color: white;
-            transform: translateY(-2px);
-        }
-        .pagination .page-item.active .page-link {
-            background: var(--gradient-primary);
-            border-color: var(--primary);
-            color: white;
-            box-shadow: 0 5px 15px rgba(43,110,60,0.3);
-        }
-
-        /* Skeleton Loader */
-        .skeleton-card {
-            background: white;
-            border-radius: 20px;
-            padding: 20px;
-        }
-        .skeleton-img {
-            background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
-            background-size: 1000px 100%;
-            animation: shimmer 1.5s infinite;
-            border-radius: 16px;
-            height: 250px;
-        }
-        .skeleton-text {
-            height: 15px;
-            background: #e0e0e0;
-            border-radius: 8px;
-            margin: 10px 0;
-        }
-        .skeleton-text.short { width: 60%; }
-        .skeleton-text.medium { width: 80%; }
-
-        /* Quick View Modal */
-        .quick-view-modal .modal-content {
-            border-radius: 28px;
-            overflow: hidden;
-        }
-        .quick-view-img {
-            border-radius: 20px;
-            width: 100%;
-            aspect-ratio: 1;
-            object-fit: cover;
-        }
+        .pagination .page-link:hover { background: var(--gradient-primary); color: white; transform: translateY(-2px); }
+        .pagination .page-item.active .page-link { background: var(--gradient-primary); color: white; }
 
         /* Toast Notification */
         .toast-notification {
@@ -343,28 +216,25 @@
             right: 30px;
             background: var(--gradient-primary);
             color: white;
-            padding: 15px 25px;
+            padding: 12px 24px;
             border-radius: 50px;
             font-weight: 600;
             z-index: 1000;
             transform: translateX(400px);
             transition: transform 0.3s ease;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
             display: flex;
             align-items: center;
             gap: 10px;
         }
-        .toast-notification.show {
-            transform: translateX(0);
-        }
+        .toast-notification.show { transform: translateX(0); }
 
-        /* Scroll to top with progress */
+        /* Scroll to top */
         .scroll-top {
             position: fixed;
             bottom: 30px;
             left: 30px;
-            width: 50px;
-            height: 50px;
+            width: 45px;
+            height: 45px;
             background: var(--gradient-primary);
             color: white;
             border-radius: 50%;
@@ -377,26 +247,9 @@
             transition: all 0.3s ease;
             z-index: 99;
             border: none;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
         }
-        .scroll-top.show {
-            opacity: 1;
-            visibility: visible;
-        }
-        .scroll-top:hover {
-            transform: translateY(-5px);
-            background: var(--primary-dark);
-        }
-        .scroll-progress {
-            position: absolute;
-            top: -5px;
-            left: -5px;
-            right: -5px;
-            bottom: -5px;
-            border-radius: 50%;
-            background: conic-gradient(var(--secondary) 0deg, #e0e0e0 0deg);
-            z-index: -1;
-        }
+        .scroll-top.show { opacity: 1; visibility: visible; }
+        .scroll-top:hover { transform: translateY(-5px); background: var(--primary-dark); }
 
         /* Preloader */
         .preloader-wrapper {
@@ -412,68 +265,29 @@
             z-index: 9999;
             transition: opacity 0.5s ease;
         }
-        .preloader {
-            width: 60px;
-            height: 60px;
-            border: 3px solid var(--primary);
-            border-top-color: transparent;
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-            position: relative;
-        }
-        .preloader::before {
-            content: '';
-            position: absolute;
-            top: -10px;
-            left: -10px;
-            right: -10px;
-            bottom: -10px;
-            border: 2px solid var(--secondary);
-            border-bottom-color: transparent;
-            border-radius: 50%;
-            animation: spin 0.8s linear infinite reverse;
-        }
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
+        .preloader { width: 50px; height: 50px; border: 3px solid var(--primary); border-top-color: transparent; border-radius: 50%; animation: spin 1s linear infinite; position: relative; }
+        .preloader::before { content: ''; position: absolute; top: -8px; left: -8px; right: -8px; bottom: -8px; border: 2px solid var(--secondary); border-bottom-color: transparent; border-radius: 50%; animation: spin 0.8s linear infinite reverse; }
+        @keyframes spin { to { transform: rotate(360deg); } }
 
-        /* Wishlist Button Active */
-        .wishlist-btn.active {
-            background-color: #dc3545 !important;
-            border-color: #dc3545 !important;
-            color: white;
-        }
-        .wishlist-btn.active i {
-            color: white;
-        }
+        .wishlist-btn.active { background-color: #dc3545 !important; border-color: #dc3545 !important; color: white; }
+        .wishlist-btn.active i { color: white; }
 
         @media (max-width: 768px) {
-            .sidebar-filters {
-                margin-bottom: 30px;
-            }
-            .product-card {
-                margin-bottom: 15px;
-            }
+            .sidebar-filters { margin-bottom: 30px; }
+            .product-card { margin-bottom: 15px; }
         }
     </style>
 </head>
 <body>
 
 <!-- Preloader -->
-<div class="preloader-wrapper" id="preloader">
-    <div class="preloader"></div>
-</div>
+<div class="preloader-wrapper" id="preloader"><div class="preloader"></div></div>
 
 <!-- Toast Notification -->
-<div id="toastNotification" class="toast-notification">
-    <i class="fas fa-check-circle"></i> Added to cart!
-</div>
+<div id="toastNotification" class="toast-notification"><i class="fas fa-check-circle"></i> Added to cart!</div>
 
 <!-- Scroll to Top Button -->
-<button class="scroll-top" id="scrollTopBtn">
-    <div class="scroll-progress" id="scrollProgress"></div>
-    <i class="fas fa-arrow-up"></i>
-</button>
+<button class="scroll-top" id="scrollTopBtn"><i class="fas fa-arrow-up"></i></button>
 
 <!-- SVG Sprite -->
 <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
@@ -502,9 +316,7 @@
         <div class="row py-3 border-bottom align-items-center">
             <div class="col-sm-4 col-lg-2 text-center text-sm-start d-flex gap-3 justify-content-center justify-content-md-start">
                 <div class="d-flex align-items-center my-3 my-sm-0">
-                    <a href="index.html">
-                        <img src="images/fhdgh.PNG" alt="MS Plastic Store" style="max-height: 50px;">
-                    </a>
+                    <a href="index.html"><img src="images/fhdgh.PNG" alt="MS Plastic Store" style="max-height: 50px;"></a>
                 </div>
                 <button class="navbar-toggler btn p-0 border-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar">
                     <svg width="24" height="24"><use xlink:href="#menu"></use></svg>
@@ -522,14 +334,14 @@
                             <option value="chatai">Chatai</option>
                             <option value="tarpaulin">Tarpaulin</option>
                             <option value="sunshade">Sunshade Nets</option>
+                            <option value="carpet-tiles">Carpet Tiles</option>
+                            <option value="artificial-grass">Artificial Grass</option>
                         </select>
                     </div>
                     <div class="col-11 col-md-7">
                         <input type="text" class="form-control border-0 bg-transparent" id="search-input" placeholder="Search for products...">
                     </div>
-                    <div class="col-1">
-                        <svg width="24" height="24"><use xlink:href="#search"></use></svg>
-                    </div>
+                    <div class="col-1"><svg width="24" height="24"><use xlink:href="#search"></use></svg></div>
                 </div>
             </div>
             <div class="col-lg-4">
@@ -541,17 +353,9 @@
                 </ul>
             </div>
             <div class="col-sm-8 col-lg-2 d-flex gap-4 align-items-center justify-content-center justify-content-sm-end">
-                <a href="#" class="icon-wrapper">
-                    <svg width="24" height="24"><use xlink:href="#user"></use></svg>
-                </a>
-                <button class="btn p-0 border-0 bg-transparent icon-wrapper" data-bs-toggle="offcanvas" data-bs-target="#wishlistOffcanvas">
-                    <svg width="24" height="24"><use xlink:href="#wishlist"></use></svg>
-                    <span class="wishlist-badge wishlist-count-badge">0</span>
-                </button>
-                <button class="btn p-0 border-0 bg-transparent icon-wrapper" data-bs-toggle="offcanvas" data-bs-target="#cartOffcanvas">
-                    <svg width="24" height="24"><use xlink:href="#shopping-bag"></use></svg>
-                    <span class="cart-badge cart-count-badge">0</span>
-                </button>
+                <a href="#" class="icon-wrapper"><svg width="24" height="24"><use xlink:href="#user"></use></svg></a>
+                <button class="btn p-0 border-0 bg-transparent icon-wrapper" data-bs-toggle="offcanvas" data-bs-target="#wishlistOffcanvas"><svg width="24" height="24"><use xlink:href="#wishlist"></use></svg><span class="wishlist-badge wishlist-count-badge">0</span></button>
+                <button class="btn p-0 border-0 bg-transparent icon-wrapper" data-bs-toggle="offcanvas" data-bs-target="#cartOffcanvas"><svg width="24" height="24"><use xlink:href="#shopping-bag"></use></svg><span class="cart-badge cart-count-badge">0</span></button>
             </div>
         </div>
     </div>
@@ -559,63 +363,43 @@
 
 <!-- OFF-CANVAS MENU -->
 <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar">
-    <div class="offcanvas-header justify-content-between">
-        <h4 class="fw-normal text-uppercase fs-6">Shop by Category</h4>
-        <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
-    </div>
+    <div class="offcanvas-header justify-content-between"><h4 class="fw-normal text-uppercase fs-6">Shop by Category</h4><button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button></div>
     <div class="offcanvas-body">
         <ul class="navbar-nav justify-content-end menu-list list-unstyled d-flex gap-md-3 mb-0">
-            <li class="nav-item"><a href="categories/wallpapers.html" class="nav-link d-flex align-items-center gap-3 text-dark p-2" data-category="wallpapers"><i class="fas fa-palette"></i><span>Wallpapers</span></a></li>
-            <li class="nav-item"><a href="categories/flooring.html" class="nav-link d-flex align-items-center gap-3 text-dark p-2" data-category="flooring"><i class="fas fa-th-large"></i><span>Flooring</span></a></li>
-            <li class="nav-item"><a href="categories/dastarkhawan.html" class="nav-link d-flex align-items-center gap-3 text-dark p-2" data-category="dastarkhawan"><i class="fas fa-table"></i><span>Plastic Dastarkhawan</span></a></li>
-            <li class="nav-item"><a href="categories/footmats.html" class="nav-link d-flex align-items-center gap-3 text-dark p-2" data-category="footmats"><i class="fas fa-door-open"></i><span>Footmats</span></a></li>
-            <li class="nav-item"><a href="categories/chatai.html" class="nav-link d-flex align-items-center gap-3 text-dark p-2" data-category="chatai"><i class="fas fa-leaf"></i><span>Chatai (Straw Mats)</span></a></li>
-            <li class="nav-item"><a href="categories/tarpaulin.html" class="nav-link d-flex align-items-center gap-3 text-dark p-2" data-category="tarpaulin"><i class="fas fa-tarp"></i><span>Tarpaulin</span></a></li>
-            <li class="nav-item"><a href="categories/sunshade-nets.html" class="nav-link d-flex align-items-center gap-3 text-dark p-2" data-category="sunshade"><i class="fas fa-sun"></i><span>Sunshade Nets</span></a></li>
-            <li class="nav-item"><a href="categories/carpet-tiles.html" class="nav-link d-flex align-items-center gap-3 text-dark p-2" data-category="carpet"><i class="fas fa-carpet"></i><span>Carpet Tiles</span></a></li>
-            <li class="nav-item"><a href="categories/artificial-grass.html" class="nav-link d-flex align-items-center gap-3 text-dark p-2" data-category="artificial"><i class="fas fa-tree"></i><span>Artificial Grass</span></a></li>
+            <li class="nav-item"><a href="categories/wallpapers.html" class="nav-link d-flex align-items-center gap-3 text-dark p-2"><i class="fas fa-palette"></i><span>Wallpapers</span></a></li>
+            <li class="nav-item"><a href="categories/flooring.html" class="nav-link d-flex align-items-center gap-3 text-dark p-2"><i class="fas fa-th-large"></i><span>Flooring</span></a></li>
+            <li class="nav-item"><a href="categories/dastarkhawan.html" class="nav-link d-flex align-items-center gap-3 text-dark p-2"><i class="fas fa-table"></i><span>Plastic Dastarkhawan</span></a></li>
+            <li class="nav-item"><a href="categories/footmats.html" class="nav-link d-flex align-items-center gap-3 text-dark p-2"><i class="fas fa-door-open"></i><span>Footmats</span></a></li>
+            <li class="nav-item"><a href="categories/chatai.html" class="nav-link d-flex align-items-center gap-3 text-dark p-2"><i class="fas fa-leaf"></i><span>Chatai (Straw Mats)</span></a></li>
+            <li class="nav-item"><a href="categories/tarpaulin.html" class="nav-link d-flex align-items-center gap-3 text-dark p-2"><i class="fas fa-tarp"></i><span>Tarpaulin</span></a></li>
+            <li class="nav-item"><a href="categories/sunshade-nets.html" class="nav-link d-flex align-items-center gap-3 text-dark p-2"><i class="fas fa-sun"></i><span>Sunshade Nets</span></a></li>
+            <li class="nav-item"><a href="categories/carpet-tiles.html" class="nav-link d-flex align-items-center gap-3 text-dark p-2"><i class="fas fa-carpet"></i><span>Carpet Tiles</span></a></li>
+            <li class="nav-item"><a href="categories/artificial-grass.html" class="nav-link d-flex align-items-center gap-3 text-dark p-2"><i class="fas fa-tree"></i><span>Artificial Grass</span></a></li>
         </ul>
     </div>
 </div>
 
 <!-- CART OFF-CANVAS -->
 <div class="offcanvas offcanvas-end" tabindex="-1" id="cartOffcanvas">
-    <div class="offcanvas-header">
-        <h5 class="offcanvas-title"><i class="fas fa-shopping-bag me-2"></i>Your Cart</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
-    </div>
+    <div class="offcanvas-header"><h5 class="offcanvas-title"><i class="fas fa-shopping-bag me-2"></i>Your Cart</h5><button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button></div>
     <div class="offcanvas-body">
-        <ul class="list-group list-group-flush" id="cart-items-list">
-            <li class="list-group-item text-center text-muted">Your cart is empty.</li>
-        </ul>
-        <div class="mt-4 d-flex justify-content-between fw-bold">
-            <span>Total:</span>
-            <span id="cart-total">PKR 0</span>
-        </div>
-        <div class="mt-3 d-grid gap-2">
-            <a href="#" id="whatsapp-checkout-btn" class="btn btn-success disabled">
-                <i class="fab fa-whatsapp me-2"></i>Checkout via WhatsApp
-            </a>
-        </div>
+        <ul class="list-group list-group-flush" id="cart-items-list"><li class="list-group-item text-center text-muted">Your cart is empty.</li></ul>
+        <div class="mt-4 d-flex justify-content-between fw-bold"><span>Total:</span><span id="cart-total">PKR 0</span></div>
+        <div class="mt-3 d-grid gap-2"><a href="#" id="whatsapp-checkout-btn" class="btn btn-success disabled"><i class="fab fa-whatsapp me-2"></i>Checkout via WhatsApp</a></div>
     </div>
 </div>
 
 <!-- WISHLIST OFF-CANVAS -->
 <div class="offcanvas offcanvas-end" tabindex="-1" id="wishlistOffcanvas">
-    <div class="offcanvas-header">
-        <h5 class="offcanvas-title"><i class="fas fa-heart me-2 text-danger"></i>Your Wishlist</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
-    </div>
-    <div class="offcanvas-body" id="wishlist-items-container">
-        <p class="text-center text-muted">Your wishlist is empty.</p>
-    </div>
+    <div class="offcanvas-header"><h5 class="offcanvas-title"><i class="fas fa-heart me-2 text-danger"></i>Your Wishlist</h5><button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button></div>
+    <div class="offcanvas-body" id="wishlist-items-container"><p class="text-center text-muted">Your wishlist is empty.</p></div>
 </div>
 
 <!-- SHOP HERO -->
 <section class="shop-hero py-5">
     <div class="container-lg py-4">
         <div class="row">
-            <div class="col-lg-8 text-white" data-aos="fade-right" data-aos-duration="800">
+            <div class="col-lg-8 text-white" data-aos="fade-right">
                 <h1 class="display-3 fw-bold mb-3">Shop Our <span class="text-warning">Products</span></h1>
                 <p class="lead mb-0 fs-4">Premium quality wallpapers, flooring, and home decor solutions at best prices</p>
             </div>
@@ -629,59 +413,33 @@
         <div class="row">
             <!-- Sidebar Filters -->
             <div class="col-lg-3 sidebar-filters">
-                <div class="filter-card" data-aos="fade-right" data-aos-duration="600">
+                <div class="filter-card">
                     <h5 class="filter-title"><i class="fas fa-list me-2"></i>Categories</h5>
-                    <ul class="category-list">
-                        <li><a href="#" data-category="all" class="active">All Products <span class="category-count">(24)</span></a></li>
-                        <li><a href="#" data-category="wallpapers">Wallpapers <span class="category-count">(6)</span></a></li>
-                        <li><a href="#" data-category="flooring">Flooring <span class="category-count">(5)</span></a></li>
-                        <li><a href="#" data-category="dastarkhawan">Plastic Dastarkhawan <span class="category-count">(3)</span></a></li>
-                        <li><a href="#" data-category="footmats">Footmats <span class="category-count">(4)</span></a></li>
-                        <li><a href="#" data-category="chatai">Chatai <span class="category-count">(2)</span></a></li>
-                        <li><a href="#" data-category="tarpaulin">Tarpaulin <span class="category-count">(2)</span></a></li>
-                        <li><a href="#" data-category="sunshade">Sunshade Nets <span class="category-count">(2)</span></a></li>
+                    <ul class="category-list" id="category-list">
+                        <!-- Dynamic categories will be loaded here -->
                     </ul>
                 </div>
-
-                <div class="filter-card" data-aos="fade-right" data-aos-duration="600" data-aos-delay="100">
+                <div class="filter-card">
                     <h5 class="filter-title"><i class="fas fa-sliders-h me-2"></i>Price Range</h5>
                     <input type="range" class="form-range price-range" id="priceRange" min="0" max="2000" step="50" value="2000">
-                    <div class="price-values">
-                        <span>PKR 0</span>
-                        <span id="priceMax">PKR 2000+</span>
-                    </div>
+                    <div class="price-values"><span>PKR 0</span><span id="priceMax">PKR 2000+</span></div>
                 </div>
-
-                <div class="filter-card" data-aos="fade-right" data-aos-duration="600" data-aos-delay="200">
+                <div class="filter-card">
                     <h5 class="filter-title"><i class="fas fa-tags me-2"></i>Brands</h5>
-                    <div class="form-check mb-2">
-                        <input class="form-check-input" type="checkbox" value="ms-plastic" id="brandMs">
-                        <label class="form-check-label" for="brandMs">MS Plastic Store</label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="premium" id="brandPremium">
-                        <label class="form-check-label" for="brandPremium">Premium Quality</label>
-                    </div>
+                    <div class="form-check mb-2"><input class="form-check-input" type="checkbox" value="ms-plastic" id="brandMs"><label class="form-check-label" for="brandMs">MS Plastic Store</label></div>
+                    <div class="form-check"><input class="form-check-input" type="checkbox" value="premium" id="brandPremium"><label class="form-check-label" for="brandPremium">Premium Quality</label></div>
                 </div>
-
-                <div class="filter-card" data-aos="fade-right" data-aos-duration="600" data-aos-delay="300">
+                <div class="filter-card">
                     <h5 class="filter-title"><i class="fas fa-star me-2"></i>Ratings</h5>
-                    <div class="form-check mb-2">
-                        <input class="form-check-input" type="checkbox" value="4" id="rating4">
-                        <label class="form-check-label" for="rating4"><i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="far fa-star text-muted"></i> & Up</label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="3" id="rating3">
-                        <label class="form-check-label" for="rating3"><i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="far fa-star text-muted"></i><i class="far fa-star text-muted"></i> & Up</label>
-                    </div>
+                    <div class="form-check mb-2"><input class="form-check-input" type="checkbox" value="4" id="rating4"><label class="form-check-label" for="rating4"><i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="far fa-star"></i> & Up</label></div>
+                    <div class="form-check"><input class="form-check-input" type="checkbox" value="3" id="rating3"><label class="form-check-label" for="rating3"><i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="far fa-star"></i><i class="far fa-star"></i> & Up</label></div>
                 </div>
             </div>
 
             <!-- Products Grid -->
             <div class="col-lg-9">
-                <!-- Sort & Results -->
-                <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-3" data-aos="fade-left" data-aos-duration="600">
-                    <p class="mb-0 text-muted" id="results-count">Showing 1-9 of 24 products</p>
+                <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-3">
+                    <p class="mb-0 text-muted" id="results-count">Showing 1-9 of 56 products</p>
                     <div class="d-flex gap-3 align-items-center">
                         <div class="view-toggle d-flex">
                             <button class="btn btn-sm active" id="gridViewBtn"><i class="fas fa-th-large"></i></button>
@@ -696,60 +454,19 @@
                     </div>
                 </div>
 
-                <!-- Products Container -->
-                <div class="row g-4" id="products-container">
-                    <!-- Skeleton Loader -->
-                    <div class="col-md-6 col-lg-4">
-                        <div class="skeleton-card">
-                            <div class="skeleton-img"></div>
-                            <div class="skeleton-text medium mt-3"></div>
-                            <div class="skeleton-text short"></div>
-                            <div class="skeleton-text w-75"></div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-4">
-                        <div class="skeleton-card">
-                            <div class="skeleton-img"></div>
-                            <div class="skeleton-text medium mt-3"></div>
-                            <div class="skeleton-text short"></div>
-                            <div class="skeleton-text w-75"></div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-4">
-                        <div class="skeleton-card">
-                            <div class="skeleton-img"></div>
-                            <div class="skeleton-text medium mt-3"></div>
-                            <div class="skeleton-text short"></div>
-                            <div class="skeleton-text w-75"></div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Pagination -->
-                <nav class="mt-5">
-                    <ul class="pagination justify-content-center" id="pagination">
-                        <li class="page-item disabled"><a class="page-link" href="#"><i class="fas fa-chevron-left"></i></a></li>
-                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                        <li class="page-item"><a class="page-link" href="#"><i class="fas fa-chevron-right"></i></a></li>
-                    </ul>
-                </nav>
+                <div class="row g-4" id="products-container"></div>
+                <nav class="mt-5"><ul class="pagination justify-content-center" id="pagination"></ul></nav>
             </div>
         </div>
     </div>
 </section>
 
 <!-- Quick View Modal -->
-<div class="modal fade quick-view-modal" id="quickViewModal" tabindex="-1">
+<div class="modal fade" id="quickViewModal" tabindex="-1">
     <div class="modal-dialog modal-lg modal-dialog-centered">
         <div class="modal-content">
-            <div class="modal-header border-0">
-                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-            </div>
-            <div class="modal-body p-4" id="quickViewContent">
-                <!-- Dynamic content -->
-            </div>
+            <div class="modal-header border-0"><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div>
+            <div class="modal-body p-4" id="quickViewContent"></div>
         </div>
     </div>
 </div>
@@ -759,8 +476,8 @@
     <div class="container-lg">
         <div class="row">
             <div class="col-md-3"><img src="images/fhdgh.PNG" class="mb-3" style="max-height: 50px;"><p class="small">Premium quality wallpapers, flooring & home decor solutions in Pakistan since 2015.</p></div>
-            <div class="col-md-3"><h5>Quick Links</h5><ul class="list-unstyled small"><li><a href="about.html" class="text-white-50 text-decoration-none">About Us</a></li><li><a href="contactus.html" class="text-white-50 text-decoration-none">Contact</a></li><li><a href="privacy-policy.html" class="text-white-50 text-decoration-none">Privacy Policy</a></li></ul></div>
-            <div class="col-md-3"><h5>Categories</h5><ul class="list-unstyled small"><li><a href="categories/wallpapers.html" class="text-white-50 text-decoration-none">Wallpapers</a></li><li><a href="categories/flooring.html" class="text-white-50 text-decoration-none">Flooring</a></li><li><a href="categories/tarpaulin.html" class="text-white-50 text-decoration-none">Tarpaulin</a></li><li><a href="categories/sunshade-nets.html" class="text-white-50 text-decoration-none">Sunshade Nets</a></li></ul></div>
+            <div class="col-md-3"><h5>Quick Links</h5><ul class="list-unstyled small"><li><a href="about.html" class="text-white-50">About Us</a></li><li><a href="contactus.html" class="text-white-50">Contact</a></li><li><a href="privacy-policy.html" class="text-white-50">Privacy Policy</a></li></ul></div>
+            <div class="col-md-3"><h5>Categories</h5><ul class="list-unstyled small"><li><a href="categories/wallpapers.html" class="text-white-50">Wallpapers</a></li><li><a href="categories/flooring.html" class="text-white-50">Flooring</a></li><li><a href="categories/tarpaulin.html" class="text-white-50">Tarpaulin</a></li><li><a href="categories/sunshade-nets.html" class="text-white-50">Sunshade Nets</a></li></ul></div>
             <div class="col-md-3"><h5>Contact</h5><p class="small"><i class="fas fa-phone me-2"></i>+92 319 0306199</p><p class="small"><i class="fab fa-whatsapp me-2"></i>+92 319 0306199</p></div>
         </div>
         <hr class="mt-4"><div class="text-center small text-white-50">© 2025 MS Plastic Store. All rights reserved.</div>
@@ -771,27 +488,75 @@
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
 <script>
-    // Initialize AOS
-    AOS.init({
-        duration: 800,
-        once: true,
-        offset: 50
-    });
+    AOS.init({ duration: 800, once: true, offset: 50 });
 
-    // ========== PRODUCT DATA ==========
+    // ========== PRODUCT DATA (56 PRODUCTS) ==========
     const products = [
-        { id: "prod1", name: "Wood Design Flooring Mat", category: "flooring", price: 198, oldPrice: 220, unit: "/sq ft", image: "images/Flooring-Transitions.webp", rating: 4.5, reviews: 222, brand: "ms-plastic" },
-        { id: "prod2", name: "Classic Interior Wallpaper", category: "wallpapers", price: 180, oldPrice: 230, unit: "/sq ft", image: "images/download (1).jpg", rating: 4.5, reviews: 41, brand: "ms-plastic" },
-        { id: "prod3", name: "Plastic Dastarkhawan Sheet", category: "dastarkhawan", price: 600, oldPrice: 700, unit: "/piece", image: "images/images (8).jpg", rating: 4, reviews: 32, brand: "ms-plastic" },
-        { id: "prod4", name: "Designer Door Footmat", category: "footmats", price: 486, oldPrice: 540, unit: "/piece", image: "images/whatsapp-image-2025-05-08-at-21-36-28-dcc40a3b-500x500.webp", rating: 4, reviews: 222, brand: "ms-plastic" },
-        { id: "prod5", name: "Waterproof Tarpaulin", category: "tarpaulin", price: 9, oldPrice: 10.5, unit: "/sq ft", image: "images/images (26).jpg", rating: 4, reviews: 222, brand: "ms-plastic" },
-        { id: "prod6", name: "3D Brick Wallpaper", category: "wallpapers", price: 252, oldPrice: 280, unit: "/sq ft", image: "images/images 453.jpg", rating: 5, reviews: 156, brand: "premium" },
-        { id: "prod7", name: "Wooden Laminate Flooring", category: "flooring", price: 288, oldPrice: 320, unit: "/sq ft", image: "images/download.jpg", rating: 4, reviews: 98, brand: "premium" },
-        { id: "prod8", name: "Sunshade Net Green", category: "sunshade", price: 22.5, oldPrice: 25, unit: "/sq ft", image: "images/Green_Shade_Net_-_Good_Quality_Ready_to_Use_moji_mall_pakistan.jpg", rating: 4.5, reviews: 45, brand: "ms-plastic" },
-        { id: "prod9", name: "Natural Chatai Straw Mat", category: "chatai", price: 405, oldPrice: 450, unit: "/piece", image: "images/images (2).jpg", rating: 4, reviews: 112, brand: "ms-plastic" },
-        { id: "prod10", name: "PVC Wall Panel Marble", category: "wallpapers", price: 351, oldPrice: 390, unit: "/panel", image: "images/gold-star-pvc-marble-effect-wall-panels-wall-cladding-wall-design-bathroom-kitchen-2.webp", rating: 4, reviews: 47, brand: "premium" },
-        { id: "prod11", name: "Carpet Tiles Office", category: "flooring", price: 198, oldPrice: 220, unit: "/tile", image: "images/images (3).jpg", rating: 5, reviews: 52, brand: "ms-plastic" },
-        { id: "prod12", name: "Anti-Slip Rubber Flooring", category: "flooring", price: 540, oldPrice: 600, unit: "/sq ft", image: "images/dxbfvx.jpg", rating: 4.5, reviews: 78, brand: "premium" }
+        // Wallpapers (10)
+        { id: "wp1", name: "Classic Interior Wallpaper", category: "wallpapers", price: 180, oldPrice: 230, unit: "/roll", image: "images/pexels-merwak-raw-399619273-33419833.jpg", rating: 4.5, reviews: 41, brand: "ms-plastic" },
+        { id: "wp2", name: "3D Brick Wallpaper", category: "wallpapers", price: 252, oldPrice: 280, unit: "/roll", image: "images/download (21).jpg", rating: 5, reviews: 156, brand: "premium" },
+        { id: "wp3", name: "PVC Wall Panel Marble", category: "wallpapers", price: 351, oldPrice: 390, unit: "/panel", image: "images/gold-star-pvc-marble-effect-wall-panels-wall-cladding-wall-design-bathroom-kitchen-2.webp", rating: 4, reviews: 47, brand: "premium" },
+        { id: "wp4", name: "Modern Textured Wallpaper", category: "wallpapers", price: 220, oldPrice: 280, unit: "/roll", image: "images/images (28).jpg", rating: 4.5, reviews: 89, brand: "ms-plastic" },
+        { id: "wp5", name: "Floral Pattern Wallpaper", category: "wallpapers", price: 195, oldPrice: 250, unit: "/roll", image: "images/image-1690292325-530-710x488.jpg", rating: 4.3, reviews: 67, brand: "ms-plastic" },
+        { id: "wp6", name: "Geometric Design Wallpaper", category: "wallpapers", price: 210, oldPrice: 270, unit: "/roll", image: "images/download (22).jpg", rating: 4.6, reviews: 112, brand: "premium" },
+        { id: "wp7", name: "Striped Wallpaper (Blue)", category: "wallpapers", price: 175, oldPrice: 220, unit: "/roll", image: "images/images (29).jpg", rating: 4.2, reviews: 54, brand: "ms-plastic" },
+        { id: "wp8", name: "Velvet Finish Wallpaper", category: "wallpapers", price: 420, oldPrice: 500, unit: "/roll", image: "images/images (30).jpg", rating: 4.8, reviews: 203, brand: "premium" },
+        { id: "wp9", name: "Kids Room Cartoon Wallpaper", category: "wallpapers", price: 165, oldPrice: 210, unit: "/roll", image: "images/Shark-Cartoon-wallpaper.jpg", rating: 4.4, reviews: 78, brand: "ms-plastic" },
+        { id: "wp10", name: "Abstract Art Wallpaper", category: "wallpapers", price: 230, oldPrice: 290, unit: "/roll", image: "images/images (31).jpg", rating: 4.5, reviews: 92, brand: "premium" },
+        // Flooring (10)
+        { id: "fl1", name: "Wood Design Flooring Mat", category: "flooring", price: 198, oldPrice: 220, unit: "/sq ft", image: "images/Flooring-Transitions.webp", rating: 4.5, reviews: 222, brand: "ms-plastic" },
+        { id: "fl2", name: "Wooden Laminate Flooring", category: "flooring", price: 288, oldPrice: 320, unit: "/sq ft", image: "images/download.jpg", rating: 4, reviews: 98, brand: "premium" },
+        { id: "fl3", name: "Carpet Tiles Office", category: "flooring", price: 198, oldPrice: 220, unit: "/tile", image: "images/images (3).jpg", rating: 5, reviews: 52, brand: "ms-plastic" },
+        { id: "fl4", name: "Anti-Slip Rubber Flooring", category: "flooring", price: 540, oldPrice: 600, unit: "/sq ft", image: "images/dxbfvx.jpg", rating: 4.5, reviews: 78, brand: "premium" },
+        { id: "fl5", name: "PVC Vinyl Flooring Roll", category: "flooring", price: 450, oldPrice: 520, unit: "/roll", image: "images/Flooring-Transitions.webp", rating: 4.3, reviews: 145, brand: "ms-plastic" },
+        { id: "fl6", name: "Luxury Vinyl Tile (LVT)", category: "flooring", price: 380, oldPrice: 450, unit: "/sq ft", image: "images/download (23).jpg", rating: 4.7, reviews: 89, brand: "premium" },
+        { id: "fl7", name: "Marble Design Flooring", category: "flooring", price: 320, oldPrice: 400, unit: "/sq ft", image: "images/product-jpeg.jpg", rating: 4.4, reviews: 67, brand: "ms-plastic" },
+        { id: "fl8", name: "Sports Flooring Mat", category: "flooring", price: 480, oldPrice: 580, unit: "/sq ft", image: "images/Flooring-Transitions.webp", rating: 4.6, reviews: 112, brand: "premium" },
+        { id: "fl9", name: "Outdoor Deck Flooring", category: "flooring", price: 350, oldPrice: 420, unit: "/sq ft", image: "images/weibiaoti.webp", rating: 4.3, reviews: 45, brand: "ms-plastic" },
+        { id: "fl10", name: "Underfloor Heating Compatible", category: "flooring", price: 520, oldPrice: 650, unit: "/sq ft", image: "images/underfloor_heating_1_mobile.webp", rating: 4.8, reviews: 34, brand: "premium" },
+        // Dastarkhawan (6)
+        { id: "ds1", name: "Plastic Dastarkhawan Sheet", category: "dastarkhawan", price: 600, oldPrice: 700, unit: "/piece", image: "images/download (20).jpg", rating: 4, reviews: 32, brand: "ms-plastic" },
+        { id: "ds2", name: "Round Dastarkhawan (6ft)", category: "dastarkhawan", price: 550, oldPrice: 650, unit: "/piece", image: "images/c0f4822dbbd989cd2667d17a534da3e7.png", rating: 4.2, reviews: 56, brand: "ms-plastic" },
+        { id: "ds3", name: "Premium PVC Dastarkhawan", category: "dastarkhawan", price: 750, oldPrice: 900, unit: "/piece", image: "images/images (32).jpg", rating: 4.5, reviews: 89, brand: "premium" },
+        { id: "ds4", name: "Kids Design Dastarkhawan", category: "dastarkhawan", price: 480, oldPrice: 580, unit: "/piece", image: "images/images (33).jpg", rating: 4.3, reviews: 67, brand: "ms-plastic" },
+        { id: "ds5", name: "Floral Print Dastarkhawan", category: "dastarkhawan", price: 520, oldPrice: 620, unit: "/piece", image: "images/dasterka.jpg", rating: 4.4, reviews: 78, brand: "ms-plastic" },
+        { id: "ds6", name: "Extra Large Dastarkhawan (10x6ft)", category: "dastarkhawan", price: 950, oldPrice: 1200, unit: "/piece", image: "images/images (34).jpg", rating: 4.6, reviews: 45, brand: "premium" },
+        // Footmats (6)
+        { id: "fm1", name: "Designer Door Footmat", category: "footmats", price: 486, oldPrice: 540, unit: "/piece", image: "images/whatsapp-image-2025-05-08-at-21-36-28-dcc40a3b-500x500.webp", rating: 4, reviews: 222, brand: "ms-plastic" },
+        { id: "fm2", name: "Coir Footmat (Entrance)", category: "footmats", price: 350, oldPrice: 420, unit: "/piece", image: "images/welcome-palms-door-mat-sun-republic-346050.jpg", rating: 4.3, reviews: 156, brand: "ms-plastic" },
+        { id: "fm3", name: "Anti-Skid Rubber Mat", category: "footmats", price: 280, oldPrice: 350, unit: "/piece", image: "images/images (35).jpg", rating: 4.4, reviews: 98, brand: "ms-plastic" },
+        { id: "fm4", name: "Custom Logo Welcome Mat", category: "footmats", price: 650, oldPrice: 800, unit: "/piece", image: "images/logdg_l2_1_1_1080x.jpg", rating: 4.7, reviews: 45, brand: "premium" },
+        { id: "fm5", name: "Microfiber Footmat", category: "footmats", price: 320, oldPrice: 400, unit: "/piece", image: "images/71YXItxBoNL.jpg", rating: 4.5, reviews: 112, brand: "ms-plastic" },
+        { id: "fm6", name: "Outdoor Heavy Duty Mat", category: "footmats", price: 520, oldPrice: 650, unit: "/piece", image: "images/images (36).jpg", rating: 4.6, reviews: 78, brand: "premium" },
+        // Chatai (5)
+        { id: "ch1", name: "Natural Chatai Straw Mat", category: "chatai", price: 405, oldPrice: 450, unit: "/piece", image: "images/images (2).jpg", rating: 4, reviews: 112, brand: "ms-plastic" },
+        { id: "ch2", name: "Handwoven Traditional Chatai", category: "chatai", price: 380, oldPrice: 450, unit: "/piece", image: "images/images (37).jpg", rating: 4.3, reviews: 89, brand: "ms-plastic" },
+        { id: "ch3", name: "Premium Quality Chatai", category: "chatai", price: 550, oldPrice: 650, unit: "/piece", image: "images/chatai.webp", rating: 4.5, reviews: 67, brand: "premium" },
+        { id: "ch4", name: "Round Chatai (6ft)", category: "chatai", price: 420, oldPrice: 500, unit: "/piece", image: "images/51pyz5UU4IL.jpg", rating: 4.2, reviews: 45, brand: "ms-plastic" },
+        { id: "ch5", name: "Colored Design Chatai", category: "chatai", price: 480, oldPrice: 580, unit: "/piece", image: "images/S3df11911f1764116abfbd32078a5883bB.jpg", rating: 4.4, reviews: 56, brand: "ms-plastic" },
+        // Tarpaulin (5)
+        { id: "tp1", name: "Waterproof Tarpaulin", category: "tarpaulin", price: 9, oldPrice: 10.5, unit: "/sq ft", image: "images/images (26).jpg", rating: 4, reviews: 222, brand: "ms-plastic" },
+        { id: "tp2", name: "Heavy Duty Truck Cover", category: "tarpaulin", price: 12, oldPrice: 15, unit: "/sq ft", image: "images/download (16).jpg", rating: 4.5, reviews: 134, brand: "premium" },
+        { id: "tp3", name: "Agricultural Tarpaulin", category: "tarpaulin", price: 15, oldPrice: 12, unit: "/sq ft", image: "images/images (38).jpg", rating: 4.3, reviews: 98, brand: "ms-plastic" },
+        { id: "tp4", name: "Camping Ground Sheet", category: "tarpaulin", price: 7.5, oldPrice: 9, unit: "/sq ft", image: "images/images (39).jpg", rating: 4.4, reviews: 156, brand: "ms-plastic" },
+        { id: "tp5", name: "Pool Cover Tarpaulin", category: "tarpaulin", price: 11, oldPrice: 14, unit: "/sq ft", image: "images/Pool-Cover.avif", rating: 4.6, reviews: 67, brand: "premium" },
+        // Sunshade Nets (5)
+        { id: "ss1", name: "Sunshade Net Green", category: "sunshade", price: 22.5, oldPrice: 25, unit: "/sq ft", image: "images/Green_Shade_Net_-_Good_Quality_Ready_to_Use_moji_mall_pakistan.jpg", rating: 4.5, reviews: 45, brand: "ms-plastic" },
+        { id: "ss2", name: "Black Sunshade Net (90%)", category: "sunshade", price: 28, oldPrice: 32, unit: "/sq ft", image: "images/images (40).jpg", rating: 4.6, reviews: 78, brand: "premium" },
+        { id: "ss3", name: "Blue Sunshade Net (80%)", category: "sunshade", price: 18, oldPrice: 22, unit: "/sq ft", image: "images/8cd0e45d-811c-48a2-98fc-cec7c1cc6c9b.webp", rating: 4.3, reviews: 56, brand: "ms-plastic" },
+        { id: "ss4", name: "White Sunshade Net (30%)", category: "sunshade", price: 15, oldPrice: 18, unit: "/sq ft", image: "images/images (41).jpg", rating: 4.2, reviews: 34, brand: "ms-plastic" },
+        { id: "ss5", name: "Agricultural Shade Net", category: "sunshade", price: 20, oldPrice: 25, unit: "/sq ft", image: "images/Good.avif", rating: 4.4, reviews: 67, brand: "premium" },
+        // Carpet Tiles (5)
+        { id: "ct1", name: "Office Carpet Tiles", category: "carpet-tiles", price: 198, oldPrice: 220, unit: "/tile", image: "images/images (3).jpg", rating: 4.5, reviews: 52, brand: "ms-plastic" },
+        { id: "ct2", name: "Colorful Carpet Tiles", category: "carpet-tiles", price: 220, oldPrice: 250, unit: "/tile", image: "images/images (42).jpg", rating: 4.4, reviews: 78, brand: "ms-plastic" },
+        { id: "ct3", name: "Anti-Static Carpet Tiles", category: "carpet-tiles", price: 280, oldPrice: 320, unit: "/tile", image: "images/images (44).jpg", rating: 4.6, reviews: 45, brand: "premium" },
+        { id: "ct4", name: "Home Bedroom Carpet Tiles", category: "carpet-tiles", price: 175, oldPrice: 200, unit: "/tile", image: "images/featured.jpg", rating: 4.3, reviews: 89, brand: "ms-plastic" },
+        { id: "ct5", name: "Luxury Hotel Carpet Tiles", category: "carpet-tiles", price: 350, oldPrice: 420, unit: "/tile", image: "images/Luxury-Hotel-Room-Carpets-with-Custom-Pile-Height.avif", rating: 4.7, reviews: 34, brand: "premium" },
+        // Artificial Grass (4)
+        { id: "ag1", name: "Premium Artificial Grass", category: "artificial-grass", price: 180, oldPrice: 200, unit: "/sq ft", image: "images/680558257186312dfffc3c373b45a045.jpg", rating: 4.5, reviews: 200, brand: "ms-plastic" },
+        { id: "ag2", name: "Pet Friendly Artificial Grass", category: "artificial-grass", price: 220, oldPrice: 260, unit: "/sq ft", image: "images/images (45).jpg", rating: 4.7, reviews: 112, brand: "premium" },
+        { id: "ag3", name: "Balcony Artificial Grass", category: "artificial-grass", price: 160, oldPrice: 190, unit: "/sq ft", image: "images/download (25).jpg", rating: 4.4, reviews: 89, brand: "ms-plastic" },
+        { id: "ag4", name: "Sports Artificial Grass", category: "artificial-grass", price: 280, oldPrice: 340, unit: "/sq ft", image: "images/61HogN4I4bL._AC_UF894,1000_QL80_.jpg", rating: 4.6, reviews: 56, brand: "premium" }
     ];
 
     // ========== CART & WISHLIST ==========
@@ -864,31 +629,67 @@
         });
     }
 
-    // ========== RENDER PRODUCTS ==========
+    // ========== RENDER FUNCTIONS ==========
     let currentCategory = 'all';
     let currentSort = 'default';
     let currentPage = 1;
     let currentView = 'grid';
+    let currentSearch = '';
     const itemsPerPage = 9;
+
+    function getCategoryCounts() {
+        const counts = {};
+        products.forEach(p => { counts[p.category] = (counts[p.category] || 0) + 1; });
+        counts.all = products.length;
+        return counts;
+    }
+
+    function renderCategories() {
+        const container = document.getElementById('category-list');
+        if (!container) return;
+        const counts = getCategoryCounts();
+        const categories = [
+            { key: 'all', name: 'All Products', icon: 'fa-th-large' },
+            { key: 'wallpapers', name: 'Wallpapers', icon: 'fa-palette' },
+            { key: 'flooring', name: 'Flooring', icon: 'fa-th-large' },
+            { key: 'dastarkhawan', name: 'Plastic Dastarkhawan', icon: 'fa-table' },
+            { key: 'footmats', name: 'Footmats', icon: 'fa-door-open' },
+            { key: 'chatai', name: 'Chatai', icon: 'fa-leaf' },
+            { key: 'tarpaulin', name: 'Tarpaulin', icon: 'fa-tarp' },
+            { key: 'sunshade', name: 'Sunshade Nets', icon: 'fa-sun' },
+            { key: 'carpet-tiles', name: 'Carpet Tiles', icon: 'fa-carpet' },
+            { key: 'artificial-grass', name: 'Artificial Grass', icon: 'fa-tree' }
+        ];
+        container.innerHTML = categories.map(cat => `
+            <li><a href="#" data-category="${cat.key}" class="${currentCategory === cat.key ? 'active' : ''}"><i class="fas ${cat.icon} me-2"></i>${cat.name} <span class="category-count">(${counts[cat.key] || 0})</span></a></li>
+        `).join('');
+        
+        document.querySelectorAll('.category-list a').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                document.querySelectorAll('.category-list a').forEach(l => l.classList.remove('active'));
+                link.classList.add('active');
+                currentCategory = link.dataset.category;
+                currentPage = 1;
+                renderProducts();
+            });
+        });
+    }
 
     function filterProducts() {
         let filtered = [...products];
         if (currentCategory !== 'all') filtered = filtered.filter(p => p.category === currentCategory);
         const priceMax = parseInt(document.getElementById('priceRange')?.value) || 2000;
         filtered = filtered.filter(p => p.price <= priceMax);
-        
-        // Brand filter
         const brandMs = document.getElementById('brandMs')?.checked;
         const brandPremium = document.getElementById('brandPremium')?.checked;
         if (brandMs && !brandPremium) filtered = filtered.filter(p => p.brand === 'ms-plastic');
         if (brandPremium && !brandMs) filtered = filtered.filter(p => p.brand === 'premium');
-        
-        // Rating filter
         const rating4 = document.getElementById('rating4')?.checked;
         const rating3 = document.getElementById('rating3')?.checked;
         if (rating4) filtered = filtered.filter(p => p.rating >= 4);
         else if (rating3) filtered = filtered.filter(p => p.rating >= 3);
-        
+        if (currentSearch) filtered = filtered.filter(p => p.name.toLowerCase().includes(currentSearch.toLowerCase()));
         return filtered;
     }
 
@@ -903,32 +704,24 @@
     function renderProducts() {
         const container = document.getElementById('products-container');
         if (!container) return;
-        
         let filtered = filterProducts();
         const sorted = sortProducts(filtered);
         const totalItems = sorted.length;
         const totalPages = Math.ceil(totalItems / itemsPerPage);
         const start = (currentPage - 1) * itemsPerPage;
         const paginatedItems = sorted.slice(start, start + itemsPerPage);
-        
         document.getElementById('results-count').innerText = `Showing ${start+1}-${Math.min(start+itemsPerPage, totalItems)} of ${totalItems} products`;
-        
-        if (paginatedItems.length === 0) {
-            container.innerHTML = '<div class="col-12 text-center py-5"><i class="fas fa-search fa-4x text-muted mb-4"></i><h3>No products found</h3><p class="text-muted">Try adjusting your filters</p></div>';
-            return;
-        }
+        if (paginatedItems.length === 0) { container.innerHTML = '<div class="col-12 text-center py-5"><i class="fas fa-search fa-4x text-muted mb-4"></i><h3>No products found</h3><p class="text-muted">Try adjusting your filters</p></div>'; renderPagination(totalPages); return; }
         
         if (currentView === 'grid') {
             container.className = 'row g-4';
             container.innerHTML = paginatedItems.map(p => `
-                <div class="col-md-6 col-lg-4" data-product-id="${p.id}" data-aos="zoom-in" data-aos-duration="500">
+                <div class="col-md-6 col-lg-4" data-product-id="${p.id}">
                     <div class="card product-card h-100 border-0 shadow-sm">
                         <div class="product-img-wrapper p-3 position-relative">
                             <span class="discount-badge">${Math.round(((p.oldPrice - p.price) / p.oldPrice) * 100)}% OFF</span>
-                            <img src="${p.image}" class="card-img-top rounded-3" alt="${p.name}">
-                            <div class="overlay-add-to-cart">
-                                <button class="btn-cart-overlay add-to-cart-btn"><i class="fas fa-shopping-cart me-2"></i>Quick Add</button>
-                            </div>
+                            <img src="${p.image}" class="card-img-top rounded-3" alt="${p.name}" loading="lazy">
+                            <div class="overlay-add-to-cart"><button class="btn-cart-overlay add-to-cart-btn"><i class="fas fa-shopping-cart me-2"></i>Quick Add</button></div>
                         </div>
                         <div class="card-body text-center pt-0">
                             <h6 class="product-name fw-bold">${p.name}</h6>
@@ -946,79 +739,21 @@
         } else {
             container.className = 'row g-3';
             container.innerHTML = paginatedItems.map(p => `
-                <div class="col-12" data-product-id="${p.id}" data-aos="fade-up" data-aos-duration="500">
+                <div class="col-12" data-product-id="${p.id}">
                     <div class="card product-card h-100 border-0 shadow-sm p-3">
                         <div class="row align-items-center">
-                            <div class="col-md-3">
-                                <div class="position-relative">
-                                    <span class="discount-badge" style="position: absolute; top: 10px; left: 10px;">${Math.round(((p.oldPrice - p.price) / p.oldPrice) * 100)}% OFF</span>
-                                    <img src="${p.image}" class="img-fluid rounded-3" style="height: 120px; width: 100%; object-fit: cover;" alt="${p.name}">
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <h5 class="product-name fw-bold">${p.name}</h5>
-                                <div class="text-warning small mb-2">${'★'.repeat(Math.floor(p.rating))}${p.rating%1 ? '½' : ''} <span class="text-muted">(${p.reviews})</span></div>
-                                <p class="text-muted small">Premium quality product with best price guarantee.</p>
-                            </div>
-                            <div class="col-md-3 text-md-end">
-                                <div><del class="text-muted small">PKR ${p.oldPrice}${p.unit}</del></div>
-                                <div><span class="fw-bold text-primary fs-4 product-price" data-base-price="${p.price}" data-unit="${p.unit}">PKR ${p.price}${p.unit}</span></div>
-                                <div class="mt-2 d-flex gap-2 justify-content-md-end">
-                                    <button class="btn btn-primary btn-sm add-to-cart-btn"><i class="fas fa-cart-plus me-1"></i>Add</button>
-                                    <button class="btn btn-outline-danger btn-sm wishlist-btn" data-product-id="${p.id}"><i class="far fa-heart"></i></button>
-                                    <button class="btn btn-outline-secondary btn-sm quick-view-btn" data-product='${JSON.stringify(p)}'><i class="fas fa-eye"></i></button>
-                                </div>
-                            </div>
+                            <div class="col-md-3"><div class="position-relative"><span class="discount-badge" style="position: absolute; top: 10px; left: 10px;">${Math.round(((p.oldPrice - p.price) / p.oldPrice) * 100)}% OFF</span><img src="${p.image}" class="img-fluid rounded-3" style="height: 100px; width: 100%; object-fit: cover;" alt="${p.name}"></div></div>
+                            <div class="col-md-6"><h5 class="product-name fw-bold">${p.name}</h5><div class="text-warning small mb-2">${'★'.repeat(Math.floor(p.rating))}${p.rating%1 ? '½' : ''} <span class="text-muted">(${p.reviews})</span></div><p class="text-muted small">Premium quality product with best price guarantee.</p></div>
+                            <div class="col-md-3 text-md-end"><div><del class="text-muted small">PKR ${p.oldPrice}${p.unit}</del></div><div><span class="fw-bold text-primary fs-4 product-price" data-base-price="${p.price}" data-unit="${p.unit}">PKR ${p.price}${p.unit}</span></div><div class="mt-2 d-flex gap-2 justify-content-md-end"><button class="btn btn-primary btn-sm add-to-cart-btn"><i class="fas fa-cart-plus me-1"></i>Add</button><button class="btn btn-outline-danger btn-sm wishlist-btn" data-product-id="${p.id}"><i class="far fa-heart"></i></button><button class="btn btn-outline-secondary btn-sm quick-view-btn" data-product='${JSON.stringify(p)}'><i class="fas fa-eye"></i></button></div></div>
                         </div>
                     </div>
                 </div>
             `).join('');
         }
         
-        // Attach event listeners
-        document.querySelectorAll('.add-to-cart-btn').forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                const card = btn.closest('[data-product-id]');
-                if (card) {
-                    const id = card.dataset.productId;
-                    const product = products.find(p => p.id === id);
-                    if (product) addToCart(product);
-                }
-            });
-        });
-        
-        document.querySelectorAll('.wishlist-btn').forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                const id = btn.dataset.productId;
-                const product = products.find(p => p.id === id);
-                if (product) toggleWishlist(product);
-            });
-        });
-        
-        // Quick view
-        document.querySelectorAll('.quick-view-btn').forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                const product = JSON.parse(btn.dataset.product);
-                const modal = new bootstrap.Modal(document.getElementById('quickViewModal'));
-                document.getElementById('quickViewContent').innerHTML = `
-                    <div class="row">
-                        <div class="col-md-6">
-                            <img src="${product.image}" class="quick-view-img" alt="${product.name}">
-                        </div>
-                        <div class="col-md-6">
-                            <h3 class="fw-bold">${product.name}</h3>
-                            <div class="text-warning mb-2">${'★'.repeat(Math.floor(product.rating))}${product.rating%1 ? '½' : ''} <span class="text-muted">(${product.reviews} reviews)</span></div>
-                            <div><del class="text-muted">PKR ${product.oldPrice}${product.unit}</del> <span class="fs-3 fw-bold text-primary">PKR ${product.price}${product.unit}</span></div>
-                            <p class="mt-3 text-muted">Premium quality product with best price guarantee. Free delivery on orders above PKR 10,000.</p>
-                            <button class="btn btn-primary mt-3 add-to-cart-btn" data-product-id="${product.id}"><i class="fas fa-cart-plus me-2"></i>Add to Cart</button>
-                        </div>
-                    </div>
-                `;
-                modal.show();
-                document.querySelector('#quickViewContent .add-to-cart-btn').addEventListener('click', () => addToCart(product));
-            });
-        });
-        
+        document.querySelectorAll('.add-to-cart-btn').forEach(btn => { btn.addEventListener('click', (e) => { const card = btn.closest('[data-product-id]'); if(card) { const id = card.dataset.productId; const product = products.find(p => p.id === id); if(product) addToCart(product); } }); });
+        document.querySelectorAll('.wishlist-btn').forEach(btn => { btn.addEventListener('click', (e) => { const id = btn.dataset.productId; const product = products.find(p => p.id === id); if(product) toggleWishlist(product); }); });
+        document.querySelectorAll('.quick-view-btn').forEach(btn => { btn.addEventListener('click', (e) => { const product = JSON.parse(btn.dataset.product); const modal = new bootstrap.Modal(document.getElementById('quickViewModal')); document.getElementById('quickViewContent').innerHTML = `<div class="row"><div class="col-md-6"><img src="${product.image}" class="img-fluid rounded-4" alt="${product.name}"></div><div class="col-md-6"><h3 class="fw-bold">${product.name}</h3><div class="text-warning mb-2">${'★'.repeat(Math.floor(product.rating))}${product.rating%1 ? '½' : ''} <span class="text-muted">(${product.reviews} reviews)</span></div><div><del class="text-muted">PKR ${product.oldPrice}${product.unit}</del> <span class="fs-3 fw-bold text-primary">PKR ${product.price}${product.unit}</span></div><p class="mt-3 text-muted">Premium quality product with best price guarantee. Free delivery on orders above PKR 10,000.</p><button class="btn btn-primary mt-3 add-to-cart-btn-quick" data-product-id="${product.id}"><i class="fas fa-cart-plus me-2"></i>Add to Cart</button></div></div>`; modal.show(); document.querySelector('.add-to-cart-btn-quick')?.addEventListener('click', () => addToCart(product)); }); });
         updateWishlistIcons();
         renderPagination(totalPages);
     }
@@ -1026,106 +761,35 @@
     function renderPagination(totalPages) {
         const pagination = document.getElementById('pagination');
         if (!pagination) return;
+        if (totalPages <= 1) { pagination.innerHTML = ''; return; }
         let html = `<li class="page-item ${currentPage === 1 ? 'disabled' : ''}"><a class="page-link" href="#" data-page="${currentPage-1}"><i class="fas fa-chevron-left"></i></a></li>`;
-        for (let i = 1; i <= Math.min(totalPages, 5); i++) {
-            html += `<li class="page-item ${currentPage === i ? 'active' : ''}"><a class="page-link" href="#" data-page="${i}">${i}</a></li>`;
-        }
+        for (let i = 1; i <= Math.min(totalPages, 5); i++) { html += `<li class="page-item ${currentPage === i ? 'active' : ''}"><a class="page-link" href="#" data-page="${i}">${i}</a></li>`; }
         html += `<li class="page-item ${currentPage === totalPages ? 'disabled' : ''}"><a class="page-link" href="#" data-page="${currentPage+1}"><i class="fas fa-chevron-right"></i></a></li>`;
         pagination.innerHTML = html;
-        
-        document.querySelectorAll('.page-link').forEach(link => {
-            link.addEventListener('click', (e) => {
-                e.preventDefault();
-                const page = parseInt(link.dataset.page);
-                if (!isNaN(page) && page >= 1 && page <= totalPages) {
-                    currentPage = page;
-                    renderProducts();
-                    window.scrollTo({ top: 400, behavior: 'smooth' });
-                }
-            });
-        });
+        document.querySelectorAll('.page-link').forEach(link => { link.addEventListener('click', (e) => { e.preventDefault(); const page = parseInt(link.dataset.page); if (!isNaN(page) && page >= 1 && page <= totalPages) { currentPage = page; renderProducts(); window.scrollTo({ top: 400, behavior: 'smooth' }); } }); });
     }
     
     // ========== EVENT LISTENERS ==========
-    document.querySelectorAll('.category-list a').forEach(link => {
-        link.addEventListener('click', (e) => {
-            e.preventDefault();
-            document.querySelectorAll('.category-list a').forEach(l => l.classList.remove('active'));
-            link.classList.add('active');
-            currentCategory = link.dataset.category;
-            currentPage = 1;
-            renderProducts();
-        });
-    });
-    
-    document.getElementById('sort-select')?.addEventListener('change', (e) => {
-        currentSort = e.target.value;
-        currentPage = 1;
-        renderProducts();
-    });
-    
-    document.getElementById('priceRange')?.addEventListener('input', (e) => {
-        document.getElementById('priceMax').innerText = `PKR ${e.target.value}+`;
-        currentPage = 1;
-        renderProducts();
-    });
-    
+    document.getElementById('sort-select')?.addEventListener('change', (e) => { currentSort = e.target.value; currentPage = 1; renderProducts(); });
+    document.getElementById('priceRange')?.addEventListener('input', (e) => { document.getElementById('priceMax').innerText = `PKR ${e.target.value}+`; currentPage = 1; renderProducts(); });
     document.getElementById('brandMs')?.addEventListener('change', () => { currentPage = 1; renderProducts(); });
     document.getElementById('brandPremium')?.addEventListener('change', () => { currentPage = 1; renderProducts(); });
     document.getElementById('rating4')?.addEventListener('change', () => { currentPage = 1; renderProducts(); });
     document.getElementById('rating3')?.addEventListener('change', () => { currentPage = 1; renderProducts(); });
-    
-    document.getElementById('gridViewBtn')?.addEventListener('click', () => {
-        currentView = 'grid';
-        document.getElementById('gridViewBtn').classList.add('active');
-        document.getElementById('listViewBtn').classList.remove('active');
-        renderProducts();
-    });
-    
-    document.getElementById('listViewBtn')?.addEventListener('click', () => {
-        currentView = 'list';
-        document.getElementById('listViewBtn').classList.add('active');
-        document.getElementById('gridViewBtn').classList.remove('active');
-        renderProducts();
-    });
-    
-    document.getElementById('search-input')?.addEventListener('input', (e) => {
-        const searchTerm = e.target.value.toLowerCase();
-        // Filter implementation would go here
-        currentPage = 1;
-        renderProducts();
-    });
+    document.getElementById('gridViewBtn')?.addEventListener('click', () => { currentView = 'grid'; document.getElementById('gridViewBtn').classList.add('active'); document.getElementById('listViewBtn').classList.remove('active'); renderProducts(); });
+    document.getElementById('listViewBtn')?.addEventListener('click', () => { currentView = 'list'; document.getElementById('listViewBtn').classList.add('active'); document.getElementById('gridViewBtn').classList.remove('active'); renderProducts(); });
+    document.getElementById('search-input')?.addEventListener('input', (e) => { currentSearch = e.target.value; currentPage = 1; renderProducts(); });
+    document.getElementById('category-filter-select')?.addEventListener('change', (e) => { currentCategory = e.target.value; currentPage = 1; renderProducts(); renderCategories(); });
     
     // Preloader
-    window.addEventListener('load', () => { 
-        setTimeout(() => { 
-            const preloader = document.getElementById('preloader'); 
-            if(preloader) { 
-                preloader.style.opacity = '0'; 
-                setTimeout(() => preloader.style.display = 'none', 500); 
-            } 
-            renderProducts();
-        }, 800); 
-    });
+    window.addEventListener('load', () => { setTimeout(() => { const preloader = document.getElementById('preloader'); if(preloader) { preloader.style.opacity = '0'; setTimeout(() => preloader.style.display = 'none', 500); } renderCategories(); renderProducts(); }, 500); });
     
-    // Scroll to top with progress
+    // Scroll to top
     const scrollBtn = document.getElementById('scrollTopBtn');
-    const scrollProgress = document.getElementById('scrollProgress');
-    window.addEventListener('scroll', () => { 
-        if(window.scrollY > 300) scrollBtn.classList.add('show'); 
-        else scrollBtn.classList.remove('show');
-        
-        const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-        const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-        const scrolled = (winScroll / height) * 360;
-        scrollProgress.style.background = `conic-gradient(var(--secondary) ${scrolled}deg, #e0e0e0 ${scrolled}deg)`;
-    });
+    window.addEventListener('scroll', () => { if(window.scrollY > 300) scrollBtn.classList.add('show'); else scrollBtn.classList.remove('show'); });
     scrollBtn.addEventListener('click', () => { window.scrollTo({ top: 0, behavior: 'smooth' }); });
     
-    // Initialize
-    renderCart();
-    renderWishlist();
-    updateBadges();
+    renderCart(); renderWishlist(); updateBadges();
 </script>
 </body>
 </html>
