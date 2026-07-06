@@ -11,212 +11,652 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     
     <style>
         :root {
             --primary: #2b6e3c;
             --primary-dark: #1e4a2a;
+            --primary-light: #3a8a4a;
             --secondary: #ff8c00;
-            --dark: #1a1a1a;
-            --light: #f8f9fa;
+            --gold: #ffd700;
+            --dark: #0a0e17;
+            --dark-card: rgba(255,255,255,0.03);
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             font-family: 'Nunito', sans-serif;
-            background-color: #f8f9fa;
+            background: #f8f9fa;
             overflow-x: hidden;
         }
 
-        /* Animations */
+        /* ========== ANIMATIONS ========== */
         @keyframes fadeInUp {
             from { opacity: 0; transform: translateY(30px); }
             to { opacity: 1; transform: translateY(0); }
         }
-
         @keyframes fadeInLeft {
             from { opacity: 0; transform: translateX(-40px); }
             to { opacity: 1; transform: translateX(0); }
         }
-
         @keyframes fadeInRight {
             from { opacity: 0; transform: translateX(40px); }
             to { opacity: 1; transform: translateX(0); }
         }
-
-        .animate-fadeUp {
-            animation: fadeInUp 0.6s ease forwards;
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 0 20px rgba(43,110,60,0.2); }
+            50% { box-shadow: 0 0 40px rgba(43,110,60,0.4); }
+        }
+        @keyframes spin {
+            to { transform: rotate(360deg); }
         }
 
-        .animate-fadeLeft {
-            animation: fadeInLeft 0.6s ease forwards;
-        }
+        .animate-fadeUp { animation: fadeInUp 0.6s ease forwards; }
+        .animate-fadeLeft { animation: fadeInLeft 0.6s ease forwards; }
+        .animate-fadeRight { animation: fadeInRight 0.6s ease forwards; }
 
-        .animate-fadeRight {
-            animation: fadeInRight 0.6s ease forwards;
+        /* ========== PRELOADER ========== */
+        .preloader-wrapper {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: #0a0e17;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            transition: opacity 0.8s ease;
         }
-
-        /* Header Styles */
-        .navbar-toggler:focus { box-shadow: none; }
-        .icon-wrapper { position: relative; display: inline-block; }
-        .cart-badge, .wishlist-badge {
-            position: absolute;
-            top: -8px;
-            right: -10px;
-            font-size: 0.65rem;
-            padding: 0.2em 0.5em;
+        .preloader-wrapper.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+        .preloader {
+            width: 60px;
+            height: 60px;
+            border: 3px solid rgba(255,215,0,0.1);
+            border-top-color: #ffd700;
             border-radius: 50%;
-            background-color: #dc3545;
-            color: white;
-            min-width: 18px;
-            text-align: center;
+            animation: spin 1s linear infinite;
         }
 
-        /* Hero Section */
+        /* ========== HEADER ========== */
+        .header-top {
+            background: #0a0e17;
+            padding: 6px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.03);
+        }
+        .header-top .text-muted-light {
+            color: rgba(255,255,255,0.4);
+            font-size: 0.8rem;
+        }
+        .header-top .social-link {
+            color: rgba(255,255,255,0.3);
+            transition: color 0.3s ease;
+            font-size: 0.9rem;
+        }
+        .header-top .social-link:hover {
+            color: #ffd700;
+        }
+
+        .main-header {
+            background: #0a0e17;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.03);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(20px);
+        }
+
+        .logo-img {
+            max-height: 45px;
+            filter: brightness(0) invert(1);
+        }
+
+        .search-bar-modern {
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 50px;
+            padding: 4px 4px 4px 18px;
+            transition: all 0.3s ease;
+        }
+        .search-bar-modern:focus-within {
+            border-color: rgba(255,215,0,0.2);
+            background: rgba(255,255,255,0.06);
+            box-shadow: 0 0 30px rgba(255,215,0,0.03);
+        }
+        .search-bar-modern input {
+            background: transparent;
+            border: none;
+            color: #ffffff;
+            padding: 8px 0;
+            outline: none;
+            font-size: 0.9rem;
+            width: 100%;
+        }
+        .search-bar-modern input::placeholder {
+            color: rgba(255,255,255,0.2);
+        }
+        .search-bar-modern .search-btn {
+            background: linear-gradient(135deg, #ffd700, #f7971e);
+            border: none;
+            border-radius: 50px;
+            padding: 8px 20px;
+            color: #0a0e17;
+            font-weight: 600;
+            font-size: 0.85rem;
+            transition: all 0.3s ease;
+        }
+        .search-bar-modern .search-btn:hover {
+            transform: scale(1.02);
+            box-shadow: 0 5px 20px rgba(255,215,0,0.2);
+        }
+
+        .nav-link-custom {
+            color: rgba(255,255,255,0.6) !important;
+            font-weight: 600;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            padding: 6px 14px !important;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        .nav-link-custom:hover {
+            color: #ffffff !important;
+        }
+        .nav-link-custom.active {
+            color: #ffd700 !important;
+        }
+        .nav-link-custom.active::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 2px;
+            background: #ffd700;
+            border-radius: 2px;
+        }
+
+        .icon-btn {
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(255,255,255,0.6);
+            transition: all 0.3s ease;
+            position: relative;
+            cursor: pointer;
+        }
+        .icon-btn:hover {
+            background: rgba(255,255,255,0.08);
+            color: #ffffff;
+        }
+        .icon-btn .badge-count {
+            position: absolute;
+            top: -4px;
+            right: -4px;
+            background: #ff4757;
+            color: #ffffff;
+            font-size: 0.6rem;
+            font-weight: 700;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid #0a0e17;
+        }
+
+        /* ========== HERO SECTION ========== */
         .quote-hero {
-            background: linear-gradient(135deg, #1e4a2a 0%, #2b6e3c 50%, #3a8a4a 100%);
+            background: linear-gradient(135deg, #0d1f14 0%, #1a3d28 40%, #0d2618 100%);
             position: relative;
             overflow: hidden;
+            padding: 60px 0 80px;
         }
-
         .quote-hero::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="rgba(255,255,255,0.05)" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,122.7C672,117,768,139,864,154.7C960,171,1056,181,1152,165.3C1248,149,1344,107,1392,85.3L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>') no-repeat bottom;
-            background-size: cover;
-            opacity: 0.3;
+            inset: 0;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(255,215,0,0.03), transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(43,110,60,0.05), transparent 40%);
+        }
+        .quote-hero .hero-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(100px);
+            pointer-events: none;
+        }
+        .hero-orb-1 {
+            width: 400px;
+            height: 400px;
+            background: rgba(255,215,0,0.04);
+            top: -150px;
+            right: -100px;
+        }
+        .hero-orb-2 {
+            width: 300px;
+            height: 300px;
+            background: rgba(43,110,60,0.06);
+            bottom: -100px;
+            left: -100px;
         }
 
-        /* Quote Form */
-        .quote-form {
-            background: white;
-            border-radius: 24px;
-            padding: 40px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+        .hero-content {
+            position: relative;
+            z-index: 2;
         }
-
-        .form-control, .form-select {
-            border: 1px solid #e0e0e0;
-            border-radius: 12px;
-            padding: 12px 16px;
-            transition: all 0.3s ease;
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255,215,0,0.08);
+            color: #ffd700;
+            padding: 6px 18px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            border: 1px solid rgba(255,215,0,0.08);
         }
-
-        .form-control:focus, .form-select:focus {
-            border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(43, 110, 60, 0.1);
+        .hero-title {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 900;
+            color: #ffffff;
+            line-height: 1.1;
         }
-
-        .submit-btn {
-            background: var(--primary);
+        .hero-title .highlight {
+            color: #ffd700;
+        }
+        .hero-desc {
+            color: rgba(255,255,255,0.6);
+            font-size: 1.1rem;
+            max-width: 500px;
+            line-height: 1.7;
+        }
+        .hero-actions {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+        .btn-whatsapp-hero {
+            background: linear-gradient(135deg, #25D366, #128C7E);
             border: none;
             border-radius: 50px;
-            padding: 14px 30px;
+            padding: 14px 32px;
+            color: #ffffff;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .btn-whatsapp-hero:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(37,211,102,0.3);
+            color: #ffffff;
+        }
+        .btn-outline-hero {
+            background: transparent;
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 50px;
+            padding: 14px 32px;
+            color: #ffffff;
             font-weight: 600;
             transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .btn-outline-hero:hover {
+            background: rgba(255,255,255,0.05);
+            border-color: rgba(255,255,255,0.3);
+            color: #ffffff;
         }
 
-        .submit-btn:hover {
-            background: var(--primary-dark);
+        .hero-stats {
+            display: flex;
+            gap: 40px;
+            margin-top: 30px;
+        }
+        .hero-stats .stat-number {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: #ffd700;
+        }
+        .hero-stats .stat-label {
+            color: rgba(255,255,255,0.4);
+            font-size: 0.85rem;
+        }
+
+        /* ========== QUOTE FORM ========== */
+        .quote-section {
+            padding: 60px 0 80px;
+            background: #f8f9fc;
+        }
+
+        .quote-form-wrapper {
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 48px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.05);
+            border: 1px solid rgba(0,0,0,0.03);
+        }
+        @media (max-width: 768px) {
+            .quote-form-wrapper { padding: 28px 20px; }
+        }
+
+        .form-title {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: #0a0e17;
+        }
+        .form-title .highlight {
+            color: var(--primary);
+        }
+        .form-subtitle {
+            color: rgba(0,0,0,0.4);
+            font-size: 0.95rem;
+        }
+
+        .form-group-modern {
+            margin-bottom: 20px;
+        }
+        .form-group-modern label {
+            font-weight: 600;
+            font-size: 0.85rem;
+            color: #1a1a2e;
+            margin-bottom: 6px;
+            display: block;
+        }
+        .form-group-modern label .required {
+            color: #ff4757;
+            margin-left: 2px;
+        }
+        .form-group-modern .form-control,
+        .form-group-modern .form-select {
+            border: 1px solid #e8e8e8;
+            border-radius: 12px;
+            padding: 12px 16px;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            background: #fafafa;
+        }
+        .form-group-modern .form-control:focus,
+        .form-group-modern .form-select:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 4px rgba(43,110,60,0.06);
+            background: #ffffff;
+        }
+        .form-group-modern .form-control.error {
+            border-color: #ff4757;
+            background: #fff5f5;
+        }
+        .form-group-modern .error-text {
+            color: #ff4757;
+            font-size: 0.75rem;
+            margin-top: 4px;
+            display: none;
+        }
+        .form-group-modern.error .error-text {
+            display: block;
+        }
+
+        .btn-submit-quote {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            border: none;
+            border-radius: 50px;
+            padding: 16px 40px;
+            color: #ffffff;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        .btn-submit-quote:hover {
             transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(43, 110, 60, 0.3);
+            box-shadow: 0 10px 30px rgba(43,110,60,0.3);
+            color: #ffffff;
+        }
+        .btn-submit-quote:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+            transform: none;
         }
 
-        /* Info Cards */
-        .info-card {
-            background: white;
+        /* ========== INFO SIDEBAR ========== */
+        .info-card-modern {
+            background: #ffffff;
             border-radius: 20px;
-            padding: 25px;
-            text-align: center;
-            transition: all 0.4s ease;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            padding: 28px;
+            border: 1px solid rgba(0,0,0,0.03);
+            transition: all 0.3s ease;
             height: 100%;
         }
-
-        .info-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        .info-card-modern:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.04);
         }
-
-        .info-icon {
-            width: 70px;
-            height: 70px;
+        .info-card-modern .icon-circle {
+            width: 56px;
+            height: 56px;
             background: linear-gradient(135deg, var(--primary), var(--primary-dark));
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 20px;
-            transition: all 0.3s ease;
+            margin-bottom: 16px;
+            font-size: 24px;
+            color: #ffffff;
+        }
+        .info-card-modern h5 {
+            font-weight: 700;
+            color: #0a0e17;
+        }
+        .info-card-modern p {
+            color: rgba(0,0,0,0.5);
+            font-size: 0.9rem;
+            line-height: 1.6;
         }
 
-        .info-card:hover .info-icon {
-            transform: scale(1.1);
+        .contact-card {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            border-radius: 20px;
+            padding: 28px;
+            color: #ffffff;
+        }
+        .contact-card .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+        }
+        .contact-card .contact-item:last-child {
+            border-bottom: none;
+        }
+        .contact-card .contact-item i {
+            width: 20px;
+            color: #ffd700;
         }
 
-        .info-icon i {
-            font-size: 30px;
-            color: white;
+        /* ========== WHY CHOOSE ========== */
+        .why-section {
+            background: #0a0e17;
+            padding: 60px 0;
+        }
+        .why-section .section-title {
+            color: #ffffff;
+        }
+        .why-section .section-subtitle {
+            color: rgba(255,255,255,0.4);
         }
 
-        /* Why Choose Us */
-        .why-card {
-            background: white;
+        .why-card-modern {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.04);
             border-radius: 16px;
-            padding: 20px;
+            padding: 28px;
+            text-align: center;
             transition: all 0.3s ease;
             height: 100%;
         }
-
-        .why-card:hover {
-            background: var(--primary);
-            color: white;
-            transform: translateY(-5px);
+        .why-card-modern:hover {
+            background: rgba(255,255,255,0.04);
+            border-color: rgba(255,215,0,0.1);
+            transform: translateY(-4px);
+        }
+        .why-card-modern .why-icon {
+            font-size: 2.5rem;
+            color: #ffd700;
+            margin-bottom: 12px;
+        }
+        .why-card-modern h6 {
+            color: #ffffff;
+            font-weight: 700;
+        }
+        .why-card-modern p {
+            color: rgba(255,255,255,0.3);
+            font-size: 0.85rem;
+            margin: 0;
         }
 
-        .why-card:hover i {
-            color: white !important;
+        /* ========== FAQ ========== */
+        .faq-section {
+            padding: 60px 0;
+            background: #f8f9fc;
+        }
+        .faq-section .section-title {
+            color: #0a0e17;
+        }
+        .faq-section .section-subtitle {
+            color: rgba(0,0,0,0.4);
         }
 
-        /* Toast Notification */
-        .toast-notification {
+        .faq-item {
+            background: #ffffff;
+            border: 1px solid rgba(0,0,0,0.03);
+            border-radius: 16px;
+            margin-bottom: 12px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        .faq-item:hover {
+            border-color: rgba(43,110,60,0.1);
+        }
+        .faq-item .faq-question {
+            padding: 18px 24px;
+            background: transparent;
+            border: none;
+            width: 100%;
+            text-align: left;
+            font-weight: 700;
+            color: #0a0e17;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+        .faq-item .faq-question:hover {
+            color: var(--primary);
+        }
+        .faq-item .faq-question .faq-icon {
+            transition: transform 0.3s ease;
+            color: var(--primary);
+        }
+        .faq-item .faq-question[aria-expanded="true"] .faq-icon {
+            transform: rotate(180deg);
+        }
+        .faq-item .faq-answer {
+            padding: 0 24px 20px;
+            color: rgba(0,0,0,0.5);
+            line-height: 1.7;
+        }
+
+        /* ========== CTA ========== */
+        .cta-section {
+            padding: 60px 0;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            position: relative;
+            overflow: hidden;
+        }
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        /* ========== TOAST ========== */
+        .toast-custom {
             position: fixed;
             bottom: 30px;
             right: 30px;
-            background: var(--primary);
-            color: white;
-            padding: 12px 24px;
-            border-radius: 50px;
-            font-weight: 600;
-            z-index: 1000;
-            transform: translateX(400px);
-            transition: transform 0.3s ease;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+            background: #0a0e17;
+            border: 1px solid rgba(255,215,0,0.1);
+            border-radius: 16px;
+            padding: 16px 24px;
+            color: #ffffff;
+            z-index: 9999;
+            transform: translateY(100px);
+            opacity: 0;
+            transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            max-width: 400px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .toast-custom.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        .toast-custom .toast-icon {
+            color: #ffd700;
+            font-size: 1.5rem;
+        }
+        .toast-custom .toast-close {
+            background: none;
+            border: none;
+            color: rgba(255,255,255,0.2);
+            cursor: pointer;
+            padding: 4px;
+            margin-left: auto;
+        }
+        .toast-custom .toast-close:hover {
+            color: #ffffff;
         }
 
-        .toast-notification.show {
-            transform: translateX(0);
-        }
-
-        /* Scroll to top */
-        .scroll-top {
+        /* ========== SCROLL TOP ========== */
+        .scroll-top-btn {
             position: fixed;
             bottom: 30px;
             left: 30px;
-            width: 45px;
-            height: 45px;
-            background: var(--primary);
-            color: white;
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: #ffffff;
+            border: none;
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -226,219 +666,244 @@
             visibility: hidden;
             transition: all 0.3s ease;
             z-index: 99;
-            border: none;
+            box-shadow: 0 10px 30px rgba(43,110,60,0.2);
         }
-
-        .scroll-top.show {
+        .scroll-top-btn.show {
             opacity: 1;
             visibility: visible;
         }
-
-        .scroll-top:hover {
-            background: var(--primary-dark);
-            transform: translateY(-5px);
+        .scroll-top-btn:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 15px 40px rgba(43,110,60,0.3);
         }
 
-        /* Preloader */
-        .preloader-wrapper {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 9999;
-            transition: opacity 0.5s ease;
+        /* ========== RESPONSIVE ========== */
+        @media (max-width: 992px) {
+            .hero-stats { gap: 20px; }
+            .hero-stats .stat-number { font-size: 1.4rem; }
         }
-
-        .preloader {
-            width: 50px;
-            height: 50px;
-            border: 3px solid var(--primary);
-            border-top-color: transparent;
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-        }
-
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
-
         @media (max-width: 768px) {
-            .quote-form { padding: 25px; }
+            .quote-hero { padding: 40px 0 50px; }
+            .hero-actions .btn-whatsapp-hero,
+            .hero-actions .btn-outline-hero {
+                width: 100%;
+                justify-content: center;
+            }
         }
     </style>
 </head>
 <body>
 
-<!-- Preloader -->
-<div class="preloader-wrapper" id="preloader"><div class="preloader"></div></div>
-
-<!-- Toast Notification -->
-<div id="toastNotification" class="toast-notification">
-    <i class="fas fa-check-circle me-2"></i> Quote request sent successfully!
+<!-- ===== PRELOADER ===== -->
+<div class="preloader-wrapper" id="preloader">
+    <div class="preloader"></div>
 </div>
 
-<!-- Scroll to Top Button -->
-<button class="scroll-top" id="scrollTopBtn"><i class="fas fa-arrow-up"></i></button>
+<!-- ===== TOAST ===== -->
+<div class="toast-custom" id="toast">
+    <span class="toast-icon"><i class="fas fa-check-circle"></i></span>
+    <span id="toastMessage">Success!</span>
+    <button class="toast-close" onclick="hideToast()"><i class="fas fa-times"></i></button>
+</div>
 
-<!-- SVG Sprite -->
-<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
-    <defs>
-        <symbol id="star-full" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></symbol>
-        <symbol id="star-half" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2zm0 2v13.17l4.56 2.4-.87-5.07 3.69-3.6-5.1-.74L12 4z"/></symbol>
-        <symbol id="cart" viewBox="0 0 24 24"><path fill="currentColor" d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/></symbol>
-        <symbol id="heart" viewBox="0 0 24 24"><path fill="currentColor" d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></symbol>
-        <symbol id="trash" viewBox="0 0 24 24"><path fill="currentColor" d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/></symbol>
-        <symbol id="check" viewBox="0 0 24 24"><path fill="currentColor" d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></symbol>
-        <symbol id="user" viewBox="0 0 24 24"><path fill="currentColor" d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></symbol>
-        <symbol id="wishlist" viewBox="0 0 24 24"><path fill="currentColor" d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></symbol>
-        <symbol id="shopping-bag" viewBox="0 0 24 24"><path fill="currentColor" d="M19 6h-2c0-2.76-2.24-5-5-5S7 3.24 7 6H5c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-7-3c1.66 0 3 1.34 3 3H9c0-1.66 1.34-3 3-3zm7 17H5V8h14v12z"/></symbol>
-        <symbol id="menu" viewBox="0 0 24 24"><path fill="currentColor" d="M2 6a1 1 0 0 1 1-1h18a1 1 0 1 1 0 2H3a1 1 0 0 1-1-1m0 6.032a1 1 0 0 1 1-1h18a1 1 0 1 1 0 2H3a1 1 0 0 1-1-1m1 5.033a1 1 0 1 0 0 2h18a1 1 0 0 0 0-2z"/></symbol>
-        <symbol id="search" viewBox="0 0 24 24"><path fill="currentColor" d="M21.71 20.29L18 16.61A9 9 0 1 0 16.61 18l3.68 3.68a1 1 0 0 0 1.42 0a1 1 0 0 0 0-1.39ZM11 18a7 7 0 1 1 7-7a7 7 0 0 1-7 7Z"/></symbol>
-        <symbol id="facebook" viewBox="0 0 24 24"><path fill="currentColor" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.879v-6.99h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.99C18.343 21.128 22 16.991 22 12z"/></symbol>
-        <symbol id="twitter" viewBox="0 0 24 24"><path fill="currentColor" d="M22.46 6c-.77.35-1.6.58-2.46.69.88-.53 1.56-1.37 1.88-2.38-.83.5-1.75.85-2.72 1.05C18.37 4.5 17.26 4 16 4c-2.35 0-4.27 1.92-4.27 4.29 0 .34.04.67.11.98C8.28 9.09 5.11 7.38 3 4.79c-.37.63-.58 1.37-.58 2.15 0 1.49.75 2.81 1.91 3.56-.71 0-1.37-.2-1.95-.5v.03c0 2.08 1.48 3.82 3.44 4.21a4.22 4.22 0 0 1-1.93.07 4.28 4.28 0 0 0 4 2.98 8.52 8.52 0 0 1-5.33 1.84c-.34 0-.68-.02-1.02-.06C3.44 20.29 5.7 21 8.12 21 16 21 20.33 14.46 20.33 8.79c0-.19 0-.37-.01-.56.84-.6 1.56-1.36 2.14-2.23z"/></symbol>
-        <symbol id="instagram" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2.163c3.204 0 3.584.012 4.85.07 1.366.062 2.633.334 3.608 1.31.975.975 1.247 2.242 1.31 3.608.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.063 1.366-.335 2.633-1.31 3.608-.975.975-2.242 1.247-3.608 1.31-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-1.366-.063-2.633-.335-3.608-1.31-.975-.975-1.247-2.242-1.31-3.608-.058-1.266-.07-1.646-.07-4.85s.012-3.584.07-4.85c.063-1.366.335-2.633 1.31-3.608.975-.975 2.242-1.247 3.608-1.31 1.266-.058 1.646-.07 4.85-.07z"/><circle cx="12" cy="12" r="3.6" fill="none" stroke="currentColor" stroke-width="2"/></symbol>
-        <symbol id="youtube" viewBox="0 0 24 24"><path fill="currentColor" d="M23 9.71a8.5 8.5 0 0 0-.91-4.13 2.92 2.92 0 0 0-1.72-1A78.36 78.36 0 0 0 12 4.27a78.45 78.45 0 0 0-8.34.3 2.87 2.87 0 0 0-1.46.74c-.9.83-1 2.25-1.1 3.45a48.29 48.29 0 0 0 0 6.48 9.55 9.55 0 0 0 .3 2 3.14 3.14 0 0 0 .71 1.36 2.86 2.86 0 0 0 1.49.78 45.18 45.18 0 0 0 6.5.33c3.5.05 6.57 0 10.2-.28a2.88 2.88 0 0 0 1.53-.78 2.49 2.49 0 0 0 .61-1 10.58 10.58 0 0 0 .52-3.4c.04-.56.04-3.94.04-4.54zM9.74 14.85V8.66l5.92 3.11c-1.66.92-3.85 1.96-5.92 3.08z"/></symbol>
-        <symbol id="amazon" viewBox="0 0 24 24"><path fill="currentColor" d="M1.04 17.52q.1-.16.32-.02a21.308 21.308 0 0 0 10.88 2.9 21.524 21.524 0 0 0 7.74-1.46q.1-.04.29-.12t.27-.12a.356.356 0 0 1 .47.12q.17.24-.11.44q-.36.26-.92.6a14.99 14.99 0 0 1-3.84 1.58A16.175 16.175 0 0 1 12 22a16.017 16.017 0 0 1-5.9-1.09 16.246 16.246 0 0 1-4.98-3.07.273.273 0 0 1-.12-.2.215.215 0 0 1 .04-.12Z"/></symbol>
-    </defs>
-</svg>
+<!-- ===== SCROLL TOP ===== -->
+<button class="scroll-top-btn" id="scrollTopBtn"><i class="fas fa-arrow-up"></i></button>
 
-<!-- HEADER -->
-<header>
-    <div class="container-fluid">
-        <div class="row py-3 border-bottom align-items-center">
-            <div class="col-sm-4 col-lg-2 text-center text-sm-start d-flex gap-3 justify-content-center justify-content-md-start">
-                <div class="d-flex align-items-center my-3 my-sm-0">
-                    <a href="index.html">
-                        <img src="images/Gemini_Generated_Image_ywi261ywi261ywi2.png" alt="MS Plastic Store" style="max-height: 50px;">
-                    </a>
-                </div>
-                <button class="navbar-toggler btn p-0 border-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar">
-                    <svg width="24" height="24"><use xlink:href="#menu"></use></svg>
-                </button>
+<!-- ===== HEADER TOP ===== -->
+<div class="header-top">
+    <div class="container">
+        <div class="d-flex justify-content-between align-items-center">
+            <span class="text-muted-light">
+                <i class="fas fa-phone me-2"></i>+92 319 0306199
+                <span class="mx-3">|</span>
+                <i class="fas fa-envelope me-2"></i>info@msplasticstore.com
+            </span>
+            <div class="d-flex gap-3">
+                <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-whatsapp"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
             </div>
-            <div class="col-sm-6 offset-sm-2 offset-md-0 col-lg-4">
-                <div class="search-bar row bg-light p-2 rounded-4">
-                    <div class="col-md-4 d-none d-md-block">
-                        <select class="form-select border-0 bg-transparent">
-                            <option>All Categories</option>
-                            <option>Wallpapers</option>
-                            <option>Flooring</option>
-                            <option>Tarpaulin</option>
-                        </select>
-                    </div>
-                    <div class="col-11 col-md-7">
-                        <form id="search-form"><input type="text" class="form-control border-0 bg-transparent" placeholder="Search for products..."></form>
-                    </div>
-                    <div class="col-1"><svg width="24" height="24"><use xlink:href="#search"></use></svg></div>
+        </div>
+    </div>
+</div>
+
+<!-- ===== MAIN HEADER ===== -->
+<header class="main-header">
+    <div class="container">
+        <div class="row align-items-center g-3">
+            <!-- Logo -->
+            <div class="col-auto col-lg-2">
+                <a href="index.html">
+                    <img src="images/Gemini_Generated_Image_ywi261ywi261ywi2.png" alt="MS Plastic Store" class="logo-img">
+                </a>
+            </div>
+
+            <!-- Search -->
+            <div class="col d-none d-lg-block">
+                <div class="search-bar-modern d-flex align-items-center">
+                    <input type="text" placeholder="Search for products..." id="searchInput">
+                    <button class="search-btn" onclick="performSearch()">
+                        <i class="fas fa-search me-2"></i>Search
+                    </button>
                 </div>
             </div>
-            <div class="col-lg-4">
-                <ul class="navbar-nav list-unstyled d-flex flex-row gap-3 gap-lg-5 justify-content-center flex-wrap align-items-center mb-0 fw-bold text-uppercase text-dark">
-                    <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
-                    <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
-                    <li class="nav-item"><a href="shop.html" class="nav-link">Shop</a></li>
-                    <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
-                    <li class="nav-item"><a href="quote.html" class="nav-link text-primary">Get Quote</a></li>
+
+            <!-- Navigation -->
+            <div class="col-lg-5 d-none d-lg-block">
+                <ul class="list-unstyled d-flex mb-0 gap-1 justify-content-end">
+                    <li><a href="index.html" class="nav-link-custom">Home</a></li>
+                    <li><a href="about.html" class="nav-link-custom">About</a></li>
+                    <li><a href="shop.html" class="nav-link-custom">Shop</a></li>
+                    <li><a href="contact.html" class="nav-link-custom">Contact</a></li>
+                    <li><a href="quote.html" class="nav-link-custom active">Get Quote</a></li>
                 </ul>
             </div>
-            <div class="col-sm-8 col-lg-2 d-flex gap-4 align-items-center justify-content-center justify-content-sm-end">
-                <a href="#" class="icon-wrapper"><svg width="24" height="24"><use xlink:href="#user"></use></svg></a>
-                <button class="btn p-0 border-0 bg-transparent icon-wrapper" data-bs-toggle="offcanvas" data-bs-target="#wishlistOffcanvas"><svg width="24" height="24"><use xlink:href="#wishlist"></use></svg><span class="wishlist-badge wishlist-count-badge">0</span></button>
-                <button class="btn p-0 border-0 bg-transparent icon-wrapper" data-bs-toggle="offcanvas" data-bs-target="#cartOffcanvas"><svg width="24" height="24"><use xlink:href="#shopping-bag"></use></svg><span class="cart-badge cart-count-badge">0</span></button>
+
+            <!-- Icons -->
+            <div class="col-auto ms-auto">
+                <div class="d-flex gap-2">
+                    <button class="icon-btn" onclick="location.href='login.html'">
+                        <i class="fas fa-user"></i>
+                    </button>
+                    <button class="icon-btn" onclick="toggleWishlist()">
+                        <i class="fas fa-heart"></i>
+                        <span class="badge-count" id="wishlistCount">0</span>
+                    </button>
+                    <button class="icon-btn" onclick="toggleCart()">
+                        <i class="fas fa-shopping-bag"></i>
+                        <span class="badge-count" id="cartCount">0</span>
+                    </button>
+                    <button class="icon-btn d-lg-none" onclick="toggleMobileMenu()">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
             </div>
         </div>
     </div>
 </header>
 
-<!-- OFF-CANVAS MENU -->
-<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar">
-    <div class="offcanvas-header justify-content-between"><h4 class="fw-normal text-uppercase fs-6">Shop by Category</h4><button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button></div>
-    <div class="offcanvas-body">
-        <ul class="navbar-nav justify-content-end menu-list list-unstyled d-flex gap-md-3 mb-0">
-            <li class="nav-item"><a href="categories/wallpapers.html" class="nav-link d-flex align-items-center gap-3 text-dark p-2"><i class="fas fa-palette"></i><span>Wallpapers</span></a></li>
-            <li class="nav-item"><a href="categories/flooring.html" class="nav-link d-flex align-items-center gap-3 text-dark p-2"><i class="fas fa-th-large"></i><span>Flooring</span></a></li>
-            <li class="nav-item"><a href="categories/dastarkhawan.html" class="nav-link d-flex align-items-center gap-3 text-dark p-2"><i class="fas fa-table"></i><span>Plastic Dastarkhawan</span></a></li>
-            <li class="nav-item"><a href="categories/footmats.html" class="nav-link d-flex align-items-center gap-3 text-dark p-2"><i class="fas fa-door-open"></i><span>Footmats</span></a></li>
-            <li class="nav-item"><a href="categories/chatai.html" class="nav-link d-flex align-items-center gap-3 text-dark p-2"><i class="fas fa-leaf"></i><span>Chatai</span></a></li>
-            <li class="nav-item"><a href="categories/tarpaulin.html" class="nav-link d-flex align-items-center gap-3 text-dark p-2"><i class="fas fa-tarp"></i><span>Tarpaulin</span></a></li>
-            <li class="nav-item"><a href="categories/sunshade.html" class="nav-link d-flex align-items-center gap-3 text-dark p-2"><i class="fas fa-sun"></i><span>Sunshade Nets</span></a></li>
-            <li class="nav-item"><a href="categories/carpet-tiles.html" class="nav-link d-flex align-items-center gap-3 text-dark p-2"><i class="fas fa-carpet"></i><span>Carpet Tiles</span></a></li>
-        </ul>
+<!-- ===== MOBILE MENU ===== -->
+<div class="mobile-menu" id="mobileMenu" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:#0a0e17; z-index:2000; padding:20px;">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h4 class="text-white">Menu</h4>
+        <button class="btn btn-link text-white" onclick="toggleMobileMenu()"><i class="fas fa-times fs-4"></i></button>
+    </div>
+    <ul class="list-unstyled">
+        <li><a href="index.html" class="nav-link-custom d-block py-3 border-bottom border-white-10">Home</a></li>
+        <li><a href="about.html" class="nav-link-custom d-block py-3 border-bottom border-white-10">About</a></li>
+        <li><a href="shop.html" class="nav-link-custom d-block py-3 border-bottom border-white-10">Shop</a></li>
+        <li><a href="contact.html" class="nav-link-custom d-block py-3 border-bottom border-white-10">Contact</a></li>
+        <li><a href="quote.html" class="nav-link-custom active d-block py-3 border-bottom border-white-10">Get Quote</a></li>
+    </ul>
+    <div class="mt-4 pt-4 border-top border-white-10">
+        <div class="search-bar-modern d-flex align-items-center">
+            <input type="text" placeholder="Search..." id="mobileSearchInput" style="background:transparent;border:none;color:#fff;width:100%;padding:8px 0;outline:none;">
+            <button class="search-btn" onclick="performMobileSearch()"><i class="fas fa-search"></i></button>
+        </div>
     </div>
 </div>
 
-<!-- CART OFF-CANVAS -->
-<div class="offcanvas offcanvas-end" tabindex="-1" id="cartOffcanvas">
-    <div class="offcanvas-header"><h5 class="offcanvas-title"><i class="fas fa-shopping-bag me-2"></i>Your Cart</h5><button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button></div>
-    <div class="offcanvas-body">
-        <ul class="list-group list-group-flush" id="cart-items-list"><li class="list-group-item text-center text-muted">Your cart is empty.</li></ul>
-        <div class="mt-4 d-flex justify-content-between fw-bold"><span>Total:</span><span id="cart-total">PKR 0</span></div>
-        <div class="mt-3 d-grid gap-2"><a href="#" id="whatsapp-checkout-btn" class="btn btn-success disabled"><i class="fab fa-whatsapp me-2"></i>Checkout via WhatsApp</a></div>
-    </div>
-</div>
+<style>
+    .border-white-10 { border-color: rgba(255,255,255,0.05) !important; }
+</style>
 
-<!-- WISHLIST OFF-CANVAS -->
-<div class="offcanvas offcanvas-end" tabindex="-1" id="wishlistOffcanvas">
-    <div class="offcanvas-header"><h5 class="offcanvas-title"><i class="fas fa-heart me-2 text-danger"></i>Your Wishlist</h5><button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button></div>
-    <div class="offcanvas-body" id="wishlist-items-container"><p class="text-center text-muted">Your wishlist is empty.</p></div>
-</div>
-
-<!-- HERO SECTION -->
-<section class="quote-hero py-5">
-    <div class="container py-5">
-        <div class="row">
-            <div class="col-lg-8 text-white animate-fadeLeft">
-                <h1 class="display-3 fw-bold mb-3">Get a Quote</h1>
-                <p class="lead mb-4">Need bulk orders or wholesale pricing? Fill out the form below and our team will get back to you within 24 hours with the best quote.</p>
-                <div class="d-flex gap-3">
-                    <a href="https://wa.me/923190306199" target="_blank" class="btn btn-light rounded-pill px-4 py-2"><i class="fab fa-whatsapp me-2"></i>Chat on WhatsApp</a>
-                    <a href="tel:+923190306199" class="btn btn-outline-light rounded-pill px-4 py-2"><i class="fas fa-phone me-2"></i>Call Now</a>
+<!-- ===== HERO SECTION ===== -->
+<section class="quote-hero">
+    <div class="hero-orb hero-orb-1"></div>
+    <div class="hero-orb hero-orb-2"></div>
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-7 hero-content">
+                <div class="hero-badge animate-fadeUp">
+                    <i class="fas fa-bolt"></i> Bulk Order Specialists
+                </div>
+                <h1 class="hero-title animate-fadeUp" style="animation-delay:0.1s;">
+                    Get a <span class="highlight">Quote</span> for Bulk Orders
+                </h1>
+                <p class="hero-desc animate-fadeUp" style="animation-delay:0.2s;">
+                    Need wholesale pricing for commercial projects? Fill out the form and 
+                    our team will get back to you within <strong style="color:#ffd700;">24 hours</strong> 
+                    with the best possible quote.
+                </p>
+                <div class="hero-actions animate-fadeUp" style="animation-delay:0.3s;">
+                    <a href="https://wa.me/923190306199" target="_blank" class="btn-whatsapp-hero">
+                        <i class="fab fa-whatsapp"></i> Chat on WhatsApp
+                    </a>
+                    <a href="tel:+923190306199" class="btn-outline-hero">
+                        <i class="fas fa-phone"></i> Call Now
+                    </a>
+                </div>
+                <div class="hero-stats animate-fadeUp" style="animation-delay:0.4s;">
+                    <div>
+                        <div class="stat-number">500+</div>
+                        <div class="stat-label">Products</div>
+                    </div>
+                    <div>
+                        <div class="stat-number">10k+</div>
+                        <div class="stat-label">Happy Clients</div>
+                    </div>
+                    <div>
+                        <div class="stat-number">24h</div>
+                        <div class="stat-label">Response Time</div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-<!-- QUOTE FORM SECTION -->
-<section class="py-5">
+<!-- ===== QUOTE FORM SECTION ===== -->
+<section class="quote-section">
     <div class="container">
-        <div class="row g-5">
-            <!-- Quote Form -->
+        <div class="row g-4">
+            <!-- Form -->
             <div class="col-lg-7 animate-fadeLeft">
-                <div class="quote-form">
-                    <h2 class="fw-bold mb-4">Request a <span class="text-primary">Quote</span></h2>
-                    <p class="text-muted mb-4">Fill in your details and we'll send you the best price for your bulk order.</p>
-                    
-                    <form id="quoteForm">
+                <div class="quote-form-wrapper">
+                    <h2 class="form-title">Request a <span class="highlight">Quote</span></h2>
+                    <p class="form-subtitle">Fill in your details and we'll send you the best price for your bulk order.</p>
+                    <hr class="my-4">
+
+                    <form id="quoteForm" novalidate>
                         <div class="row g-3">
-                            <div class="col-md-6">
-                                <label class="form-label fw-semibold">Full Name *</label>
-                                <input type="text" class="form-control" id="fullName" required placeholder="Enter your full name">
+                            <!-- Full Name -->
+                            <div class="col-md-6 form-group-modern" id="nameGroup">
+                                <label>Full Name <span class="required">*</span></label>
+                                <input type="text" class="form-control" id="fullName" placeholder="Enter your full name" required>
+                                <div class="error-text">Please enter your full name</div>
                             </div>
-                            <div class="col-md-6">
-                                <label class="form-label fw-semibold">Company Name</label>
-                                <input type="text" class="form-control" id="companyName" placeholder="Your company name (if any)">
+
+                            <!-- Company -->
+                            <div class="col-md-6 form-group-modern">
+                                <label>Company Name</label>
+                                <input type="text" class="form-control" id="companyName" placeholder="Your company (if any)">
                             </div>
-                            <div class="col-md-6">
-                                <label class="form-label fw-semibold">Email Address *</label>
-                                <input type="email" class="form-control" id="email" required placeholder="your@email.com">
+
+                            <!-- Email -->
+                            <div class="col-md-6 form-group-modern" id="emailGroup">
+                                <label>Email Address <span class="required">*</span></label>
+                                <input type="email" class="form-control" id="email" placeholder="your@email.com" required>
+                                <div class="error-text">Please enter a valid email</div>
                             </div>
-                            <div class="col-md-6">
-                                <label class="form-label fw-semibold">Phone Number *</label>
-                                <input type="tel" class="form-control" id="phone" required placeholder="+92 XXX XXXXXXX">
+
+                            <!-- Phone -->
+                            <div class="col-md-6 form-group-modern" id="phoneGroup">
+                                <label>Phone Number <span class="required">*</span></label>
+                                <input type="tel" class="form-control" id="phone" placeholder="+92 XXX XXXXXXX" required>
+                                <div class="error-text">Please enter a valid phone number</div>
                             </div>
-                            <div class="col-md-6">
-                                <label class="form-label fw-semibold">City *</label>
-                                <input type="text" class="form-control" id="city" required placeholder="Your city">
+
+                            <!-- City -->
+                            <div class="col-md-6 form-group-modern" id="cityGroup">
+                                <label>City <span class="required">*</span></label>
+                                <input type="text" class="form-control" id="city" placeholder="Your city" required>
+                                <div class="error-text">Please enter your city</div>
                             </div>
-                            <div class="col-md-6">
-                                <label class="form-label fw-semibold">Product Category *</label>
-                                <select class="form-select" id="category">
+
+                            <!-- Category -->
+                            <div class="col-md-6 form-group-modern" id="categoryGroup">
+                                <label>Product Category <span class="required">*</span></label>
+                                <select class="form-select" id="category" required>
                                     <option value="">Select Category</option>
                                     <option value="Wallpapers">Wallpapers</option>
                                     <option value="Flooring">Flooring</option>
@@ -450,17 +915,25 @@
                                     <option value="Carpet Tiles">Carpet Tiles</option>
                                     <option value="Multiple Products">Multiple Products</option>
                                 </select>
+                                <div class="error-text">Please select a category</div>
                             </div>
-                            <div class="col-12">
-                                <label class="form-label fw-semibold">Product Details *</label>
-                                <textarea class="form-control" id="productDetails" rows="3" required placeholder="Please describe the products you need (type, design, quantity, size, etc.)"></textarea>
+
+                            <!-- Product Details -->
+                            <div class="col-12 form-group-modern" id="detailsGroup">
+                                <label>Product Details <span class="required">*</span></label>
+                                <textarea class="form-control" id="productDetails" rows="3" placeholder="Describe the products you need (type, design, quantity, size, etc.)" required></textarea>
+                                <div class="error-text">Please describe your product requirements</div>
                             </div>
-                            <div class="col-md-6">
-                                <label class="form-label fw-semibold">Quantity / Area</label>
-                                <input type="text" class="form-control" id="quantity" placeholder="e.g., 500 sq ft, 100 pieces, 10 rolls">
+
+                            <!-- Quantity -->
+                            <div class="col-md-6 form-group-modern">
+                                <label>Quantity / Area</label>
+                                <input type="text" class="form-control" id="quantity" placeholder="e.g., 500 sq ft, 100 pieces">
                             </div>
-                            <div class="col-md-6">
-                                <label class="form-label fw-semibold">Budget Range</label>
+
+                            <!-- Budget -->
+                            <div class="col-md-6 form-group-modern">
+                                <label>Budget Range</label>
                                 <select class="form-select" id="budget">
                                     <option value="">Select budget range</option>
                                     <option value="PKR 10,000 - 25,000">PKR 10,000 - 25,000</option>
@@ -470,10 +943,14 @@
                                     <option value="PKR 250,000+">PKR 250,000+</option>
                                 </select>
                             </div>
-                            <div class="col-12">
-                                <label class="form-label fw-semibold">Additional Notes</label>
-                                <textarea class="form-control" id="notes" rows="2" placeholder="Any special requirements or delivery instructions..."></textarea>
+
+                            <!-- Notes -->
+                            <div class="col-12 form-group-modern">
+                                <label>Additional Notes</label>
+                                <textarea class="form-control" id="notes" rows="2" placeholder="Special requirements or delivery instructions..."></textarea>
                             </div>
+
+                            <!-- Terms -->
                             <div class="col-12">
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" id="termsCheck" required>
@@ -482,9 +959,13 @@
                                     </label>
                                 </div>
                             </div>
+
+                            <!-- Submit -->
                             <div class="col-12">
-                                <button type="submit" class="btn submit-btn text-white w-100 py-3">
-                                    <i class="fas fa-paper-plane me-2"></i>Submit Quote Request
+                                <button type="submit" class="btn-submit-quote" id="submitBtn">
+                                    <i class="fas fa-paper-plane"></i>
+                                    <span id="submitText">Submit Quote Request</span>
+                                    <span id="submitSpinner" style="display:none;"><i class="fas fa-spinner fa-spin"></i></span>
                                 </button>
                             </div>
                         </div>
@@ -492,130 +973,141 @@
                 </div>
             </div>
 
-            <!-- Info Sidebar -->
+            <!-- Sidebar -->
             <div class="col-lg-5 animate-fadeRight">
-                <!-- Why Choose Us -->
-                <div class="info-card mb-4">
-                    <div class="info-icon"><i class="fas fa-trophy"></i></div>
-                    <h5 class="fw-bold">Bulk Order Benefits</h5>
-                    <p class="text-muted mb-0">Get special discounts on bulk orders. We offer competitive wholesale prices for commercial projects.</p>
+                <!-- Info Cards -->
+                <div class="info-card-modern mb-3">
+                    <div class="icon-circle"><i class="fas fa-trophy"></i></div>
+                    <h5>Bulk Order Benefits</h5>
+                    <p>Get special discounts on bulk orders. We offer competitive wholesale prices for commercial projects.</p>
                 </div>
 
-                <div class="info-card mb-4">
-                    <div class="info-icon"><i class="fas fa-truck"></i></div>
-                    <h5 class="fw-bold">Free Delivery</h5>
-                    <p class="text-muted mb-0">Free delivery on bulk orders above PKR 50,000 within major cities.</p>
+                <div class="info-card-modern mb-3">
+                    <div class="icon-circle"><i class="fas fa-truck"></i></div>
+                    <h5>Free Delivery</h5>
+                    <p>Free delivery on bulk orders above PKR 50,000 within major cities.</p>
                 </div>
 
-                <div class="info-card mb-4">
-                    <div class="info-icon"><i class="fas fa-clock"></i></div>
-                    <h5 class="fw-bold">Quick Response</h5>
-                    <p class="text-muted mb-0">We respond to all quote requests within 24 hours.</p>
+                <div class="info-card-modern mb-3">
+                    <div class="icon-circle"><i class="fas fa-clock"></i></div>
+                    <h5>Quick Response</h5>
+                    <p>We respond to all quote requests within 24 hours.</p>
                 </div>
 
-                <!-- Contact Info -->
-                <div class="bg-white p-4 rounded-4 shadow-sm">
-                    <h5 class="fw-bold mb-3"><i class="fas fa-phone-alt text-primary me-2"></i>Need Immediate Assistance?</h5>
-                    <p class="mb-2">Call us directly for urgent quotes:</p>
-                    <p class="mb-2 fw-bold fs-5"><i class="fab fa-whatsapp text-success me-2"></i>+92 319 0306199</p>
-                    <p class="mb-0 fw-bold fs-5"><i class="fas fa-phone text-primary me-2"></i>+92 319 0306199</p>
-                    <hr class="my-3">
-                    <p class="mb-0 text-muted small"><i class="fas fa-envelope me-2"></i>info@msplasticstore.com</p>
+                <!-- Contact Card -->
+                <div class="contact-card">
+                    <h5 class="text-white fw-bold mb-3">
+                        <i class="fas fa-phone me-2" style="color:#ffd700;"></i>Need Immediate Help?
+                    </h5>
+                    <div class="contact-item">
+                        <i class="fab fa-whatsapp"></i>
+                        <span>+92 319 0306199</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <span>+92 319 0306199</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>info@msplasticstore.com</span>
+                    </div>
+                    <div class="mt-3">
+                        <a href="https://wa.me/923190306199" target="_blank" class="btn btn-light rounded-pill w-100 fw-bold">
+                            <i class="fab fa-whatsapp text-success me-2"></i>Chat Now
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-<!-- WHY CHOOSE US -->
-<section class="py-5 bg-light">
+<!-- ===== WHY CHOOSE US ===== -->
+<section class="why-section">
     <div class="container">
         <div class="text-center mb-5">
-            <h2 class="display-5 fw-bold">Why Choose <span class="text-primary">MS Plastic Store</span></h2>
-            <p class="text-muted">We are Pakistan's trusted partner for quality products</p>
+            <h2 class="section-title display-5 fw-bold">Why Choose <span style="color:#ffd700;">MS Plastic Store</span></h2>
+            <p class="section-subtitle">Pakistan's trusted partner for quality products</p>
         </div>
         <div class="row g-4">
             <div class="col-md-3 col-6">
-                <div class="why-card text-center">
-                    <i class="fas fa-check-circle fs-1 text-primary mb-3"></i>
-                    <h6 class="fw-bold">Premium Quality</h6>
-                    <p class="small mb-0">Best materials</p>
+                <div class="why-card-modern">
+                    <div class="why-icon"><i class="fas fa-check-circle"></i></div>
+                    <h6>Premium Quality</h6>
+                    <p>Best materials</p>
                 </div>
             </div>
             <div class="col-md-3 col-6">
-                <div class="why-card text-center">
-                    <i class="fas fa-tags fs-1 text-primary mb-3"></i>
-                    <h6 class="fw-bold">Best Prices</h6>
-                    <p class="small mb-0">Wholesale rates</p>
+                <div class="why-card-modern">
+                    <div class="why-icon"><i class="fas fa-tags"></i></div>
+                    <h6>Best Prices</h6>
+                    <p>Wholesale rates</p>
                 </div>
             </div>
             <div class="col-md-3 col-6">
-                <div class="why-card text-center">
-                    <i class="fas fa-truck fs-1 text-primary mb-3"></i>
-                    <h6 class="fw-bold">Fast Delivery</h6>
-                    <p class="small mb-0">Pan Pakistan</p>
+                <div class="why-card-modern">
+                    <div class="why-icon"><i class="fas fa-truck"></i></div>
+                    <h6>Fast Delivery</h6>
+                    <p>Pan Pakistan</p>
                 </div>
             </div>
             <div class="col-md-3 col-6">
-                <div class="why-card text-center">
-                    <i class="fas fa-headset fs-1 text-primary mb-3"></i>
-                    <h6 class="fw-bold">24/7 Support</h6>
-                    <p class="small mb-0">Always here</p>
+                <div class="why-card-modern">
+                    <div class="why-icon"><i class="fas fa-headset"></i></div>
+                    <h6>24/7 Support</h6>
+                    <p>Always here</p>
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-<!-- FAQ SECTION -->
-<section class="py-5">
+<!-- ===== FAQ SECTION ===== -->
+<section class="faq-section">
     <div class="container">
         <div class="text-center mb-5">
-            <h2 class="display-5 fw-bold">Frequently Asked <span class="text-primary">Questions</span></h2>
-            <p class="text-muted">Everything you need to know about bulk orders</p>
+            <h2 class="section-title display-5 fw-bold">Frequently Asked <span style="color:var(--primary);">Questions</span></h2>
+            <p class="section-subtitle">Everything you need to know about bulk orders</p>
         </div>
         <div class="row justify-content-center">
             <div class="col-lg-8">
-                <div class="accordion" id="faqAccordion">
-                    <div class="accordion-item border-0 shadow-sm mb-3 rounded-3">
-                        <h2 class="accordion-header">
-                            <button class="accordion-button bg-light rounded-3" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
-                                What is the minimum order quantity for bulk pricing?
-                            </button>
-                        </h2>
-                        <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
-                            <div class="accordion-body text-muted">Minimum order quantity for wholesale pricing varies by product. Typically, 500+ sq ft for flooring/wallpapers, 100+ pieces for dastarkhawan/footmats, and 1000+ sq ft for tarpaulin. Contact us for specific product MOQ.</div>
-                        </div>
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="true">
+                        What is the minimum order quantity for bulk pricing?
+                        <span class="faq-icon"><i class="fas fa-chevron-down"></i></span>
+                    </button>
+                    <div class="faq-answer" style="display:block;">
+                        Minimum order quantity for wholesale pricing varies by product. Typically, 500+ sq ft for flooring/wallpapers, 100+ pieces for dastarkhawan/footmats, and 1000+ sq ft for tarpaulin. Contact us for specific product MOQ.
                     </div>
-                    <div class="accordion-item border-0 shadow-sm mb-3 rounded-3">
-                        <h2 class="accordion-header">
-                            <button class="accordion-button collapsed bg-light rounded-3" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
-                                Do you offer samples before bulk order?
-                            </button>
-                        </h2>
-                        <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-                            <div class="accordion-body text-muted">Yes, we provide free samples for wallpapers, flooring, and carpet tiles. Samples are sent via courier with delivery charges applicable.</div>
-                        </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
+                        Do you offer samples before bulk order?
+                        <span class="faq-icon"><i class="fas fa-chevron-down"></i></span>
+                    </button>
+                    <div class="faq-answer" style="display:none;">
+                        Yes, we provide free samples for wallpapers, flooring, and carpet tiles. Samples are sent via courier with delivery charges applicable.
                     </div>
-                    <div class="accordion-item border-0 shadow-sm mb-3 rounded-3">
-                        <h2 class="accordion-header">
-                            <button class="accordion-button collapsed bg-light rounded-3" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
-                                What is the delivery time for bulk orders?
-                            </button>
-                        </h2>
-                        <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-                            <div class="accordion-body text-muted">Delivery typically takes 3-7 business days depending on your location and order size. Large commercial orders may take 7-14 days.</div>
-                        </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
+                        What is the delivery time for bulk orders?
+                        <span class="faq-icon"><i class="fas fa-chevron-down"></i></span>
+                    </button>
+                    <div class="faq-answer" style="display:none;">
+                        Delivery typically takes 3-7 business days depending on your location and order size. Large commercial orders may take 7-14 days.
                     </div>
-                    <div class="accordion-item border-0 shadow-sm mb-3 rounded-3">
-                        <h2 class="accordion-header">
-                            <button class="accordion-button collapsed bg-light rounded-3" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">
-                                Do you offer installation services for bulk orders?
-                            </button>
-                        </h2>
-                        <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-                            <div class="accordion-body text-muted">Yes, we have a team of professional installers for wallpapers, flooring, and carpet tiles. Installation charges vary based on area and product type.</div>
-                        </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
+                        Do you offer installation services for bulk orders?
+                        <span class="faq-icon"><i class="fas fa-chevron-down"></i></span>
+                    </button>
+                    <div class="faq-answer" style="display:none;">
+                        Yes, we have a team of professional installers for wallpapers, flooring, and carpet tiles. Installation charges vary based on area and product type.
                     </div>
                 </div>
             </div>
@@ -623,95 +1115,298 @@
     </div>
 </section>
 
-<!-- CTA SECTION -->
-<section class="py-5" style="background: linear-gradient(135deg, var(--primary), var(--primary-dark));">
-    <div class="container text-center text-white">
+<!-- ===== CTA SECTION ===== -->
+<section class="cta-section">
+    <div class="container text-center text-white position-relative" style="z-index:2;">
         <h2 class="display-5 fw-bold mb-3">Ready to Place Your Bulk Order?</h2>
-        <p class="lead mb-4">Get the best wholesale prices and quality products.</p>
+        <p class="lead mb-4" style="opacity:0.8;">Get the best wholesale prices and quality products.</p>
         <div class="d-flex gap-3 justify-content-center flex-wrap">
-            <a href="https://wa.me/923190306199" target="_blank" class="btn btn-light rounded-pill px-4 py-2 fw-bold"><i class="fab fa-whatsapp me-2"></i>WhatsApp Now</a>
-            <a href="tel:+923190306199" class="btn btn-outline-light rounded-pill px-4 py-2"><i class="fas fa-phone me-2"></i>Call Us</a>
+            <a href="https://wa.me/923190306199" target="_blank" class="btn btn-light rounded-pill px-5 py-3 fw-bold">
+                <i class="fab fa-whatsapp me-2 text-success"></i>WhatsApp Now
+            </a>
+            <a href="tel:+923190306199" class="btn btn-outline-light rounded-pill px-5 py-3 fw-bold">
+                <i class="fas fa-phone me-2"></i>Call Us
+            </a>
         </div>
     </div>
 </section>
 
-<!-- FOOTER -->
-<footer class="py-5 bg-dark text-white">
-    <div class="container-lg">
-        <div class="row">
-            <div class="col-md-3"><img src="images/Gemini_Generated_Image_ywi261ywi261ywi2.png" class="mb-3" style="max-height: 50px;"><p class="small">Premium quality wallpapers, flooring, tarpaulin & home decor solutions.</p></div>
-            <div class="col-md-3"><h5>Quick Links</h5><ul class="list-unstyled small"><li><a href="about.html" class="text-white-50 text-decoration-none">About Us</a></li><li><a href="contact.html" class="text-white-50 text-decoration-none">Contact</a></li><li><a href="privacy-policy.html" class="text-white-50 text-decoration-none">Privacy Policy</a></li><li><a href="quote.html" class="text-white-50 text-decoration-none">Get a Quote</a></li></ul></div>
-            <div class="col-md-3"><h5>Contact</h5><p class="small"><i class="fas fa-phone me-2"></i>+92 319 0306199</p><p class="small"><i class="fab fa-whatsapp me-2"></i>+92 319 0306199</p></div>
-            <div class="col-md-3"><h5>Follow Us</h5><div class="d-flex gap-2"><a href="#" class="text-white"><i class="fab fa-facebook fa-lg"></i></a><a href="#" class="text-white"><i class="fab fa-instagram fa-lg"></i></a><a href="#" class="text-white"><i class="fab fa-whatsapp fa-lg"></i></a></div></div>
+<!-- ===== FOOTER ===== -->
+<footer class="py-5" style="background:#0a0e17; border-top:1px solid rgba(255,255,255,0.03);">
+    <div class="container">
+        <div class="row g-4">
+            <div class="col-md-3">
+                <img src="images/Gemini_Generated_Image_ywi261ywi261ywi2.png" class="mb-3" style="max-height:45px; filter:brightness(0) invert(1);">
+                <p class="small text-white-50">Premium quality wallpapers, flooring, tarpaulin & home decor solutions.</p>
+            </div>
+            <div class="col-md-3">
+                <h5 class="text-white">Quick Links</h5>
+                <ul class="list-unstyled small">
+                    <li><a href="about.html" class="text-white-50 text-decoration-none">About Us</a></li>
+                    <li><a href="contact.html" class="text-white-50 text-decoration-none">Contact</a></li>
+                    <li><a href="privacy-policy.html" class="text-white-50 text-decoration-none">Privacy Policy</a></li>
+                    <li><a href="quote.html" class="text-white-50 text-decoration-none">Get a Quote</a></li>
+                </ul>
+            </div>
+            <div class="col-md-3">
+                <h5 class="text-white">Contact</h5>
+                <p class="small text-white-50"><i class="fas fa-phone me-2"></i>+92 319 0306199</p>
+                <p class="small text-white-50"><i class="fab fa-whatsapp me-2"></i>+92 319 0306199</p>
+            </div>
+            <div class="col-md-3">
+                <h5 class="text-white">Follow Us</h5>
+                <div class="d-flex gap-3">
+                    <a href="#" class="text-white-50"><i class="fab fa-facebook fa-lg"></i></a>
+                    <a href="#" class="text-white-50"><i class="fab fa-instagram fa-lg"></i></a>
+                    <a href="#" class="text-white-50"><i class="fab fa-whatsapp fa-lg"></i></a>
+                </div>
+            </div>
         </div>
-        <hr class="mt-4"><div class="text-center small text-white-50">© 2025 MS Plastic Store. All rights reserved.</div>
+        <hr class="mt-4" style="border-color:rgba(255,255,255,0.03);">
+        <div class="text-center small text-white-50">© 2025 MS Plastic Store. All rights reserved.</div>
     </div>
 </footer>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
-
+<!-- ===== SCRIPTS ===== -->
 <script>
-    // Preloader
-    window.addEventListener('load', () => { setTimeout(() => { const preloader = document.getElementById('preloader'); if(preloader) { preloader.style.opacity = '0'; setTimeout(() => preloader.style.display = 'none', 500); } }, 500); });
+    // ============================================= //
+    // PRELOADER
+    // ============================================= //
+    window.addEventListener('load', () => {
+        setTimeout(() => {
+            document.getElementById('preloader').classList.add('hidden');
+        }, 800);
+    });
 
-    // Scroll to top
+    // ============================================= //
+    // SCROLL TO TOP
+    // ============================================= //
     const scrollBtn = document.getElementById('scrollTopBtn');
-    window.addEventListener('scroll', () => { if(window.scrollY > 300) scrollBtn.classList.add('show'); else scrollBtn.classList.remove('show'); });
-    scrollBtn.addEventListener('click', () => { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) scrollBtn.classList.add('show');
+        else scrollBtn.classList.remove('show');
+    });
+    scrollBtn.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
 
-    // Quote Form Submission
-    const quoteForm = document.getElementById('quoteForm');
-    const toast = document.getElementById('toastNotification');
-
-    function showToastMessage(message) {
-        toast.innerHTML = `<i class="fas fa-check-circle me-2"></i>${message}`;
+    // ============================================= //
+    // TOAST
+    // ============================================= //
+    function showToast(message) {
+        const toast = document.getElementById('toast');
+        document.getElementById('toastMessage').textContent = message;
         toast.classList.add('show');
-        setTimeout(() => toast.classList.remove('show'), 3000);
+        setTimeout(() => toast.classList.remove('show'), 4000);
     }
 
-    quoteForm.addEventListener('submit', (e) => {
+    function hideToast() {
+        document.getElementById('toast').classList.remove('show');
+    }
+
+    // ============================================= //
+    // MOBILE MENU
+    // ============================================= //
+    function toggleMobileMenu() {
+        const menu = document.getElementById('mobileMenu');
+        menu.style.display = menu.style.display === 'none' ? 'block' : 'none';
+    }
+
+    function performSearch() {
+        const query = document.getElementById('searchInput').value;
+        if (query.trim()) {
+            window.location.href = `shop.html?search=${encodeURIComponent(query)}`;
+        }
+    }
+
+    function performMobileSearch() {
+        const query = document.getElementById('mobileSearchInput').value;
+        if (query.trim()) {
+            window.location.href = `shop.html?search=${encodeURIComponent(query)}`;
+        }
+    }
+
+    // ============================================= //
+    // CART / WISHLIST (placeholders)
+    // ============================================= //
+    let cartCount = 0;
+    let wishlistCount = 0;
+
+    function toggleCart() {
+        showToast('🛒 Cart opened');
+    }
+
+    function toggleWishlist() {
+        showToast('❤️ Wishlist opened');
+    }
+
+    // ============================================= //
+    // FAQ TOGGLE
+    // ============================================= //
+    function toggleFaq(btn) {
+        const isExpanded = btn.getAttribute('aria-expanded') === 'true';
+        const answer = btn.nextElementSibling;
+        const icon = btn.querySelector('.faq-icon i');
+
+        if (isExpanded) {
+            btn.setAttribute('aria-expanded', 'false');
+            answer.style.display = 'none';
+            icon.className = 'fas fa-chevron-down';
+        } else {
+            btn.setAttribute('aria-expanded', 'true');
+            answer.style.display = 'block';
+            icon.className = 'fas fa-chevron-up';
+        }
+    }
+
+    // ============================================= //
+    // QUOTE FORM SUBMISSION
+    // ============================================= //
+    const quoteForm = document.getElementById('quoteForm');
+    const submitBtn = document.getElementById('submitBtn');
+    const submitText = document.getElementById('submitText');
+    const submitSpinner = document.getElementById('submitSpinner');
+
+    quoteForm.addEventListener('submit', function(e) {
         e.preventDefault();
-        
-        const fullName = document.getElementById('fullName').value;
-        const companyName = document.getElementById('companyName').value;
-        const email = document.getElementById('email').value;
-        const phone = document.getElementById('phone').value;
-        const city = document.getElementById('city').value;
-        const category = document.getElementById('category').value;
-        const productDetails = document.getElementById('productDetails').value;
-        const quantity = document.getElementById('quantity').value;
-        const budget = document.getElementById('budget').value;
-        const notes = document.getElementById('notes').value;
-        
-        if (!fullName || !email || !phone || !city || !category || !productDetails) {
-            showToastMessage('Please fill all required fields!');
+
+        // Reset errors
+        document.querySelectorAll('.form-group-modern').forEach(g => g.classList.remove('error'));
+
+        // Validate
+        let isValid = true;
+
+        const name = document.getElementById('fullName');
+        const email = document.getElementById('email');
+        const phone = document.getElementById('phone');
+        const city = document.getElementById('city');
+        const category = document.getElementById('category');
+        const details = document.getElementById('productDetails');
+
+        if (!name.value.trim()) {
+            document.getElementById('nameGroup').classList.add('error');
+            isValid = false;
+        }
+        if (!email.value.trim() || !isValidEmail(email.value)) {
+            document.getElementById('emailGroup').classList.add('error');
+            isValid = false;
+        }
+        if (!phone.value.trim() || phone.value.length < 10) {
+            document.getElementById('phoneGroup').classList.add('error');
+            isValid = false;
+        }
+        if (!city.value.trim()) {
+            document.getElementById('cityGroup').classList.add('error');
+            isValid = false;
+        }
+        if (!category.value) {
+            document.getElementById('categoryGroup').classList.add('error');
+            isValid = false;
+        }
+        if (!details.value.trim()) {
+            document.getElementById('detailsGroup').classList.add('error');
+            isValid = false;
+        }
+
+        if (!isValid) {
+            showToast('⚠️ Please fill all required fields');
             return;
         }
-        
-        // Create WhatsApp message
-        let whatsappMsg = `*NEW QUOTE REQUEST*%0A%0A`;
-        whatsappMsg += `*Name:* ${fullName}%0A`;
-        if (companyName) whatsappMsg += `*Company:* ${companyName}%0A`;
-        whatsappMsg += `*Email:* ${email}%0A`;
-        whatsappMsg += `*Phone:* ${phone}%0A`;
-        whatsappMsg += `*City:* ${city}%0A`;
-        whatsappMsg += `*Category:* ${category}%0A`;
-        whatsappMsg += `*Product Details:* ${productDetails}%0A`;
-        if (quantity) whatsappMsg += `*Quantity:* ${quantity}%0A`;
-        if (budget) whatsappMsg += `*Budget:* ${budget}%0A`;
-        if (notes) whatsappMsg += `*Additional Notes:* ${notes}%0A`;
-        
-        const whatsappUrl = `https://wa.me/923190306199?text=${whatsappMsg}`;
-        
+
+        // Show loading state
+        submitBtn.disabled = true;
+        submitText.textContent = 'Sending...';
+        submitSpinner.style.display = 'inline';
+
+        // Build WhatsApp message
+        const formData = {
+            name: name.value,
+            company: document.getElementById('companyName').value,
+            email: email.value,
+            phone: phone.value,
+            city: city.value,
+            category: category.value,
+            details: details.value,
+            quantity: document.getElementById('quantity').value,
+            budget: document.getElementById('budget').value,
+            notes: document.getElementById('notes').value
+        };
+
+        let msg = '*NEW QUOTE REQUEST*%0A%0A';
+        msg += `*Name:* ${formData.name}%0A`;
+        if (formData.company) msg += `*Company:* ${formData.company}%0A`;
+        msg += `*Email:* ${formData.email}%0A`;
+        msg += `*Phone:* ${formData.phone}%0A`;
+        msg += `*City:* ${formData.city}%0A`;
+        msg += `*Category:* ${formData.category}%0A`;
+        msg += `*Product Details:* ${formData.details}%0A`;
+        if (formData.quantity) msg += `*Quantity:* ${formData.quantity}%0A`;
+        if (formData.budget) msg += `*Budget:* ${formData.budget}%0A`;
+        if (formData.notes) msg += `*Notes:* ${formData.notes}%0A`;
+        msg += `%0A_Source: Website Quote Form_`;
+
         // Open WhatsApp
-        window.open(whatsappUrl, '_blank');
-        
-        // Show success message
-        showToastMessage('Redirecting to WhatsApp...');
-        
-        // Optional: Reset form
-        // quoteForm.reset();
+        const url = `https://wa.me/923190306199?text=${msg}`;
+        window.open(url, '_blank');
+
+        // Reset button
+        setTimeout(() => {
+            submitBtn.disabled = false;
+            submitText.textContent = 'Submit Quote Request';
+            submitSpinner.style.display = 'none';
+            showToast('✅ Quote sent via WhatsApp!');
+        }, 1000);
+
+        // Optional: track conversion
+        if (typeof gtag !== 'undefined') {
+            gtag('event', 'conversion', {
+                'send_to': 'AW-XXXXX/XXXXX',
+                'value': 1,
+                'currency': 'PKR'
+            });
+        }
+
+        // Log data (for debugging)
+        console.log('Quote Form Data:', formData);
     });
+
+    // ============================================= //
+    // HELPER FUNCTIONS
+    // ============================================= //
+    function isValidEmail(email) {
+        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    }
+
+    // Enter key support for search
+    document.getElementById('searchInput').addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') performSearch();
+    });
+    document.getElementById('mobileSearchInput').addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') performMobileSearch();
+    });
+
+    // ============================================= //
+    // INTERSECTION OBSERVER - ANIMATIONS
+    // ============================================= //
+    document.addEventListener('DOMContentLoaded', function() {
+        const animElements = document.querySelectorAll('.animate-fadeUp, .animate-fadeLeft, .animate-fadeRight');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translate(0)';
+                    }, index * 100);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        animElements.forEach(el => {
+            observer.observe(el);
+        });
+    });
+
+    console.log('🚀 MS Plastic Store - Quote Page Loaded Successfully!');
 </script>
 
 </body>
